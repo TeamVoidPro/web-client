@@ -21,7 +21,7 @@
 }
 
 .bg-secondary{
-    background-color: #003C70;
+    background-color: #EDF9FC;
 }
 
 .bg-accent{
@@ -30,4 +30,14 @@
 
 .font-roboto-slab{
     font-family: 'Roboto Slab', serif;
+}
+
+.body{
+    padding: 0;
+    margin: 0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
 }
