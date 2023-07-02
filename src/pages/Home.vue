@@ -1,22 +1,15 @@
-<script lang="ts">
+<script setup lang="ts">
+import Navbar from "../components/Navbar.vue";
 
-import {defineComponent} from "vue";
 
-export default defineComponent({
-  name: 'Home',
-  setup() {
-    return {
-      msg: 'Welcome to Your Vue.js + TypeScript App'
-    }
-  }
-})
 
 </script>
 
 <template>
-  <h1>
-    Hello World {{ msg }}
-  </h1>
+  <Navbar title="Home Page"/>
+  <div class="text-4xl">
+    Hello World
+  </div>
 </template>
 
 <style scoped>
