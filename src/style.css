@@ -1,3 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-primary{
+    color: #253665;
+}
+
+.text-secondary{
+    color: #003C70;
+}
+
+.text-accent{
+    color: #0074d9;
+}
+
+.bg-primary{
+    background-color: #253665;
+}
+
+.bg-secondary{
+    background-color: #003C70;
+}
+
+.bg-accent{
+    background-color: #0074d9;
+}
+
+.font-roboto-slab{
+    font-family: 'Roboto Slab', serif;
+}
