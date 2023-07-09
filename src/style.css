@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    font-family: 'Roboto Slab', serif;
+    background-color: #EDF9FC;
+}
+
 .text-primary{
     color: #253665;
 }
@@ -30,4 +35,12 @@
 
 .font-roboto-slab{
     font-family: 'Roboto Slab', serif;
+}
+
+#app{
+    min-height: 100vh;
+}
+
+main{
+    min-height: 100vh;
 }

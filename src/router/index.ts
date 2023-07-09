@@ -13,6 +13,8 @@ import OwnerDashboard from "../pages/parkOwner/OwnerDashboard.vue";
 import VerifierDashboard from "../pages/verifier/VerifierDashboard.vue";
 // @ts-ignore
 import Home from "../pages/Home.vue";
+// @ts-ignore
+import RegisterPage from "../pages/parkOwner/RegisterPage.vue";
 
 // @ts-ignore
 const routes = [
@@ -53,6 +55,19 @@ const routes = [
                 component: () => VerifierDashboard
             }
         ]
+    },
+    {
+        path: '/owner',
+        name: 'Parking Owner',
+        component: () => RegisterPage,
+        children: [
+            {
+                path: 'register',
+                name: 'OwnerDashboard',
+                component: () => RegisterPage
+            }
+            ]
+
     }
 ]
 

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// define props
-import {defineProps} from "vue";
 const props = defineProps({
   title: {
     type: String,
@@ -11,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex flex-row justify-between items-center bg-gray-800 text-white p-4">
+  <div class="flex flex-row justify-between items-center bg-white text-black p-4">
     <div class="text-4xl text-white">
       <router-link to="/">Home</router-link>
     </div>
