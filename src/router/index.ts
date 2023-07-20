@@ -19,6 +19,8 @@ import Register from "../pages/Register.vue";
 import OperatorLayout from "../layouts/OperatorLayout.vue";
 // @ts-ignore
 import OperatorPayments from "../pages/operator/OperatorPayments.vue";
+// @ts-ignore
+import OperatorReservations from "../pages/operator/OperatorReservations.vue";
 
 // @ts-ignore
 const routes = [
@@ -49,12 +51,21 @@ const routes = [
     {
         path: '/operator-layout',
         name: 'OperatorLayout',
-        component: () => OperatorLayout,
         children: [
+            {
+                path: '/operator-dashboard',
+                name: 'OperatorDashboard',
+                component: () => OperatorDashboard
+            },
             {
                 path: '/operator-payments',
                 name: 'OperatorPayments',
                 component: () => OperatorPayments
+            },
+            {
+                path: '/operator-reservations',
+                name: 'OperatorReservations',
+                component: () => OperatorReservations
             }
         ]
     }

@@ -31,3 +31,11 @@
 .font-roboto-slab{
     font-family: 'Roboto Slab', serif;
 }
+
+.bg-grey{
+    background-color: #646464;
+}
+
+.text-grey{
+    color: #646464;
+}
