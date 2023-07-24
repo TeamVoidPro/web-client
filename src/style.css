@@ -4,10 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body{
     /*font-family: 'Inter', sans-serif;*/
     font-family: 'Poppins', sans-serif;
     background-color: #EDF9FC;
+    /*overflow: hidden;*/
     /*background-color: #ffffff;*/
 }
 

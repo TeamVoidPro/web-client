@@ -9,7 +9,7 @@ import ParkChange from "@/components/ParkOwner/LayoutComponent/ParkChangeCompone
 
 
 const userName = "Mr. Danodya Supun";
-const userImage = "/src/assets/images/user1.png";
+const userImage = "/src/assets/images/user1.svg";
 
 
 

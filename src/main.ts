@@ -3,7 +3,6 @@ import {createPinia} from 'pinia'
 import axios from "axios";
 import './style.css'
 import router from './router/index.ts'
-import naive from "naive-ui";
 
 
 
@@ -25,7 +24,6 @@ Application.config.globalProperties.$axios = instance
 
 Application.use(pinia)
 Application.use(router)
-Application.use(naive)
 
 
 Application.mount('#app')
