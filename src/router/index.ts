@@ -15,6 +15,12 @@ import VerifierDashboard from "../pages/verifier/VerifierDashboard.vue";
 import Home from "../pages/Home.vue";
 // @ts-ignore
 import Register from "../pages/Register.vue";
+// @ts-ignore
+import OperatorLayout from "../layouts/OperatorLayout.vue";
+// @ts-ignore
+import OperatorPayments from "../pages/operator/OperatorPayments.vue";
+// @ts-ignore
+import OperatorReservations from "../pages/operator/OperatorReservations.vue";
 
 // @ts-ignore
 const routes = [
@@ -39,29 +45,31 @@ const routes = [
                 name: 'Register',
                 component: () => Register
             }
-            ,
-            {
-                path: '/admin-dashboard',
-                name: 'AdminDashboard',
-                component: () => AdminDashboard
-            },
+
+        ]
+    },
+    {
+        path: '/operator-layout',
+        name: 'OperatorLayout',
+        children: [
             {
                 path: '/operator-dashboard',
                 name: 'OperatorDashboard',
                 component: () => OperatorDashboard
             },
             {
-                path: 'owner-dashboard',
-                name: 'OwnerDashboard',
-                component: () => OwnerDashboard
+                path: '/operator-payments',
+                name: 'OperatorPayments',
+                component: () => OperatorPayments
             },
             {
-                path: 'verifier-dashboard',
-                name: 'VerifierDashboard',
-                component: () => VerifierDashboard
+                path: '/operator-reservations',
+                name: 'OperatorReservations',
+                component: () => OperatorReservations
             }
         ]
     }
+
 ]
 
 const router = createRouter({

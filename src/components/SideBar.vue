@@ -1,34 +1,24 @@
 <template>
-  <div id="side-bar" class="h-[100vh] w-[20em] bg-[#005792]">
-    <img class="w-[80%] pt-10 m-auto" src = "../assets/images/logo-1.png"
-         alt = "Logo">
-    <div id="open-sidebar" class="relative left-[93%]">
-      <ChevronRightIcon class="text-primary w-10 h-10 rounded-full bg-blue-100" @click="closeSideBar"/>
-    </div>
-    <div id="close-sidebar" class="relative left-[75%] hidden">
-      <ChevronLeftIcon class="text-primary w-10 h-10 rounded-full bg-blue-100" @click="openSideBar"/>
-    </div>
-    <div class="flex-col w-full mt-20 space-y-10 h-[65vh]">
-      <div class="flex items-center justify-center gap-5 max-md:gap-0">
-        <HomeIcon class="text-[#d1f4fa] w-8 h-8"/>
-        <p id="icon-name" class="text-white text-xl hover:bg-[#d1f4fa] py-2 px-3 hover:rounded-xl flex justify-center hover:text-black max-md:text-lg">Dashboard</p>
+  <div>
+    <div id="side-bar" class="min-h-[100vh] w-[20em] bg-white border-r-4">
+      <img class="w-[80%] pt-10 m-auto" src = "../assets/images/logo-3.png"
+           alt = "Logo">
+      <div id="open-sidebar" class="relative left-[93%]">
+        <ChevronRightIcon class="text-primary w-10 h-10 rounded-full bg-blue-100" @click="closeSideBar"/>
       </div>
-      <div class="flex items-center justify-center gap-5 max-md:gap-0">
-        <HomeIcon class="text-[#d1f4fa] w-8 h-8"/>
-        <p id="icon-name" class="text-white text-xl hover:bg-[#d1f4fa] py-2 px-3 hover:rounded-xl flex justify-center hover:text-black max-md:text-lg">Dashboard</p>
+      <div id="close-sidebar" class="relative left-[75%] hidden">
+        <ChevronLeftIcon class="text-primary w-10 h-10 rounded-full bg-blue-100" @click="openSideBar"/>
       </div>
-      <div class="flex items-center justify-center gap-5 max-md:gap-0">
-        <HomeIcon class="text-[#d1f4fa] w-8 h-8"/>
-        <p id="icon-name" class="text-white text-xl hover:bg-[#d1f4fa] py-2 px-3 hover:rounded-xl flex justify-center hover:text-black max-md:text-lg">Dashboard</p>
+      <div id="items-container" class="flex flex-col items-center pr-5 pl-1 space-y-5 mt-10">
+
+        <router-link v-for="item in sidebarItems" :to="{name: item.link}" class="w-full">
+          <div id="sidebar-item" :key="item.id" :class="[item.id===active? 'flex items-center gap-3 py-3 w-full ps-14 rounded-r-2xl hover:bg-[#EDF9FC] border-l-4 border-[#0074D9] bg-accent ':'flex items-center gap-3 py-3 w-full ps-14 rounded-r-2xl hover:bg-[#EDF9FC]']" @click="clicked(item.id)">
+            <img class="h-10 w-10" :src="item.icon" alt="Dashboard">
+            <div id="item-name" class="font-semibold text-xl text-grey">{{item.name}}</div>
+          </div>
+        </router-link>
+
       </div>
-      <div class="flex items-center justify-center gap-5 max-md:gap-0">
-        <HomeIcon class="text-[#d1f4fa] w-8 h-8"/>
-        <p id="icon-name" class="text-white text-xl hover:bg-[#d1f4fa] py-2 px-3 hover:rounded-xl flex justify-center hover:text-black max-md:text-lg">Dashboard</p>
-      </div>
-    </div>
-    <div class="flex justify-center items-center gap-3 mt-5">
-      <ArrowLeftOnRectangleIcon class="w-12 h-12 text-[#d1f4fa]"/>
-      <div class="text-2xl text-[#d1f4fa]">Logout</div>
     </div>
   </div>
 </template>
@@ -36,28 +26,68 @@
 <script setup
         lang = "ts">
 
-import {ChevronLeftIcon, ChevronRightIcon, HomeIcon} from "@heroicons/vue/24/solid";
-import {ArrowLeftOnRectangleIcon} from "@heroicons/vue/24/outline";
+import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/vue/24/solid";
+import {onMounted} from "vue";
+
+let active: any = null;
+const sidebarItems = [
+  {
+    id: 1,
+    name: 'Dashboard',
+    icon: "/src/assets/images/dashboard-svgrepo-com.svg",
+    link: 'OperatorDashboard',
+  },
+  {
+    id: 2,
+    name: 'Reservations',
+    icon: "/src/assets/images/reserve.svg",
+    link: 'OperatorReservations'
+  },
+  {
+    id: 3,
+    name: 'Parking Slots',
+    icon: "/src/assets/images/parking.svg",
+    link: ''
+  },
+  {
+    id: 4,
+    name: 'Payments',
+    icon: '/src/assets/images/dollar-square-svgrepo-com.svg',
+    link: 'OperatorPayments'
+  },
+  {
+    id: 5,
+    name: 'Analytics',
+    icon: '/src/assets/images/analytics-svgrepo-com.svg',
+    link: ''
+  },
+  {
+    id: 6,
+    name: 'Settings',
+    icon: '/src/assets/images/settings.svg',
+    link: ''
+  }
+]
+
+onMounted(() => {
+
+})
+
+function clicked(item: number){
+  active = item;
+  console.log(active);
+}
+
+
 
 function closeSideBar()
 {
-  document.getElementById('side-bar')?.classList.add('w-[5em]')
-  document.getElementById('open-sidebar')?.classList.add('hidden')
-  document.getElementById('close-sidebar')?.classList.remove('hidden')
-  let icon_names = document.querySelectorAll('#icon-name')
-  icon_names.forEach((icon_name) => {
-    icon_name.classList.add('hidden')
-  })
 }
 
 function openSideBar()
 {
-  document.getElementById('side-bar')?.classList.remove('w-[5em]')
-  document.getElementById('open-sidebar')?.classList.remove('hidden')
-  document.getElementById('close-sidebar')?.classList.add('hidden')
-  let icon_names = document.querySelectorAll('#icon-name')
-  icon_names.forEach((icon_name) => {
-    icon_name.classList.remove('hidden')
-  })
+
 }
+
+
 </script>
