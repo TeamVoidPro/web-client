@@ -30,7 +30,7 @@ const routes = [
         component: () => AuthLayout,
         children: [
             {
-                path: '/login',
+                path: 'login',
                 name: 'Login',
                 component: () => Login
             },
@@ -55,19 +55,27 @@ const routes = [
                 component: () => VerifierDashboard
             }
         ]
-    },
-    {
-        path: '/owner',
+    },{
+        path: '/park-owner',
         name: 'Parking Owner',
-        component: () => RegisterPage,
         children: [
             {
                 path: 'register',
-                name: 'OwnerDashboard',
+                name: 'RegisterPage',
                 component: () => RegisterPage
+            },
+            {
+                path: 'dashboard',
+                name: 'OwnerDashboard',
+                component: () => OwnerDashboard
+            },
+            {
+                path: 'overview',
+                name: 'OwnerOverview',
+                component: () => OwnerDashboard
+
             }
             ]
-
     }
 ]
 

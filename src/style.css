@@ -5,7 +5,13 @@
 @tailwind utilities;
 
 body{
-    font-family: 'Roboto Slab', serif;
+    /*font-family: 'Inter', sans-serif;*/
+    font-family: 'Poppins', sans-serif;
+    background-color: #EDF9FC;
+    /*background-color: #ffffff;*/
+}
+
+.bg-light-blue{
     background-color: #EDF9FC;
 }
 
