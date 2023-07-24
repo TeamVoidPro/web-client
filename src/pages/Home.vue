@@ -81,8 +81,9 @@
           Keep Inform About Daily Updates
         </div>
         <div class="flex w-[600px] mt-1.5">
-          <div class="flex bg-white border-2 border-primary rounded-2xl w-[300px] mr-2.5">
-          </div>
+          <input type="text" class="px-20 py-2 border border-black rounded placeholder-gray-600 font-semibold mr-2.5" placeholder="">
+<!--          <div class="flex bg-white border-2 border-primary rounded-2xl w-[300px] mr-2.5">-->
+<!--          </div>-->
           <div class="flex bg-primary w-[200px] rounded-2xl px-3 py-1">
             <div class="px-3 py-1">
               <i><img src="../assets/images/email.png"></i>
