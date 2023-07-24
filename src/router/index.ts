@@ -14,6 +14,8 @@ import VerifierDashboard from "../pages/verifier/VerifierDashboard.vue";
 // @ts-ignore
 import Home from "../pages/Home.vue";
 // @ts-ignore
+import RegisterPage from "../pages/parkOwner/RegisterPage.vue";
+// @ts-ignore
 import Register from "../pages/Register.vue";
 // @ts-ignore
 import OperatorLayout from "../layouts/OperatorLayout.vue";
@@ -36,7 +38,7 @@ const routes = [
         component: () => AuthLayout,
         children: [
             {
-                path: '/login',
+                path: 'login',
                 name: 'Login',
                 component: () => Login
             },
@@ -68,6 +70,27 @@ const routes = [
                 component: () => OperatorReservations
             }
         ]
+    },{
+        path: '/park-owner',
+        name: 'Parking Owner',
+        children: [
+            {
+                path: 'register',
+                name: 'RegisterPage',
+                component: () => RegisterPage
+            },
+            {
+                path: 'dashboard',
+                name: 'OwnerDashboard',
+                component: () => OwnerDashboard
+            },
+            {
+                path: 'overview',
+                name: 'OwnerOverview',
+                component: () => OwnerDashboard
+
+            }
+            ]
     }
 
 ]
