@@ -4,6 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    /*font-family: 'Inter', sans-serif;*/
+    font-family: 'Poppins', sans-serif;
+    background-color: #EDF9FC;
+    /*background-color: #ffffff;*/
+}
+
+.bg-light-blue{
+    background-color: #EDF9FC;
+}
+
 .text-primary{
     color: #253665;
 }
@@ -32,6 +43,7 @@
     font-family: 'Roboto Slab', serif;
 }
 
+
 .bg-grey{
     background-color: #646464;
 }
@@ -39,3 +51,12 @@
 .text-grey{
     color: #646464;
 }
+
+#app{
+    min-height: 100vh;
+}
+
+main{
+    min-height: 100vh;
+}
+

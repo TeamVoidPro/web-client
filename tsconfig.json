@@ -8,7 +8,37 @@
     "paths": {
         "@/*": [
           "/src/*"
-          ]
+          ],
+        "@components/*": [
+          "/src/components/*"
+          ],
+        "@pages/*": [
+          "/src/pages/*"
+          ],
+        "@store/*": [
+          "/src/store/*"
+          ],
+        "@utils/*": [
+          "/src/utils/*"
+          ],
+        "@assets/*": [
+          "/src/assets/*"
+          ],
+        "@types/*": [
+          "/src/types/*"
+          ],
+        "@layouts/*": [
+          "/src/layouts/*"
+          ],
+        "@plugins/*": [
+          "/src/plugins/*"
+          ],
+        "@mixins/*": [
+            "/src/mixins/*"
+            ],
+        "@router/*": [
+            "/src/router/*"
+            ],
         },
 
     /* Bundler mode */
