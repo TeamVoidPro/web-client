@@ -41,337 +41,458 @@
 
       </div>
 
-      <div class="mt-10 space-y-5">
-        <div class="w-full py-2 px-10 bg-white shadow rounded-xl flex items-center justify-between">
+      <div class="mt-10 space-y-2">
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
           <div class="flex items-center">
             <div>
-              <img src="../../assets/images/user.jpg" class="w-16 h-16 rounded-full p-0.5 border border-black" alt="User">
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Name:</div>
-                <div>Ms. Viharsha Pramodi</div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Time:</div>
-                <div>8.00 AM - 4.00 PM</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
-              <div>
-                <div class="font-semibold text-lg">Contact:</div>
-                <div>071 23 45 678</div>
-              </div>
-              <div>
-                <div class="font-semibold text-lg">Vehicle Number:</div>
-                <div>WP ABC - 1234</div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
               </div>
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Vehicle Type:</div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
                 <div>Car</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Vehicle Model:</div>
-                <div>Toyota Premio</div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
               </div>
             </div>
-            <div class="flex flex-col px-10">
-              <div>
-                <div class="font-semibold text-lg">Reserved Slot:</div>
-                <div class="text-center font-semibold text-5xl">#10</div>
-              </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-
-          <div class="flex">
-            <div class="py-1 px-10 border-r-2 border-black">
-              <img class="w-24" src="../../assets/images/QR.png" alt="QR code">
-            </div>
-            <div class="flex flex-col ms-10">
-              <button class="bg-secondary p-0.5 rounded">
-                <img src="../../assets/images/info-circle-svgrepo-com.svg" class="w-8 h-8" alt="">
-              </button>
-            </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
           </div>
-
         </div>
-        <div class="w-full py-2 px-10 bg-white shadow rounded-xl flex items-center justify-between">
-          <div class=" flex items-center">
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
             <div>
-              <img src="../../assets/images/user.jpg" class="w-16 h-16 rounded-full p-0.5 border border-black" alt="User">
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Name:</div>
-                <div>Ms. Viharsha Pramodi</div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Time:</div>
-                <div>8.00 AM - 4.00 PM</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
-              <div>
-                <div class="font-semibold text-lg">Contact:</div>
-                <div>071 23 45 678</div>
-              </div>
-              <div>
-                <div class="font-semibold text-lg">Vehicle Number:</div>
-                <div>WP ABC - 1234</div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
               </div>
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Vehicle Type:</div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
                 <div>Car</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Vehicle Model:</div>
-                <div>Toyota Premio</div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
               </div>
             </div>
-            <div class="flex flex-col px-10">
-              <div>
-                <div class="font-semibold text-lg">Reserved Slot:</div>
-                <div class="text-center font-semibold text-5xl">#10</div>
-              </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-
-          <div class="flex">
-            <div class="py-1 px-10 border-r-2 border-black">
-              <img class="w-24" src="../../assets/images/QR.png" alt="QR code">
-            </div>
-            <div class="flex flex-col ms-10">
-              <button class="bg-secondary p-0.5 rounded">
-                <img src="../../assets/images/info-circle-svgrepo-com.svg" class="w-8 h-8" alt="">
-              </button>
-            </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
           </div>
-
         </div>
-        <div class="w-full py-2 px-10 bg-white shadow rounded-xl flex items-center justify-between">
-          <div class=" flex items-center">
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
             <div>
-              <img src="../../assets/images/user.jpg" class="w-16 h-16 rounded-full p-0.5 border border-black" alt="User">
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Name:</div>
-                <div>Ms. Viharsha Pramodi</div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Time:</div>
-                <div>8.00 AM - 4.00 PM</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
-              <div>
-                <div class="font-semibold text-lg">Contact:</div>
-                <div>071 23 45 678</div>
-              </div>
-              <div>
-                <div class="font-semibold text-lg">Vehicle Number:</div>
-                <div>WP ABC - 1234</div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
               </div>
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Vehicle Type:</div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
                 <div>Car</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Vehicle Model:</div>
-                <div>Toyota Premio</div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
               </div>
             </div>
-            <div class="flex flex-col px-10">
-              <div>
-                <div class="font-semibold text-lg">Reserved Slot:</div>
-                <div class="text-center font-semibold text-5xl">#10</div>
-              </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-
-          <div class="flex">
-            <div class="py-1 px-10 border-r-2 border-black">
-              <img class="w-24" src="../../assets/images/QR.png" alt="QR code">
-            </div>
-            <div class="flex flex-col ms-10">
-              <button class="bg-secondary p-0.5 rounded">
-                <img src="../../assets/images/info-circle-svgrepo-com.svg" class="w-8 h-8" alt="">
-              </button>
-            </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
           </div>
-
         </div>
-        <div class="w-full py-2 px-10 bg-white shadow rounded-xl flex items-center justify-between">
-          <div class=" flex items-center">
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
             <div>
-              <img src="../../assets/images/user.jpg" class="w-16 h-16 rounded-full p-0.5 border border-black" alt="User">
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Name:</div>
-                <div>Ms. Viharsha Pramodi</div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Time:</div>
-                <div>8.00 AM - 4.00 PM</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
-              <div>
-                <div class="font-semibold text-lg">Contact:</div>
-                <div>071 23 45 678</div>
-              </div>
-              <div>
-                <div class="font-semibold text-lg">Vehicle Number:</div>
-                <div>WP ABC - 1234</div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
               </div>
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Vehicle Type:</div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
                 <div>Car</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Vehicle Model:</div>
-                <div>Toyota Premio</div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
               </div>
             </div>
-            <div class="flex flex-col px-10">
-              <div>
-                <div class="font-semibold text-lg">Reserved Slot:</div>
-                <div class="text-center font-semibold text-5xl">#10</div>
-              </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-
-          <div class="flex">
-            <div class="py-1 px-10 border-r-2 border-black">
-              <img class="w-24" src="../../assets/images/QR.png" alt="QR code">
-            </div>
-            <div class="flex flex-col ms-10">
-              <button class="bg-secondary p-0.5 rounded">
-                <img src="../../assets/images/info-circle-svgrepo-com.svg" class="w-8 h-8" alt="">
-              </button>
-            </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
           </div>
-
         </div>
-        <div class="w-full py-2 px-10 bg-white shadow rounded-xl flex items-center justify-between">
-          <div class=" flex items-center">
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
             <div>
-              <img src="../../assets/images/user.jpg" class="w-16 h-16 rounded-full p-0.5 border border-black" alt="User">
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Name:</div>
-                <div>Ms. Viharsha Pramodi</div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Time:</div>
-                <div>8.00 AM - 4.00 PM</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
-              <div>
-                <div class="font-semibold text-lg">Contact:</div>
-                <div>071 23 45 678</div>
-              </div>
-              <div>
-                <div class="font-semibold text-lg">Vehicle Number:</div>
-                <div>WP ABC - 1234</div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
               </div>
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Vehicle Type:</div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
                 <div>Car</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Vehicle Model:</div>
-                <div>Toyota Premio</div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
               </div>
             </div>
-            <div class="flex flex-col px-10">
-              <div>
-                <div class="font-semibold text-lg">Reserved Slot:</div>
-                <div class="text-center font-semibold text-5xl">#10</div>
-              </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-
-          <div class="flex">
-            <div class="py-1 px-10 border-r-2 border-black">
-              <img class="w-24" src="../../assets/images/QR.png" alt="QR code">
-            </div>
-            <div class="flex flex-col ms-10">
-              <button class="bg-secondary p-0.5 rounded">
-                <img src="../../assets/images/info-circle-svgrepo-com.svg" class="w-8 h-8" alt="">
-              </button>
-            </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
           </div>
-
         </div>
-        <div class="w-full py-2 px-10 bg-white shadow rounded-xl flex items-center justify-between">
-          <div class=" flex items-center">
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
             <div>
-              <img src="../../assets/images/user.jpg" class="w-16 h-16 rounded-full p-0.5 border border-black" alt="User">
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Name:</div>
-                <div>Ms. Viharsha Pramodi</div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Time:</div>
-                <div>8.00 AM - 4.00 PM</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
-              <div>
-                <div class="font-semibold text-lg">Contact:</div>
-                <div>071 23 45 678</div>
-              </div>
-              <div>
-                <div class="font-semibold text-lg">Vehicle Number:</div>
-                <div>WP ABC - 1234</div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
               </div>
             </div>
-            <div class="flex flex-col px-10 border-r-2 border-black">
+            <div class="flex flex-col px-4 border-r-2">
               <div>
-                <div class="font-semibold text-lg">Vehicle Type:</div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
                 <div>Car</div>
               </div>
               <div>
-                <div class="font-semibold text-lg">Vehicle Model:</div>
-                <div>Toyota Premio</div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
               </div>
             </div>
-            <div class="flex flex-col px-10">
-              <div>
-                <div class="font-semibold text-lg">Reserved Slot:</div>
-                <div class="text-center font-semibold text-5xl">#10</div>
-              </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-
-          <div class="flex">
-            <div class="py-1 px-10 border-r-2 border-black">
-              <img class="w-24" src="../../assets/images/QR.png" alt="QR code">
-            </div>
-            <div class="flex flex-col ms-10">
-              <button class="bg-secondary p-0.5 rounded">
-                <img src="../../assets/images/info-circle-svgrepo-com.svg" class="w-8 h-8" alt="">
-              </button>
-            </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
           </div>
-
         </div>
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
+            <div>
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
+              </div>
+              <div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
+                <div>Car</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
+              </div>
+            </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
+            </div>
+          </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          </div>
+        </div>
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
+            <div>
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
+              </div>
+              <div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
+                <div>Car</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
+              </div>
+            </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
+            </div>
+          </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          </div>
+        </div>
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
+            <div>
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
+              </div>
+              <div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
+                <div>Car</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
+              </div>
+            </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
+            </div>
+          </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          </div>
+        </div>
+        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+          <div class="flex items-center">
+            <div>
+              <img src="../../assets/images/user.jpg" alt=""
+                   class="w-14 h-14 rounded-full p-0.5 border border-black">
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Name</div>
+                <div>Mr. Danodya Supun</div>
+              </div>
+              <div>
+                <div class="font-semibold">Time</div>
+                <div>8.00 A.M - 4.00 P.M</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Contact</div>
+                <div>076 60 23 645</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle number</div>
+                <div>ABC - 1234</div>
+              </div>
+            </div>
+            <div class="flex flex-col px-4 border-r-2">
+              <div>
+                <div class="font-semibold">Vehicle type</div>
+                <div>Car</div>
+              </div>
+              <div>
+                <div class="font-semibold">Vehicle model</div>
+                <div>Toyota premio</div>
+              </div>
+            </div>
+            <div class="px-4">
+              <div class="font-semibold">Slot number</div>
+              <div class="text-4xl font-semibold text-center">#24</div>
+            </div>
+          </div>
+          <div>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          </div>
+        </div>
+
       </div>
 
       <div class="mt-5 flex justify-center">
@@ -379,10 +500,12 @@
       </div>
     </div>
   </OperatorLayout>
+
 </template>
 
 <script setup lang="ts">
 
 import Pagination from "../../components/Pagination.vue";
 import OperatorLayout from "../../layouts/OperatorLayout.vue";
+import InfoIcon from "../../assets/icons/InfoIcon.vue";
 </script>
