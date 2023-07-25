@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="side-bar" class="min-h-[100vh] w-[20em] bg-white border-r-4">
+    <div id="side-bar" class="min-h-[100vh] w-[15em] bg-white border-r-4">
       <img class="w-[80%] pt-10 m-auto" src = "../assets/images/logo-3.png"
            alt = "Logo">
       <div id="open-sidebar" class="relative left-[93%]">
