@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-accent flex">
+  <div class="bg-accent w-full flex">
     <SideBar/>
     <div class="w-full">
       <OperatorNav />

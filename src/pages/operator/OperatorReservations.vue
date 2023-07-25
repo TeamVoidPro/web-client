@@ -83,8 +83,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -128,8 +128,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -173,8 +173,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -218,8 +218,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -263,8 +263,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -308,8 +308,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -353,8 +353,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -398,8 +398,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -443,8 +443,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
         <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
@@ -488,8 +488,8 @@
               <div class="text-4xl font-semibold text-center">#24</div>
             </div>
           </div>
-          <div>
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold"/>
+          <div >
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
           </div>
         </div>
 
@@ -499,13 +499,50 @@
         <Pagination/>
       </div>
     </div>
+
+    <div>
+      <n-modal v-model:show="showModal">
+        <n-card
+            style="width: 50em;"
+            class="rounded-xl"
+            title="Reservation - R001"
+            :bordered="false"
+            role="dialog"
+            aria-modal="true"
+        >
+          <template #header-extra>
+            <CloseIcon class="w-5 h-5 text-red-700"/>
+          </template>
+          <div>
+            <div><img src="../../assets/images/QR.png" alt=""></div>
+          </div>
+          <template #footer>
+          </template>
+        </n-card>
+      </n-modal>
+    </div>
   </OperatorLayout>
 
 </template>
 
 <script setup lang="ts">
-
 import Pagination from "../../components/Pagination.vue";
 import OperatorLayout from "../../layouts/OperatorLayout.vue";
 import InfoIcon from "../../assets/icons/InfoIcon.vue";
+import {ref } from 'vue'
+import CloseIcon from "../../assets/icons/CloseIcon.vue";
+
+const showModal = ref(false)
+const currentReservation = ref({
+  name: 'Danodya Supun',
+})
+
+  const OpenModel = (name: string) => {
+    console.log(name)
+  showModal.value = true
+  currentReservation.value.name = name
+}
+
+
+
 </script>

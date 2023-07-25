@@ -12,9 +12,9 @@
       <div id="items-container" class="flex flex-col items-center pr-5 pl-1 space-y-5 mt-10">
 
         <router-link v-for="item in sidebarItems" :to="{name: item.link}" class="w-full">
-          <div id="sidebar-item" :key="item.id" :class="[item.id===active? 'flex items-center gap-3 py-3 w-full ps-10 rounded-r-2xl hover:bg-[#EDF9FC] border-l-4 border-[#0074D9] bg-accent ':'flex items-center gap-3 py-3 w-full ps-8 rounded-r-2xl hover:bg-[#EDF9FC]']" @click="clicked(item.id)">
+          <div id="sidebar-item" :key="item.id" :class="[item.id===active? 'flex items-center gap-3 py-3 w-full ps-8 rounded-r-2xl hover:bg-[#EDF9FC] border-l-4 border-[#0074D9] bg-accent ':'flex items-center gap-3 py-3 w-full ps-8 rounded-r-2xl hover:bg-[#EDF9FC]']" @click="clicked(item.id)">
             <Component :is="item.icon" class="w-6 h-6 font-semibold"/>
-            <div id="item-name" class="font-semibold text-xl">{{item.name}}</div>
+            <div id="item-name" class="font-semibold ">{{item.name}}</div>
           </div>
         </router-link>
 
