@@ -74,10 +74,6 @@ const routes = [
         ]
     },
     {
-        path:'/owner-feedbacks',
-        name:'OwnerFeedbacks',
-        component:()=>FeedbacksRatings
-    },{
         path: '/park-owner',
         name: 'Parking Owner',
         children: [
@@ -96,6 +92,11 @@ const routes = [
                 name: 'OwnerOverview',
                 component: () => OwnerDashboard
 
+            },
+            {
+                path:'feedbacks',
+                name:'OwnerFeedbacks',
+                component:()=>FeedbacksRatings
             }
             ]
     }

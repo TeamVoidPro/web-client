@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="absolute  top-0 w-full flex flex-row justify-between items-center bg-white text-black p-4">
+  <div class="absolute  top-8 w-full flex flex-row justify-between items-center bg-white text-black p-4">
     <div class="text-4xl text-white">
       <router-link to="/">Home</router-link>
     </div>
