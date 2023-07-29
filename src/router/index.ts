@@ -25,6 +25,7 @@ import OperatorPayments from "../pages/operator/OperatorPayments.vue";
 import OperatorReservations from "../pages/operator/OperatorReservations.vue";
 // @ts-ignore
 import FeedbacksRatings from "../pages/parkOwner/FeedbacksRatings.vue";
+import ManageParkingPlace from "@pages/parkOwner/ManageParkingPlace.vue";
 
 // @ts-ignore
 const routes = [
@@ -97,6 +98,11 @@ const routes = [
                 path:'feedbacks',
                 name:'OwnerFeedbacks',
                 component:()=>FeedbacksRatings
+            },
+            {
+                path:'manage-parking',
+                name:'ManageParking',
+                component:()=>ManageParkingPlace
             }
             ]
     }
