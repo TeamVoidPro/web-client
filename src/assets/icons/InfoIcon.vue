@@ -5,6 +5,6 @@
 
 <script lang="ts">
 export default {
-  name: 'IconamoonInformationCircleDuotone'
+  name: 'InfoIcon'
 }
 </script>
