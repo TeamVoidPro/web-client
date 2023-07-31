@@ -23,6 +23,8 @@ import OperatorLayout from "../layouts/OperatorLayout.vue";
 import OperatorPayments from "../pages/operator/OperatorPayments.vue";
 // @ts-ignore
 import OperatorReservations from "../pages/operator/OperatorReservations.vue";
+// @ts-ignore
+import OperatorSettings from "../pages/operator/OperatorSettings.vue";
 
 // @ts-ignore
 const routes = [
@@ -68,6 +70,11 @@ const routes = [
                 path: '/operator-reservations',
                 name: 'OperatorReservations',
                 component: () => OperatorReservations
+            },
+            {
+                path: '/operator-settings',
+                name: 'OperatorSettings',
+                component: () => OperatorSettings
             }
         ]
     },{
