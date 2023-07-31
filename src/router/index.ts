@@ -23,6 +23,10 @@ import OperatorLayout from "../layouts/OperatorLayout.vue";
 import OperatorPayments from "../pages/operator/OperatorPayments.vue";
 // @ts-ignore
 import OperatorReservations from "../pages/operator/OperatorReservations.vue";
+// @ts-ignore
+import OperatorCustomerServices from "../pages/operator/OperatorCustomerServices.vue";
+import OperatorAnalytics from "@pages/operator/OperatorAnalytics.vue";
+import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
 
 // @ts-ignore
 const routes = [
@@ -68,9 +72,25 @@ const routes = [
                 path: '/operator-reservations',
                 name: 'OperatorReservations',
                 component: () => OperatorReservations
+            },
+            {
+                path: '/customer-service',
+                name: 'CustomerServices',
+                component: () => OperatorCustomerServices
+            },
+            {
+                path: 'operator-analytics',
+                name: 'OperatorAnalytics',
+                component: () => OperatorAnalytics
+            },
+            {
+                path: 'parking-slots',
+                name: 'ParkingSlots',
+                component: () => OperatorParkingSlot
             }
         ]
-    },{
+    },
+    {
         path: '/park-owner',
         name: 'Parking Owner',
         children: [
