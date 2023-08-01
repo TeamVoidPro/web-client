@@ -25,8 +25,12 @@ import OperatorPayments from "../pages/operator/OperatorPayments.vue";
 import OperatorReservations from "../pages/operator/OperatorReservations.vue";
 // @ts-ignore
 import OperatorCustomerServices from "../pages/operator/OperatorCustomerServices.vue";
+
 import OperatorAnalytics from "@pages/operator/OperatorAnalytics.vue";
+
 import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
+
+import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
 
 // @ts-ignore
 const routes = [
@@ -111,6 +115,22 @@ const routes = [
 
             }
             ]
+    },
+    {
+        path: '/admin-layout',
+        name: 'Administrator',
+        children: [
+            {
+                path: '/admin-dashboard',
+                name: 'AdminDashboard',
+                component: () => AdminDashboard
+            },
+            {
+                path: 'employees',
+                name: 'AdminEmployees',
+                component: () => AdminEmployees
+            }
+        ]
     }
 
 ]
