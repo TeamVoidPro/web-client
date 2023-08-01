@@ -71,7 +71,7 @@ const sidebarItems = [
     id: 6,
     name: 'Settings',
     icon: SettingsIcon,
-    link: ''
+    link: 'OperatorSettings'
   }
 ]
 

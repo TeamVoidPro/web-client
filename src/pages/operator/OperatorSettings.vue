@@ -5,6 +5,48 @@
         <div class="flex justify-center items-center">
           <img class="rounded-full w-36 h-36 object-cover border-2 border-[#253665]"  src="../../assets/images/profile.png" alt="">
         </div>
+
+        <div class="w-[70%] m-auto flex justify-between">
+          <div>
+            <button class="bg-secondary text-white rounded h-8 w-44"  @click="showModal = true">
+              Change Password
+            </button>
+            <n-modal v-model:show="showModal">
+              <n-card
+                  style="width: 600px; border-radius: 15px"
+                  title="Change Password"
+                  :bordered="false"
+                  size="huge"
+                  role="dialog"
+                  aria-modal="true"
+              >
+                <div>
+                  <form class="space-y-3">
+                    <div class="flex flex-col">
+                      <label class="text-xs">Current Password</label>
+                      <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="password" value="995512203V" disabled>
+                    </div>
+                    <div class="flex flex-col">
+                      <label class="text-xs">New Password</label>
+                      <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="password" value="995512203V" disabled>
+                    </div>
+                    <div class="flex flex-col">
+                      <label class="text-xs">Confirm Password</label>
+                      <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="password" value="995512203V" disabled>
+                    </div>
+                  </form>
+                  <div class="flex justify-center">
+                    <button class="bg-secondary w-48 h-8 rounded shadow-lg text-white mt-5">Save</button>
+                  </div>
+
+                </div>
+              </n-card>
+            </n-modal>
+          </div>
+          <div>
+            <button class="bg-[#22c55e] text-white rounded h-8 w-44">Edit Profile</button>
+          </div>
+        </div>
         <form class="w-[70%] m-auto space-y-3">
           <div class="flex  w-full justify-between">
             <div class="flex flex-col w-[49%]">
@@ -54,8 +96,6 @@
             <button class="w-48 h-8 bg-secondary rounded shadow-lg  text-white mt-5">Save</button>
           </div>
         </form>
-
-
       </div>
     </div>
 
@@ -67,4 +107,8 @@
 <script setup lang="ts">
 
 import OperatorLayout from "../../layouts/OperatorLayout.vue";
+import { defineComponent, ref } from 'vue'
+
+ const showModal = ref(false)
+
 </script>
