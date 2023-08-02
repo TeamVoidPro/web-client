@@ -136,7 +136,7 @@ const routes = [
                 component: () => AdminDashboard
             },
             {
-                path: 'employees',
+                path: '/employees',
                 name: 'AdminEmployees',
                 component: () => AdminEmployees
             }

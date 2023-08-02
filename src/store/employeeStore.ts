@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 import {computed} from "vue";
+import axiosClient from "../plugins/axios.ts";
+import {AxiosResponse} from "axios";
 
 export const employeeStore = defineStore('employee', {
     state: () => ({
@@ -20,8 +22,13 @@ export const employeeStore = defineStore('employee', {
         logout() {
 
         },
-        register() {
-
+        register(user : any) : Promise<AxiosResponse<any>> {
+            return axiosClient.post('auth/employee-register', user)
+                .then(({data}) => {
+                    return data;
+                }).catch((error) => {
+                    throw error;
+                })
         }
     }
 })

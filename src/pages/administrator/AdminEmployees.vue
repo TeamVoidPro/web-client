@@ -43,70 +43,84 @@
                 <template #header-extra>
                   <CloseIcon class="w-6 h-6 text-gray-500 cursor-pointer text-red-600" @click="showModal = false"/>
                 </template>
-                  <div class="mt-2 space-y-3">
-                    <div class="flex justify-between">
-                      <div class="w-1/2">
-                        <label>Enter first name <span class="text-red-600">*</span></label>
-                        <n-input placeholder="First Name"/>
+                  <div class="mt-2">
+                    <n-form class="space-y-4" ref="formRef"  :model="formValue">
+                      <div class="flex justify-between">
+                        <div class="w-1/2">
+                          <label>Enter first name <span class="text-red-600">*</span></label>
+                          <n-input placeholder="First Name" v-model:value="formValue.FirstName"/>
+                          <div class="text-red-600 text-xs" v-if="errors.FirstName != null">{{errors.FirstName}}</div>
+                        </div>
+                        <div class="w-1/2 ps-2">
+                          <label>Enter last name <span class="text-red-600">*</span></label>
+                          <n-input placeholder="Last Name" v-model:value="formValue.LastName"/>
+                          <div class="text-red-600 text-xs" v-if="errors.LastName != null">{{errors.LastName}}</div>
+                        </div>
                       </div>
-                      <div class="w-1/2 ps-2">
-                        <label>Enter last name <span class="text-red-600">*</span></label>
-                        <n-input placeholder="Last Name"/>
+                      <div class="flex justify-between">
+                        <div class="w-1/2">
+                          <label>Enter email <span class="text-red-600">*</span></label>
+                          <n-input placeholder="Email" v-model:value="formValue.Email"/>
+                          <div class="text-red-600 text-xs" v-if="errors.Email != null">{{errors.Email}}</div>
+                        </div>
+                        <div class="w-1/2 ps-2">
+                          <label>Enter phone number <span class="text-red-600">*</span></label>
+                          <n-input placeholder="Phone Number" v-model:value="formValue.ContactNumber"/>
+                          <div class="text-red-600 text-xs" v-if="errors.ContactNumber != null">{{errors.Email}}</div>
+                        </div>
                       </div>
-                    </div>
-                    <div class="flex justify-between">
-                      <div class="w-1/2">
-                        <label>Enter email <span class="text-red-600">*</span></label>
-                        <n-input placeholder="Email"/>
+                      <div class="flex justify-between">
+                        <div class="w-1/2">
+                          <label>Enter password <span class="text-red-600">*</span></label>
+                          <n-input placeholder="Password" v-model:value="formValue.Password"/>
+                          <div class="text-red-600 text-xs" v-if="errors.Password != null">{{errors.Password}}</div>
+                        </div>
+                        <div class="w-1/2 ps-2">
+                          <label>Confirm password <span class="text-red-600">*</span></label>
+                          <n-input placeholder="Confirm Password" v-model:value="formValue.ConfirmPassword"/>
+                          <div class="text-red-600 text-xs" v-if="errors.ConfirmPassword != null">{{errors.ConfirmPassword}}</div>
+                        </div>
                       </div>
-                      <div class="w-1/2 ps-2">
-                        <label>Enter phone number <span class="text-red-600">*</span></label>
-                        <n-input placeholder="Phone Number"/>
+                      <div class="flex justify-between">
+                        <div class="w-1/2">
+                          <label>Enter address line 1 <span class="text-red-600">*</span></label>
+                          <n-input placeholder="Address Line 1" v-model:value="formValue.AddressLine1"/>
+                          <div class="text-red-600 text-xs" v-if="errors.AddressLine1 != null">{{errors.AddressLine1}}</div>
+                        </div>
+                        <div class="w-1/2 ps-2">
+                          <label>Enter address line 2 (optional)</label>
+                          <n-input placeholder="Address Line 2" v-model:value="formValue.AddressLine2"/>
+                          <div class="text-red-600 text-xs" v-if="errors.AddressLine2 != null">{{errors.AddressLine2}}</div>
+                        </div>
                       </div>
-                    </div>
-                    <div class="flex justify-between">
-                      <div class="w-1/2">
-                        <label>Enter password <span class="text-red-600">*</span></label>
-                        <n-input placeholder="Password"/>
+                      <div class="flex justify-between">
+                        <div class="w-1/2">
+                          <label>Enter street <span class="text-red-600">*</span></label>
+                          <n-input placeholder="Street" v-model:value="formValue.Street"/>
+                          <div class="text-red-600 text-xs" v-if="errors.Street != null">{{errors.Street}}</div>
+                        </div>
+                        <div class="w-1/2 ps-2">
+                          <label>Enter city <span class="text-red-600">*</span></label>
+                          <n-input placeholder="City" v-model:value="formValue.City"/>
+                          <div class="text-red-600 text-xs" v-if="errors.City != null">{{errors.City}}</div>
+                        </div>
                       </div>
-                      <div class="w-1/2 ps-2">
-                        <label>Confirm password <span class="text-red-600">*</span></label>
-                        <n-input placeholder="Confirm Password"/>
+                      <div class="flex justify-between">
+                        <div class="w-1/2">
+                          <label>Enter NIC number <span class="text-red-600">*</span></label>
+                          <n-input placeholder="NIC" v-model:value="formValue.Nic"/>
+                          <div class="text-red-600 text-xs" v-if="errors.Nic != null">{{errors.Nic}}</div>
+                        </div>
+                        <div class="w-1/2 ps-2">
+                          <label>Select role <span class="text-red-600">*</span></label>
+                          <n-select v-model:value="formValue.Role" :options="options2"/>
+                          <div class="text-red-600 text-xs" v-if="errors.Role != null">{{errors.Role}}</div>
+                        </div>
                       </div>
-                    </div>
-                    <div class="flex justify-between">
-                      <div class="w-1/2">
-                        <label>Enter address line 1 <span class="text-red-600">*</span></label>
-                        <n-input placeholder="Address Line 1"/>
+                      <div class="flex justify-center">
+                        <button @click="submitForm" type="submit" class="text-lg px-3 py-1 text-white rounded bg-secondary w-[20em] hover:bg-blue-600 mt-5">Add Employee</button>
                       </div>
-                      <div class="w-1/2 ps-2">
-                        <label>Enter address line 2 (optional)</label>
-                        <n-input placeholder="Address Line 2"/>
-                      </div>
-                    </div>
-                    <div class="flex justify-between">
-                      <div class="w-1/2">
-                        <label>Enter street <span class="text-red-600">*</span></label>
-                        <n-input placeholder="Street"/>
-                      </div>
-                      <div class="w-1/2 ps-2">
-                        <label>Enter city <span class="text-red-600">*</span></label>
-                        <n-input placeholder="City"/>
-                      </div>
-                    </div>
-                    <div class="flex justify-between">
-                      <div class="w-1/2">
-                        <label>Enter NIC number <span class="text-red-600">*</span></label>
-                        <n-input placeholder="NIC"/>
-                      </div>
-                      <div class="w-1/2 ps-2">
-                        <label>Select role <span class="text-red-600">*</span></label>
-                        <n-select v-model:value="value" :options="options2" />
-                      </div>
-                    </div>
-                    <div class="flex justify-center">
-                      <button class="text-lg px-3 py-1 text-white rounded bg-secondary w-[20em] hover:bg-blue-600 mt-5">Add Employee</button>
-                    </div>
+                    </n-form>
                   </div>
                 <template #footer>
 
@@ -140,14 +154,71 @@ import FilterIcon from "../../assets/icons/FilterIcon.vue";
 import EmailIcon from "../../assets/icons/EmailIcon.vue";
 import EmployeeCard from "../../components/Administrator/EmployeeCard.vue";
 import { SearchOutline } from '@vicons/ionicons5'
-import { useMessage, SelectOption } from 'naive-ui'
+import {useMessage, SelectOption, FormInst} from 'naive-ui'
 import Pagination from "../../components/Pagination.vue";
 import {ref} from "vue";
 import CloseIcon from "../../assets/icons/CloseIcon.vue";
+import { employeeStore } from "../../store/employeeStore.ts";
 
 const message = useMessage()
 const showModal = ref(false)
-const value = ref(null)
+const formRef = ref<FormInst | null>(null)
+const formValue = ref({
+  FirstName: '',
+  LastName: '',
+  Email: '',
+  ContactNumber: '',
+  Password: '',
+  ConfirmPassword: '',
+  AddressLine1: '',
+  AddressLine2: '',
+  Street: '',
+  City: '',
+  Nic: '',
+  Role: '',
+})
+
+const errors = ref({
+  FirstName: '',
+  LastName: '',
+  Email: '',
+  ContactNumber: '',
+  Password: '',
+  ConfirmPassword: '',
+  AddressLine1: '',
+  AddressLine2: '',
+  Street: '',
+  City: '',
+  Nic: '',
+  Role: '',
+})
+
+const submitForm = (e : MouseEvent) => {
+  e.preventDefault()
+
+  const store = employeeStore()
+  store.register(formValue.value)
+      .then(() => {
+        message.success('Employee added successfully')
+
+        for (const key in errors.value) {
+          errors.value[key] = ''
+        }
+
+      }).catch(err => {
+
+        const errs = err.response.data.errors
+        for (const key in errors.value) {
+          if(errs[key] != null) {
+            errors.value[key] = errs[key][0]
+          }else{
+            errors.value[key] = ''
+          }
+        }
+        message.error('Please check the form for errors')
+      })
+}
+
 const handleUpdateValue  = (value: string, option: SelectOption)  => {
   message.info(<any>option.label ?? '')
 }
