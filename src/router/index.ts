@@ -33,6 +33,8 @@ import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
 import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
 
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
+// @ts-ignore
+import EmployeeLogin from "../pages/EmployeeLogin.vue";
 
 
 // @ts-ignore
@@ -49,7 +51,7 @@ const routes = [
         component: () => AuthLayout,
         children: [
             {
-                path: 'login',
+                path: '/login',
                 name: 'Login',
                 component: () => Login
             },
@@ -57,8 +59,12 @@ const routes = [
                 path: '/register',
                 name: 'Register',
                 component: () => Register
+            },
+            {
+                path: '/employee-login',
+                name: 'EmployeeLogin',
+                component: () => EmployeeLogin
             }
-
         ]
     },
     {

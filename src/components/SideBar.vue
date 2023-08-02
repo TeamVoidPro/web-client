@@ -78,9 +78,8 @@ const sidebarItems = [
     id: 7,
     name: 'Settings',
     icon: SettingsIcon,
-    link: ''
-  },
-
+    link: 'OperatorSettings'
+  }
 ]
 
 onMounted(() => {
