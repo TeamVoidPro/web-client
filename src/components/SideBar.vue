@@ -34,6 +34,7 @@ import ParkingIcon from "../assets/icons/ParkingIcon.vue";
 import PaymentsIcon from "../assets/icons/PaymentsIcon.vue";
 import AnalyticsIcon from "../assets/icons/AnalyticsIcon.vue";
 import SettingsIcon from "../assets/icons/SettingsIcon.vue";
+import CustomerServiceIcon from "@assets/icons/CustomerServiceIcon.vue";
 
 let active: any = 1;
 const sidebarItems = [
@@ -53,7 +54,7 @@ const sidebarItems = [
     id: 3,
     name: 'Parking Slots',
     icon: ParkingIcon,
-    link: ''
+    link: 'ParkingSlots'
   },
   {
     id: 4,
@@ -63,12 +64,18 @@ const sidebarItems = [
   },
   {
     id: 5,
-    name: 'Analytics',
-    icon: AnalyticsIcon,
-    link: ''
+    name: 'Customer Services',
+    icon: CustomerServiceIcon,
+    link: 'CustomerServices'
   },
   {
     id: 6,
+    name: 'Analytics',
+    icon: AnalyticsIcon,
+    link: 'OperatorAnalytics'
+  },
+  {
+    id: 7,
     name: 'Settings',
     icon: SettingsIcon,
     link: 'OperatorSettings'

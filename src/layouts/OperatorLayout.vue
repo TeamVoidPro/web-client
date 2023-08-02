@@ -3,7 +3,7 @@
     <SideBar/>
     <div class="w-full">
       <OperatorNav />
-      <div class="px-16 py-10 max-h-[90vh] overflow-y-auto">
+      <div class="px-10 py-10 max-h-[90vh] overflow-y-auto">
         <slot>
 
         </slot>
