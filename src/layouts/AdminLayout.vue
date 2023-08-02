@@ -1,6 +1,6 @@
 <template>
   <div class="bg-accent w-full flex">
-    <SideBar/>
+    <AdminSideBar/>
     <div class="w-full">
       <OperatorNav />
       <div class="px-10 py-10 max-h-[90vh] overflow-y-auto">
@@ -13,6 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import SideBar from "../components/SideBar.vue";
 import OperatorNav from "../components/OperatorNav.vue";
+import AdminSideBar from "../components/Administrator/AdminSideBar.vue";
 </script>

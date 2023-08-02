@@ -30,6 +30,8 @@ import OperatorAnalytics from "@pages/operator/OperatorAnalytics.vue";
 
 import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
 
+import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
+
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
 
 
@@ -123,6 +125,22 @@ const routes = [
 
             }
             ]
+    },
+    {
+        path: '/admin-layout',
+        name: 'Administrator',
+        children: [
+            {
+                path: '/admin-dashboard',
+                name: 'AdminDashboard',
+                component: () => AdminDashboard
+            },
+            {
+                path: '/employees',
+                name: 'AdminEmployees',
+                component: () => AdminEmployees
+            }
+        ]
     }
 
 ]
