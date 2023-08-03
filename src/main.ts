@@ -25,5 +25,4 @@ Application.config.globalProperties.$axios = instance
 Application.use(pinia)
 Application.use(router)
 
-
 Application.mount('#app')

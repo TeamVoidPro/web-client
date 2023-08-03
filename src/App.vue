@@ -4,9 +4,11 @@
 
 <template>
   <main>
-    <n-notification-provider>
-      <RouterView />
-    </n-notification-provider>
+    <n-message-provider>
+      <n-notification-provider>
+        <RouterView />
+      </n-notification-provider>
+    </n-message-provider>
   </main>
 </template>
 
