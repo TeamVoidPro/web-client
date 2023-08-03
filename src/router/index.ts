@@ -38,7 +38,10 @@ import EmployeeLogin from "../pages/EmployeeLogin.vue";
 
 // @ts-ignore
 import FeedbacksRatings from "../pages/parkOwner/FeedbacksRatings.vue";
+
 import ManageParkingPlace from "@pages/parkOwner/ManageParkingPlace.vue";
+//@ts-ignore
+import OwnerSettings from "@pages/parkOwner/OwnerSettings.vue";
 
 // @ts-ignore
 const routes = [
@@ -143,6 +146,11 @@ const routes = [
                 path:'manage-parking',
                 name:'ManageParking',
                 component:()=>ManageParkingPlace
+            },
+            {
+                path:'settings',
+                name:'OwnerSettings',
+                component:()=>OwnerSettings
             }
             ]
     },
