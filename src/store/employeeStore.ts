@@ -13,14 +13,44 @@ export const employeeStore = defineStore('employee', {
     getters: {
         getUser() : any {
             return computed(() => this.user.data);
+        },
+        getToken() : any {
+            return computed(() => this.user.token);
+        },
+        getEmployeeId() : any {
+            return computed(() => this.user.data.employeeId);
         }
     },
     actions: {
-        login() {
+        login(user : any) : Promise<AxiosResponse<any>> {
+            return axiosClient.post('auth/employee-login', user)
+                .then(({data}) => {
+                    this.user.data = data.user;
+                    this.user.token = data.user.token;
 
+                    delete data.user.token;
+                    delete data.user.password;
+                    delete data.user.email;
+
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    localStorage.setItem('token', this.user.token);
+
+                    return data;
+                }).catch((error) => {
+                    throw error;
+                })
         },
-        logout() {
-
+        logout(user: any) : Promise<AxiosResponse<any>> {
+            return axiosClient.post('auth/employee-logout',user)
+                .then(({data}) => {
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('token');
+                    this.user.data = {};
+                    this.user.token = '';
+                    return data;
+                }).catch((error) => {
+                    throw error;
+                })
         },
         register(user : any) : Promise<AxiosResponse<any>> {
             return axiosClient.post('auth/employee-register', user)
