@@ -35,6 +35,7 @@ import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
 // @ts-ignore
 import EmployeeLogin from "../pages/EmployeeLogin.vue";
+import {employeeStore} from "../store/employeeStore.ts";
 
 
 // @ts-ignore
@@ -70,6 +71,7 @@ const routes = [
     {
         path: '/operator-layout',
         name: 'OperatorLayout',
+        meta: { requiresAuth: true , role: 'Operator'},
         children: [
             {
                 path: '/operator-dashboard',
@@ -113,6 +115,7 @@ const routes = [
     {
         path: '/park-owner',
         name: 'Parking Owner',
+        meta: { requiresAuth: true , role: 'Parking Owner'},
         children: [
             {
                 path: 'register',
@@ -135,6 +138,7 @@ const routes = [
     {
         path: '/admin-layout',
         name: 'Administrator',
+        meta: { requiresAuth: true , role: 'Administrator'},
         children: [
             {
                 path: '/admin-dashboard',
@@ -154,6 +158,22 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    const store = employeeStore();
+    from;
+    if(to.meta.requiresAuth && !store.user.token) {
+        next({name: 'EmployeeLogin'});
+    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Administrator'){
+        next({name: 'AdminDashboard'});
+    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Operator') {
+        next({name: 'OperatorDashboard'});
+    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Verifier') {
+        next({name: 'VerifierDashboard'});
+    }else{
+        next();
+    }
 })
 
 export default router
