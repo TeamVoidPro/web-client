@@ -42,10 +42,10 @@ import FeedbacksRatings from "../pages/parkOwner/FeedbacksRatings.vue";
 import ManageParkingPlace from "@pages/parkOwner/ManageParkingPlace.vue";
 //@ts-ignore
 import OwnerSettings from "@pages/parkOwner/OwnerSettings.vue";
-
 //@ts-ignore
 import OwnerAnalytics from "@pages/parkOwner/OwnerAnalytics.vue";
-
+//@ts-ignore
+import OwnerPayments from "@pages/parkOwner/OwnerPayments.vue";
 // @ts-ignore
 const routes = [
     {
@@ -159,6 +159,11 @@ const routes = [
                 path:'analytics',
                 name:'OwnerAnalytics',
                 component:()=>OwnerAnalytics
+            },
+            {
+                path: 'payments',
+                name: 'OwnerPayments',
+                component: () => OwnerPayments
             }
             ]
     },
