@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import ParkOwnerLayout from "@layouts/ParkOwnerLayout.vue";
-import Button from "@components/Button.vue";
 import {Bar,Line} from "vue-chartjs";
 import {ref} from "vue";
 import {
@@ -18,6 +17,7 @@ import {
   LinearScale,
   ArcElement
 } from 'chart.js'
+import {useMessage} from "naive-ui";
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,Filler,LineElement,PointElement,RadialLinearScale)
 
@@ -163,7 +163,7 @@ const chartOptions2 = ref({
     },
     title: {
       display: true,
-      text: 'Forecasted revenue for next 6 months',
+      text: 'Forecasted revenue for next 3 months',
       font: {
         size: 18,
       },
@@ -221,7 +221,7 @@ const chartOptions3 = ref({
     },
     title: {
       display: true,
-      text: 'Peak hours of last day',
+      text: 'Peak hours of last Monday',
       font: {
         size: 18,
       },
@@ -233,46 +233,128 @@ const chartOptions3 = ref({
     }
   }
 })
+
+const dropdownOptions= ref ([
+  {
+    label: '3 months',
+    key: '3'
+  },
+  {
+    label: "6 months",
+    key: "6"
+  },
+  {
+    label: 'year',
+    key: '12'
+  }
+])
+
+const dropdownOptions2= ref([
+    {
+    label: 'week',
+    key: '1'
+    },
+  {
+    label: '2 weeks',
+    key: '2'
+  },
+  {
+    label: 'month',
+    key: '4'
+  }
+])
+
+const dropdownOptions3= ref([
+  {
+    label: 'Monday',
+    key: '1'
+  },
+  {
+    label: 'Tuesday',
+    key: '2'
+  },
+  {
+    label: 'Wednesday',
+    key: '3'
+  },
+  {
+    label: 'Thursday',
+    key: '4'
+  },
+  {
+    label: 'Friday',
+    key: '5'
+  },
+  {
+    label: 'Saturday',
+    key: '6'
+  },
+  {
+    label: 'Sunday',
+    key: '7'
+  }
+])
+
 </script>
 
 <template>
   <ParkOwnerLayout>
     <div class="flex flex-col  w-full my-2 h-full">
-    <div class="flex justify-evenly w-full gap-5 mx-2 mt-2 px-2 h-full">
-      <div class="flex flex-col bg-white rounded-2xl w-[700px] ">
+    <div class="flex justify-evenly w-full gap-5 mx-2 mt-2 px-2">
+      <div class="flex flex-col bg-white rounded-2xl w-[600px] ">
         <div class="flex text-2xl font-bold justify-center mt-2">Revenue Analytics</div>
         <div>
-          <div class="flex justify-between gap-4 mt-2">
-            <div class="flex flex-col items-center pl-3">
-              <div class="flex flex-col border-2 border-blue-400 w-full px-2 py-2 rounded-2xl mb-2">
-              <div class="flex justify-center text-center text-lg font-bold">Revenue Last Month</div>
-              <div class="flex justify-center text-3xl font-bold text-secondary">$12.00</div>
+          <div class="flex flex-col justify-center my-2">
+            <div class="flex justify-between gap-4 px-3">
+              <div class="flex flex-col border-2 border-blue-400 w-full px-2 py-2 rounded-2xl mb-2 h-[100px]">
+                <div class="flex justify-center text-center text-lg font-bold">Today Revenue</div>
+                <div class="flex justify-center text-3xl font-bold text-secondary">$12.00</div>
               </div>
-              <div class="flex flex-col border-2 border-blue-400 w-full px-2 py-2 rounded-2xl">
+              <div class="flex flex-col border-2 border-blue-400 w-full px-2 py-2 rounded-2xl mb-2 h-[100px]">
+                <div class="flex justify-center text-center text-lg font-bold">Revenue Last Month</div>
+                <div class="flex justify-center text-3xl font-bold text-secondary">$12.00</div>
+              </div>
+              <div class="flex flex-col border-2 border-blue-400 w-full px-2 py-2 rounded-2xl h-[100px]">
                 <div class="flex justify-center text-lg font-bold">Onsite Payments</div>
-                <div class="flex justify-center text-3xl font-bold">120</div>
-                <div class="flex justify-center text-lg font-bold">Online Payments</div>
-                <div class="flex justify-center text-3xl font-bold">180</div>
+                <div class="flex justify-center text-lg font-bold">120</div>
+<!--                <div class="flex justify-center text-lg font-bold">Online Payments</div>-->
+<!--                <div class="flex justify-center text-lg font-bold">180</div>-->
               </div>
             </div>
-              <div class="shadow rounded-[10px] mr-2">
-                <Line
-                    id="my-chart-id"
-                    :options="chartOptions2"
-                    :data="chartData2"
-                    style="width:100%;height: 400px; padding:1em; background-color: white;border-radius: 10px;"
-                />
+            <div class="flex flex-col shadow rounded-[10px] mx-2 my-2">
+              <div class="flex justify-end py-2">
+<!--                Search bar-->
+                <select class="border-2 border-blue-400 rounded-2xl px-2 py-1 w-1/3 mr-2">
+                  <option v-for="dropdownOption in dropdownOptions">{{dropdownOption.label}}</option>
+                </select>
+              </div>
+              <div>
+              <Line
+                  id="my-chart-id"
+                  :options="chartOptions2"
+                  :data="chartData2"
+                  style="width:100%;height: 400px; padding:1em; background-color: white;border-radius: 10px;"
+              />
+              </div>
             </div>
           </div>
           <div class="flex flex-col justify-center mt-2 px-2 py-2">
             <div class="">
-              <div class="shadow rounded-[10px]">
+              <div class="flex flex-col shadow rounded-[10px]">
+                <div class="flex justify-end py-2">
+                  <!--                Search bar-->
+                  <select class="border-2 border-blue-400 rounded-2xl px-2 py-1 w-1/3 mr-2">
+                    <option v-for="dropdownOption in dropdownOptions">{{dropdownOption.label}}</option>
+                  </select>
+                </div>
+                <div>
                 <Bar
                     id="my-chart-id"
                     :options="chartOptions1"
                     :data="chartData1"
                     style="width:100%;height: 400px; padding:1em; background-color: white;border-radius: 10px;"
                 />
+                </div>
               </div>
             </div>
           </div>
@@ -298,7 +380,14 @@ const chartOptions3 = ref({
             </div>
           </div>
         </div>
-        <div class="w-[100%] mt-2">
+        <div class="w-[100%] mt-2 ">
+          <div class="flex flex-col shadow rounded-[10px] mx-2 my-2 h-[400px]">
+          <div class="flex justify-end py-2">
+            <!--                Search bar-->
+            <select class="border-2 border-blue-400 rounded-2xl px-2 py-1 w-1/4 mr-2">
+              <option v-for="dropdownOption in dropdownOptions2">{{dropdownOption.label}}</option>
+            </select>
+          </div>
           <div class="text-center text-lg font-semibold mt-2">Slot Reservation of Last week</div>
           <div class="flex gap-4 px-5">
           <div class="flex justify-center items-center w-2/3">
@@ -357,28 +446,33 @@ const chartOptions3 = ref({
             </tbody>
           </n-table>
           </div>
-          <div class="flex flex-col border-2 border-blue-400 px-2 py-2 rounded-2xl my-2 h-1/3 w-1/3">
+          <div class="flex flex-col border-2 border-blue-400 px-2 py-2 rounded-2xl my-2 h-2/3 w-1/3">
             <div class="flex text-center text-lg font-bold">Average Occupancy</div>
             <div class="flex justify-center text-3xl font-bold text-secondary">26/50</div>
           </div>
           </div>
-        </div>
-        <div class="flex flex-col mt-5">
-<!--          <div class="text-center text-lg font-semibold mb-2">Peak hours of last week</div>-->
-          <div class="flex shadow rounded-[10px]  mt-3 mx-2 flex-col justify-center items-center ">
-            <Bar
-                id="my-chart-id"
-                :options="chartOptions3"
-                :data="chartData3"
-                style="width:100%;height: 400px; padding:1em; background-color: white;border-radius: 10px;"
-            />
+          </div>
+          <div class="flex flex-col mx-2 mt-5 shadow rounded-[10px]  ">
+            <div class="flex justify-end py-2">
+              <!--                Search bar-->
+              <select class="border-2 border-blue-400 rounded-2xl px-2 py-1 w-1/4 mr-2">
+                <option v-for="dropdownOption in dropdownOptions3">{{dropdownOption.label}}</option>
+              </select>
+            </div>
+            <!--          <div class="text-center text-lg font-semibold mb-2">Peak hours of last week</div>-->
+            <div class="flex  flex-col justify-center items-center ">
+              <Bar
+                  id="my-chart-id"
+                  :options="chartOptions3"
+                  :data="chartData3"
+                  style="width:100%;height: 400px; padding:1em; background-color: white;border-radius: 10px;"
+              />
+            </div>
           </div>
         </div>
+
       </div>
     </div>
-<!--      <div class="flex justify-center my-3 pr-4">-->
-<!--        <Button>Download Report</Button>-->
-<!--      </div>-->
     </div>
   </ParkOwnerLayout>
 </template>
