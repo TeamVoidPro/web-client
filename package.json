@@ -13,6 +13,7 @@
     "@heroicons/vue": "^2.0.18",
     "@vicons/ionicons4": "^0.12.0",
     "@vicons/ionicons5": "^0.12.0",
+    "@vicons/material": "^0.12.0",
     "@vueuse/core": "^10.2.1",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
@@ -20,6 +21,7 @@
     "naive-ui": "^2.34.4",
     "pinia": "^2.1.4",
     "three": "^0.154.0",
+    "vicons": "^0.0.1",
     "vue": "^3.2.47",
     "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.2"

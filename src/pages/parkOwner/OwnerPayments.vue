@@ -1,9 +1,111 @@
 <script setup lang="ts" xmlns="http://www.w3.org/1999/html">
-
+import {NTable,NIcon,NButton,NDropdown,NPagination} from "naive-ui";
+import {ArrowDropDownFilled} from "@vicons/material";
 import ParkOwnerLayout from "@layouts/ParkOwnerLayout.vue";
-import MaterialSymbolsSettingsApplicationsOutlineSharp from "@assets/icons/SettingsIcon.vue";
 import Button from "@components/Button.vue";
-import RiMoneyDollarBoxLine from "@assets/icons/PaymentsIcon.vue";
+import {ref} from "vue";
+
+const columns = ref([
+  {
+    title:'Type',
+    key:'type',
+    width:100
+  },
+  {
+    title: 'Date',
+    key: 'date',
+    width: 100
+  },
+  {
+    title: 'Time',
+    key: 'time',
+    width: 100
+  },
+  {
+    title: 'Amount',
+    key: 'amount',
+    width: 100
+  },
+  {
+    title: 'Status',
+    key: 'status',
+    width: 100
+  },
+  {
+    title: 'Expect Payment',
+    key: 'expectPayment',
+    width: 100
+  }
+])
+
+const datas= ref([
+  {
+    type:'PayHere',
+    date:'2021/09/20',
+    ID:'T000123',
+    amount:'1000.00',
+    status:'Success',
+    expectPayment:'2021/09/25'
+  },
+  {
+    type:'Peoples bank',
+    date:'2021/09/20',
+    ID:'10:00',
+    amount:'1000.00',
+    status:'On hold',
+    expectPayment:'2021/09/25'
+  },
+  {
+    type:'PayHere',
+    date:'2021/09/20',
+    ID:'10:00',
+    amount:'1000.00',
+    status:'Success',
+    expectPayment:'2021/09/25'
+  },
+  {
+    type:'PayHere',
+    date:'2021/09/20',
+    ID:'10:00',
+    amount:'1000.00',
+    status:'In progress',
+    expectPayment:'2021/09/25'
+  },
+  {
+    type:'Peoples Bank',
+    date:'2021/09/20',
+    ID:'10:00',
+    amount:'1000.00',
+    status:'Success',
+    expectPayment:'2021/09/25'
+  }
+])
+
+const value= ref(null)
+const options=[
+        {
+          label: "Today",
+          value: '0',
+          // disabled: true
+        },
+        {
+          label: 'Yesterday',
+          value: '1'
+        },
+        {
+          label: 'Last week',
+          value: '2'
+        },
+        {
+          label: "Last Month",
+          value: '3',
+          // disabled: true
+        }
+]
+
+const page= ref(1)
+
+
 </script>
 
 <template>
@@ -16,7 +118,7 @@ import RiMoneyDollarBoxLine from "@assets/icons/PaymentsIcon.vue";
               <div class="text-xl font-bold">My Balance</div>
               <div class="flex gap-2">
                 <h1 class="text-lg text-center align-middle">Select Range</h1>
-                <select class="border-2 border-blue-200 rounded-xl px-2 py-2">
+                <select class="border-2 border-blue-200 rounded-xl px-2 py-2 w-[90px]">
                   <option>Today</option>
                   <option>Yesterday</option>
                   <option>Last Week</option>
@@ -58,21 +160,26 @@ import RiMoneyDollarBoxLine from "@assets/icons/PaymentsIcon.vue";
                 <h1 class="text-xl font-bold">Last</h1>
                 <h1 class="text-xl font-bold">30 Days</h1>
                 </div>
-                <select class="border-2 border-blue-200 rounded-xl px-2 py-2">
-                  <option>Today</option>
-                  <option>Yesterday</option>
-                  <option>Last Week</option>
-                  <option>Last Month</option>
-                </select>
+                <n-dropdown trigger="hover" :options="options">
+                  <n-button class="border-none">
+                    <n-icon size="40">
+                      <arrow-dropDown-filled/>
+                    </n-icon>
+                  </n-button>
+                </n-dropdown>
               </div>
               <div class="flex justify-evenly">
-                <div class="flex-col justify-center items-center px-2 py-2 ">
+                <div class="justify-center items-center px-2 py-2 ">
                   <h1 class="text-xl text-center">Transactions</h1>
                   <h1 class="text-2xl text-center font-bold">20</h1>
                 </div>
                 <div class="flex-col justify-center items-center px-2 py-2 border-l-2 border-blue-200">
                   <h1 class="text-xl text-center">Joined Peoples</h1>
-                  <img src="../../assets/images/bunch%20of%20faces.jpeg" class="ml-4" style="height: 80px;width: 100px">
+                  <div class="flex">
+                    <div class=""><img src="../../assets/images/user.jpg" class="ml-4 rounded-[50%]" style="height: 35px;width: 35px"></div>
+                    <div class=""><img src="../../assets/images/user.jpg" class="ml-4 rounded-[50%]" style="height: 35px;width: 35px"></div>
+                    <div class=""><img src="../../assets/images/user.jpg" class="ml-4 rounded-[50%]" style="height: 35px;width: 35px"></div>
+                  </div>
                 </div>
                 <div class="flex-col justify-center items-center px-2 py-2 border-l-2 border-blue-200">
                   <h1 class="text-xl text-center">Earnings</h1>
@@ -113,7 +220,7 @@ import RiMoneyDollarBoxLine from "@assets/icons/PaymentsIcon.vue";
           </div>
         </div>
       </div>
-      <div class="flex flex-col bg-white rounded-2xl ml-4 mr-4 px-2 py-2 mt-4  mb-2 h-[416px] w-[1350px]">
+      <div class="flex flex-col bg-white rounded-2xl ml-4 mr-4 px-2 py-2 mt-4  mb-2 h-[424px] w-[1350px]">
         <div class=" flex justify-between">
           <h1 class="text-xl font-bold">Transaction History</h1>
           <div class="flex gap-2">
@@ -127,94 +234,31 @@ import RiMoneyDollarBoxLine from "@assets/icons/PaymentsIcon.vue";
             </select>
           </div>
         </div>
-        <div>
-          <n-table :bordered="true" :single-line="false" class="w-fit">
+        <div class="mt-2">
+          <n-table :bordered="true" :single-line="false" class="w-full">
             <thead>
             <tr class="text-center">
-              <th>Type</th>
-              <th>Date</th>
-              <th>Transaction ID</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th>Expect Payment</th>
+              <th v-for="column in columns">{{column.title}}</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="text-center">
-              <td>Paypal</td>
-              <td>May 18,2022</td>
-              <td>T000123</td>
-              <td>800</td>
+            <tr class="text-center" v-for="data in datas">
+              <td>{{data.type}}</td>
+              <td>{{data.date}}</td>
+              <td>{{data.ID}}</td>
+              <td>{{data.amount}}</td>
               <td>
                 <div class="flex justify-center items-center">
-                  <div class="bg-green-400 rounded-xl h-fit px-2 py-1 w-[100px]">
-                    Success
+                  <div class="rounded-xl h-fit px-2 py-1 w-[100px]" :class="data.status=='Success'? 'bg-green-200':data.status=='On hold'?'bg-red-200':'bg-blue-200'">
+                    {{data.status}}
                   </div>
                 </div>
               </td>
-              <td>May 18,2022</td>
-            </tr>
-            <tr class="text-center">
-              <td>Paypal</td>
-              <td>May 18,2022</td>
-              <td>T000123</td>
-              <td>800</td>
-              <td>
-                <div class="flex justify-center items-center">
-                  <div class="bg-red-400 rounded-xl h-fit px-2 py-1 w-[100px]">
-                    On hold
-                  </div>
-                </div>
-              </td>
-              <td>May 18,2022</td>
-            </tr>
-            <tr class="text-center">
-              <td>Paypal</td>
-              <td>May 18,2022</td>
-              <td>T000123</td>
-              <td>800</td>
-              <td>
-                <div class="flex justify-center items-center">
-                  <div class="bg-green-400 rounded-xl h-fit px-2 py-1 w-[100px]">
-                    Success
-                  </div>
-                </div>
-              </td>
-              <td>May 18,2022</td>
-            </tr>
-            <tr class="text-center">
-              <td>Paypal</td>
-              <td>May 18,2022</td>
-              <td>T000123</td>
-              <td>800</td>
-              <td>
-                <div class="flex justify-center items-center">
-                  <div class="bg-blue-400 rounded-xl h-fit px-2 py-1 w-[100px]">
-                    In process
-                  </div>
-                </div>
-              </td>
-              <td>May 18,2022</td>
-            </tr>
-            <tr class="text-center">
-              <td>Paypal</td>
-              <td>May 18,2022</td>
-              <td>T000123</td>
-              <td>800</td>
-              <td>
-                <div class="flex justify-center items-center">
-                  <div class="bg-green-400 rounded-xl h-fit px-2 py-1 w-[100px]">
-                    Success
-                  </div>
-                </div>
-              </td>
-              <td>May 18,2022</td>
+              <td>{{data.expectPayment}}</td>
             </tr>
             </tbody>
           </n-table>
-        </div>
-        <div>
-
+          <div> <n-pagination v-model:page="page" :page-count="10" class="justify-center my-2"/></div>
         </div>
       </div>
     </div>
