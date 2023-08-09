@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ParkOwnerNavbar from "@/components/Navbar/ParkOwnerNavbar.vue";
 import {ref} from "vue";
+import {NSpace, NSteps, NStep, NDivider} from "naive-ui";
 import PersonalDetailRegistrationForm from "@/components/ParkOwner/PersonalDetailRegistrationForm.vue";
 import LandRegistrationForm from "@/components/ParkOwner/LandRegistrationForm.vue";
 import {useParkingOwnerRegistrationStore} from "@/store/parkingOwnerRegisterStore.ts"
