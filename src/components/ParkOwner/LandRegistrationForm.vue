@@ -79,13 +79,13 @@ const handleBackUpload = (file:UploadFileInfo) => {
                 <div class="flex">
                   Address No
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.FirstName" type="text" placeholder="First Name" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.FirstName" type="text" placeholder="Land Address line no" />
               </div>
               <div class="flex flex-col gap-2 w-5/12">
                 <div class="flex">
                   Address Street
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.LastName" type="text" placeholder="Last Name" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.LastName" type="text" placeholder="Land Address street" />
               </div>
             </div>
             <div class="flex justify-around gap-3">
@@ -93,13 +93,13 @@ const handleBackUpload = (file:UploadFileInfo) => {
                 <div class="flex">
                   City
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.PhoneNo" type="text" placeholder="Your Phone No" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.PhoneNo" type="text" placeholder="Land city" />
               </div>
               <div class="flex flex-col gap-2 w-5/12">
                 <div class="flex">
                   Province
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.NICNo" type="text" placeholder="Your NIC No" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.NICNo" type="text" placeholder="Land Province" />
               </div>
             </div>
           </div>
