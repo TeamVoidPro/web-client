@@ -6,7 +6,6 @@ import router from './router/index.ts'
 import naive from "naive-ui";
 
 
-
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 // axios.defaults.withCredentials = true;
 // @ts-ignore

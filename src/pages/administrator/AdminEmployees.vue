@@ -71,18 +71,6 @@
                       </div>
                       <div class="flex justify-between">
                         <div class="w-1/2">
-                          <label>Enter password <span class="text-red-600">*</span></label>
-                          <n-input placeholder="Password" v-model:value="formValue.Password"/>
-                          <div class="text-red-600 text-xs" v-if="errors.Password != null">{{errors.Password}}</div>
-                        </div>
-                        <div class="w-1/2 ps-2">
-                          <label>Confirm password <span class="text-red-600">*</span></label>
-                          <n-input placeholder="Confirm Password" v-model:value="formValue.ConfirmPassword"/>
-                          <div class="text-red-600 text-xs" v-if="errors.ConfirmPassword != null">{{errors.ConfirmPassword}}</div>
-                        </div>
-                      </div>
-                      <div class="flex justify-between">
-                        <div class="w-1/2">
                           <label>Enter address line 1 <span class="text-red-600">*</span></label>
                           <n-input placeholder="Address Line 1" v-model:value="formValue.AddressLine1"/>
                           <div class="text-red-600 text-xs" v-if="errors.AddressLine1 != null">{{errors.AddressLine1}}</div>
@@ -131,14 +119,7 @@
         </div>
       </div>
       <div class="mt-10 flex flex-wrap justify-between gap-y-4">
-        <EmployeeCard/>
-        <EmployeeCard/>
-        <EmployeeCard/>
-        <EmployeeCard/>
-        <EmployeeCard/>
-        <EmployeeCard/>
-        <EmployeeCard/>
-        <EmployeeCard/>
+        <EmployeeCard v-for="emp in employees" :employee="emp"/>
       </div>
       <div class="w-full flex justify-center">
         <Pagination class="mt-10" :total="100" :page-size="10" />
@@ -156,7 +137,7 @@ import EmployeeCard from "../../components/Administrator/EmployeeCard.vue";
 import { SearchOutline } from '@vicons/ionicons5'
 import {useMessage, SelectOption, FormInst} from 'naive-ui'
 import Pagination from "../../components/Pagination.vue";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import CloseIcon from "../../assets/icons/CloseIcon.vue";
 import { employeeStore } from "../../store/employeeStore.ts";
 
@@ -168,8 +149,6 @@ const formValue = ref({
   LastName: '',
   Email: '',
   ContactNumber: '',
-  Password: '',
-  ConfirmPassword: '',
   AddressLine1: '',
   AddressLine2: '',
   Street: '',
@@ -183,8 +162,6 @@ const errors = ref({
   LastName: '',
   Email: '',
   ContactNumber: '',
-  Password: '',
-  ConfirmPassword: '',
   AddressLine1: '',
   AddressLine2: '',
   Street: '',
@@ -193,13 +170,40 @@ const errors = ref({
   Role: '',
 })
 
+const employees = ref({})
+
+onMounted(() => {
+  const store = employeeStore()
+  store.getEmployees()
+      .then((res) => {
+        employees.value = res.emp
+        // console.log(employees.value)
+      }).catch((errors) => {
+        console.log(errors)
+  });
+
+})
+
+
 const submitForm = (e : MouseEvent) => {
   e.preventDefault()
 
   const store = employeeStore()
   store.register(formValue.value)
-      .then(() => {
+      .then((res) => {
         message.success('Employee added successfully')
+
+        const data : object = {
+          EmployeeId : res.employeeId,
+          VerificationCode : res.verificationCode
+        }
+
+        store.sendVerificationEmail(data)
+            .then(() => {
+              message.success("Verification email has been sent to the email.")
+            }).catch(err => {
+          throw err
+        })
 
         for (const key in errors.value) {
           errors.value[key] = ''
@@ -217,6 +221,7 @@ const submitForm = (e : MouseEvent) => {
         }
         message.error('Please check the form for errors')
       })
+
 }
 
 const handleUpdateValue  = (value: string, option: SelectOption)  => {
@@ -230,22 +235,22 @@ const options1 = [
   },
   {
     label: 'Parking Operators',
-    value: 'operators'
+    value: 'Operator'
   },
   {
     label: "Parking Verifiers",
-    value: 'verifiers'
+    value: 'Verifier'
   },
 ]
 
 const options2 = [
   {
     label: 'Parking Operator',
-    value: 'operator'
+    value: 'Operator'
   },
   {
     label: "Parking Verifier",
-    value: 'verifier'
+    value: 'Verifier'
   },
 ]
 </script>
