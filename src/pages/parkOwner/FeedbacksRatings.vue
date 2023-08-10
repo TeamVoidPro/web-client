@@ -44,9 +44,7 @@ const ratings = ref([
               Reviews and Ratings
             </div>
             <div class="flex flex-between gap-3">
-              <div class="text-primary text-center text-2xl">
-            4.0
-            </div>
+              <div class="text-primary text-center text-2xl">4.0</div>
               <div>
                <div class="flex gap-1 mb-1">
                 <img src="../../assets/icons/star.svg">
