@@ -29,8 +29,10 @@
 import {ref} from "vue";
 import {employeeStore} from "../store/employeeStore.ts";
 import {useRouter} from "vue-router";
+import {useMessage} from "naive-ui";
 
 const router = useRouter();
+const message = useMessage();
 
 const formValues = ref({
   email: "",
@@ -41,16 +43,20 @@ const submitForm = () => {
   const store = employeeStore();
   store.login(formValues.value)
       .then((res) => {
-        if(res.user.role === "Administrator"){
+        if(res.employee.role === "Administrator"){
           router.push({name: "AdminDashboard"});
-        }else if(res.user.role === "Operator"){
+        }else if(res.employee.role === "Operator"){
           router.push({name: "OperatorDashboard"});
-        }else if(res.user.role === "Verifier"){
+        }else if(res.employee.role === "Verifier"){
           router.push({name: "VerifierDashboard"});
         }
+
+        message.success("Successfully logged in");
       }).catch((err) => {
         throw err;
-    });
+    }).catch((err) => {
+      message.error("Invalid credentials. Please try again.")
+  });
 
 };
 

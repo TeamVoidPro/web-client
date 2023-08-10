@@ -60,7 +60,7 @@ const handleSelect = (key: string) => {
   const store = employeeStore();
   if(key === 'logout'){
     const user = {
-      'EmployeeId': store.user.data.employeeId,
+      'EmployeeId': store.user.data.id,
     }
     store.logout(user)
         .then((data: any) => {

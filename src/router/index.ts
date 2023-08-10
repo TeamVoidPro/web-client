@@ -19,23 +19,17 @@ import RegisterPage from "../pages/parkOwner/RegisterPage.vue";
 import Register from "../pages/Register.vue";
 // @ts-ignore
 import OperatorLayout from "../layouts/OperatorLayout.vue";
-// @ts-ignore
 import OperatorPayments from "../pages/operator/OperatorPayments.vue";
-// @ts-ignore
 import OperatorReservations from "../pages/operator/OperatorReservations.vue";
-// @ts-ignore
 import OperatorCustomerServices from "../pages/operator/OperatorCustomerServices.vue";
-
 import OperatorAnalytics from "@pages/operator/OperatorAnalytics.vue";
-
 import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
-
 import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
-
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
-// @ts-ignore
 import EmployeeLogin from "../pages/EmployeeLogin.vue";
 import {employeeStore} from "../store/employeeStore.ts";
+import VerifyAccount from "@pages/VerifyAccount.vue";
+import ResetPassword from "@pages/ResetPassword.vue";
 
 
 // @ts-ignore
@@ -49,7 +43,6 @@ const routes = [
 
         path: '/auth',
         name: 'Auth',
-        component: () => AuthLayout,
         children: [
             {
                 path: '/login',
@@ -65,6 +58,17 @@ const routes = [
                 path: '/employee-login',
                 name: 'EmployeeLogin',
                 component: () => EmployeeLogin
+            },
+            {
+                path: '/verify-account/:id',
+                name: 'VerifyAccount',
+                component: () => VerifyAccount,
+                props: true
+            },
+            {
+                path: '/reset-password',
+                name: 'ResetPassword',
+                component: () => ResetPassword
             }
         ]
     },
