@@ -138,6 +138,7 @@ const routes = [
             ]
     },
     {
+<<<<<<< Updated upstream
         path: '/admin-layout',
         name: 'Administrator',
         children: [
@@ -161,6 +162,12 @@ const routes = [
                 name: 'ParkingPlaceInfo',
                 component:() => ParkingPlaceInfo
             }
+=======
+        path: 'admin',
+        name: 'Admin',
+        children: [
+            path: ''
+>>>>>>> Stashed changes
         ]
     }
 

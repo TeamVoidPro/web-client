@@ -1,6 +1,11 @@
 <template>
+<<<<<<< Updated upstream
     <div class="bg-white h-[80vh] w-[80%] flex justify-around m-auto rounded-xl ">
       <div class="w-[30%] mt-10 pl-8">
+=======
+    <div class="bg-white h-[80vh] w-[85%] rounded-2xl flex justify-around m-auto">
+      <div class="w-[30%] mt-10 pl-5">
+>>>>>>> Stashed changes
         <p class="text-4xl text-primary font-semibold mb-4">Login</p>
         <p>Enter the information while you registered</p>
         <form class="mt-7">
@@ -21,7 +26,7 @@
         </form>
         <p class="text-[#3B00E4] font-semibold text-xs flex flex-row-reverse mt-2">Forgot Password ?</p>
         <div class="flex justify-center mt-5">
-          <button class="border-2 w-40 h-9 rounded-full bg-[#253665] text-white font-semibold">Sign in</button>
+          <button class="border-2 w-40 h-12 rounded-full bg-[#253665]  text-white font-semibold">Sign in</button>
         </div>
         <div class="flex items-center justify-center my-7">
           <div class="border-t-2 border-gray-400 w-[50%]"></div>
@@ -40,8 +45,15 @@
           </button>
         </div>
       </div>
+<<<<<<< Updated upstream
       <div class="w-[60%] bg-primary rounded h-[70vh] m-auto shadow-2xl">
         <img src="../assets/images/park.png" alt="">
+=======
+      <div class="w-[60%] m-auto">
+        <div class=" bg-[#cffafe] rounded-2xl h-[70vh] shadow-lg">
+          <img  src="../assets/images/park.png" alt="">
+        </div>
+>>>>>>> Stashed changes
       </div>
     </div>
 </template>
