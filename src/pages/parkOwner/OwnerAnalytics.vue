@@ -431,18 +431,6 @@ const dropdownOptions3= ref([
               <td>10</td>
               <td>4</td>
             </tr>
-            <tr class="text-center">
-              <td>Saturday</td>
-              <td>14</td>
-              <td>10</td>
-              <td>4</td>
-            </tr>
-            <tr class="text-center">
-              <td>Sunday</td>
-              <td>14</td>
-              <td>10</td>
-              <td>4</td>
-            </tr>
             </tbody>
           </n-table>
           </div>
