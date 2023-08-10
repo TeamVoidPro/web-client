@@ -1,7 +1,7 @@
 <template>
   <ParkOwnerLayout>
   <div class="h-full">
-    Dashboard
+    Park Owner Dashboard
   </div>
   </ParkOwnerLayout>
 
