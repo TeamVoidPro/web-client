@@ -1,6 +1,7 @@
 <template>
   <AdminLayout>
     <div>Admin Dashboard</div>
+    <router-link :to="{name: 'ParkingPlaces'}">go...</router-link>
   </AdminLayout>
 
 </template>

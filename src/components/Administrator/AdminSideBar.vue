@@ -30,6 +30,9 @@ import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/vue/24/solid";
 import {onMounted} from "vue";
 import DashboardIcon from "../../assets/icons/DashboardIcon.vue";
 import EmployeeIcon from "@assets/icons/EmployeeIcon.vue";
+import ParkingPlaceIcon from "@assets/icons/ParkingPlaceIcon.vue";
+
+
 
 let active: any = 1;
 const sidebarItems = [
@@ -44,7 +47,14 @@ const sidebarItems = [
     name: 'Employees',
     icon: EmployeeIcon,
     link: 'AdminEmployees'
+  },
+  {
+    id: 3,
+    name: 'Parking Places',
+    icon: ParkingPlaceIcon,
+    link: 'ParkingPlaces'
   }
+
 ]
 
 onMounted(() => {

@@ -33,8 +33,13 @@ import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
 import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
 
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
-// @ts-ignore
+
 import EmployeeLogin from "../pages/EmployeeLogin.vue";
+
+import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
+
+import ParkingPlaceInfo from "@pages/administrator/ParkingPlaceInfo.vue";
+
 
 
 // @ts-ignore
@@ -145,6 +150,16 @@ const routes = [
                 path: '/employees',
                 name: 'AdminEmployees',
                 component: () => AdminEmployees
+            },
+            {
+                path: '/parking-places',
+                name: 'ParkingPlaces',
+                component: () => AdminParkingPlaces
+            },
+            {
+                path: '/parking-place-info',
+                name: 'ParkingPlaceInfo',
+                component:() => ParkingPlaceInfo
             }
         ]
     }
