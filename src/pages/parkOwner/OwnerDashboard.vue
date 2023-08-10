@@ -386,11 +386,11 @@ const datas= ref([
                     <div class="text-primary text-center text-2xl">5.0</div>
                     <div>
                       <div class="flex gap-1 mb-1">
-                        <img src="../../assets/icons/star.svg">
-                        <img src="../../assets/icons/star.svg">
-                        <img src="../../assets/icons/star.svg">
-                        <img src="../../assets/icons/star.svg">
-                        <img src="../../assets/icons/star.svg">
+                        <img src="../../assets/icons/star.svg" style="height: 25px;width: 25px">
+                        <img src="../../assets/icons/star.svg" style="height: 25px;width: 25px">
+                        <img src="../../assets/icons/star.svg" style="height: 25px;width: 25px">
+                        <img src="../../assets/icons/star.svg" style="height: 25px;width: 25px">
+                        <img src="../../assets/icons/star.svg" style="height: 25px;width: 25px">
                       </div>
                       Based on 100 reviews
                     </div>
