@@ -30,6 +30,10 @@ import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/vue/24/solid";
 import {onMounted} from "vue";
 import DashboardIcon from "../../assets/icons/DashboardIcon.vue";
 import EmployeeIcon from "@assets/icons/EmployeeIcon.vue";
+import AnalyticsIcon from "@assets/icons/AnalyticsIcon.vue";
+import FeedbacksAndRatingsIcon from "@assets/icons/FeedbacksAndRatingsIcon.vue";
+import MonitoringsIcon from "@assets/icons/MonitoringsIcon.vue";
+import pendingIcon from "@assets/icons/PendingIcon.vue";
 
 let active: any = 1;
 const sidebarItems = [
@@ -44,6 +48,30 @@ const sidebarItems = [
     name: 'Employees',
     icon: EmployeeIcon,
     link: 'AdminEmployees'
+  },
+  {
+    id: 3,
+    name: 'Analytics',
+    icon: AnalyticsIcon,
+    link: 'AdminAnalytics'
+  },
+  {
+    id: 4,
+    name: 'Feedbacks and Ratings',
+    icon: FeedbacksAndRatingsIcon,
+    link: 'AdminFeedbacksAndRatings'
+  },
+  {
+    id: 5,
+    name: 'Park Monitoring',
+    icon: MonitoringsIcon,
+    link: 'AdminParkMonitoring'
+  },
+  {
+    id: 6,
+    name: 'Pending Parks',
+    icon: pendingIcon,
+    link: 'AdminPendingParks'
   }
 ]
 

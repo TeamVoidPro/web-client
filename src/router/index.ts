@@ -30,6 +30,10 @@ import EmployeeLogin from "../pages/EmployeeLogin.vue";
 import {employeeStore} from "../store/employeeStore.ts";
 import VerifyAccount from "@pages/VerifyAccount.vue";
 import ResetPassword from "@pages/ResetPassword.vue";
+import AdminAnalytics from "@pages/administrator/AdminAnalytics.vue";
+import AdminFeedbacksAndRatings from "@pages/administrator/AdminFeedbacksAndRatings.vue";
+import AdminParkMonitoring from "@pages/administrator/AdminParkMonitoring.vue";
+import AdminPendingParkingPlaces from "@pages/administrator/AdminPendingParkingPlaces.vue";
 
 
 // @ts-ignore
@@ -153,7 +157,28 @@ const routes = [
                 path: '/employees',
                 name: 'AdminEmployees',
                 component: () => AdminEmployees
-            }
+            },
+            {
+                path: '/admin-analytics',
+                name: 'AdminAnalytics',
+                component: () => AdminAnalytics
+            },
+            {
+                path: '/admin-feedbacks-and-ratings',
+                name: 'AdminFeedbacksAndRatings',
+                component: () => AdminFeedbacksAndRatings
+            },
+            {
+                path: '/admin-park-monitoring',
+                name: 'AdminParkMonitoring',
+                component: () => AdminParkMonitoring
+            },
+            {
+                path: '/admin-pending-parks',
+                name: 'AdminPendingParks',
+                component: () => AdminPendingParkingPlaces
+            },
+
         ]
     }
 
