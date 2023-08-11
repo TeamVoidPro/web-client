@@ -3,6 +3,7 @@ import ParkOwnerLayout from "@/layouts/ParkOwnerLayout.vue";
 import {Bar, Line} from "vue-chartjs";
 import {ref} from "vue";
 import {NTable} from "naive-ui";
+import {onMounted} from "vue";
 
 const chartData1 = ref({
   labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
@@ -277,8 +278,21 @@ const datas= ref([
     amount:'1000.00',
     status:'Success',
     expectPayment:'2021/09/25'
+  },
+  {
+    type: 'Peoples bank',
+    date: '2021/09/20',
+    ID: '10:00',
+    amount: '1000.00',
+    status: 'In Progress',
+    expectPayment: '2021/09/25'
+
   }
 ])
+
+onMounted(() => {
+
+})
 
 </script>
 <template>
@@ -309,7 +323,7 @@ const datas= ref([
       <div class="w-full flex justify-between mt-5">
         <div class="w-[49%] shadow rounded-[10px]">
           <Line
-              id="my-chart-id"
+              id="chart1"
               :options="chartOptions1"
               :data="chartData1"
               style="width: 100%;height: 400px; padding:1em; background-color: white;border-radius: 10px;"
@@ -318,7 +332,7 @@ const datas= ref([
 
         <div class="w-[49%] shadow rounded-[10px]">
           <Bar
-              id="my-chart-id"
+              id="chart2"
               :options="chartOptions2"
               :data="chartData2"
               style="width: 100%;height: 400px; padding:1em; background-color: white;border-radius: 10px;"
@@ -326,7 +340,7 @@ const datas= ref([
         </div>
       </div>
       <div class="flex justify-between h-[300px]">
-        <div class="flex flex-col bg-white rounded-2xl shadow-blue-200 mt-6 px-3">
+        <div class="flex flex-col bg-white rounded-2xl shadow-blue-200 mt-6 px-3 h-[320px]">
           <h1 class="text-xl font-bold mt-2">Recent Transactions</h1>
           <div class="mt-2">
             <n-table :bordered="true" :single-line="false" class="w-full">
@@ -354,23 +368,23 @@ const datas= ref([
             </n-table>
           </div>
         </div>
-        <div class="flex flex-col bg-white rounded-2xl shadow-blue-200 mt-6 px-3 w-[49%] shadow">
+        <div class="flex flex-col bg-white rounded-2xl shadow-blue-200 mt-6 px-3 w-[49%] shadow h-[320px]">
           <div class="flex flex-col">
             <h1 class="text-xl font-bold mt-2">Review and Ratings</h1>
             <div class="flex ">
-              <div class="w-[88%] h-[60%] px-4">
+              <div class="w-[88%] h-[100%] px-4">
                 <Bar
-                    id="my-chart-id"
+                    id="chart4"
                     :options="chartOptions4"
                     :data="chartData4"
                     style="background-color:white;border-radius: 5px;"
                 />
               </div>
-              <div class="">
-                <div class="text-md font-semibold">53%</div>
-                <div class="text-md font-semibold">37%</div>
-                <div class="text-md font-semibold">5%</div>
-                <div class="text-md font-semibold">3.4%</div>
+              <div class="mt-4">
+                <div class="text-md font-semibold mb-1">53%</div>
+                <div class="text-md font-semibold mb-1">37%</div>
+                <div class="text-md font-semibold mb-1">5%</div>
+                <div class="text-md font-semibold mb-1">3.4%</div>
                 <div class="text-md font-semibold">1.6%</div>
               </div>
             </div>
