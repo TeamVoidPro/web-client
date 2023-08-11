@@ -8,38 +8,18 @@
         <form class="mt-7">
           <div>
             <label>Email</label>
-            <div class="relative">
-              <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-10 w-full pl-10" type="email" placeholder="Enter Your Email">
-              <EmailIcon class="absolute bottom-3 left-2 text-gray-500 w-10 h-4"/>
-            </div>
+
+            <input v-model="formValues.email" class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-10 w-full pl-2" type="email">
           </div>
           <div>
             <label>Password</label>
-            <div class="relative">
-              <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-10 w-full pl-10" type="password" placeholder="Enter Your Password">
-              <LockIcon class="absolute bottom-3 left-2 text-gray-500 w-10 h-4"/>
-            </div>
+            <input v-model="formValues.password" class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-10 w-full pl-2" type="password">
           </div>
         </form>
         <p class="text-[#3B00E4] font-semibold text-xs flex flex-row-reverse mt-2">Forgot Password ?</p>
         <div class="flex justify-center mt-5">
-          <button class="border-2 w-40 h-12 rounded-full bg-[#253665]  text-white font-semibold">Sign in</button>
-        </div>
-        <div class="flex items-center justify-center my-7">
-          <div class="border-t-2 border-gray-400 w-[50%]"></div>
-          <div class="mx-2 font-semibold">Or</div>
-          <div class="border-t-2 border-gray-400 w-[50%]"></div>
-        </div>
-        <div class="flex justify-center mt-2">
-          <button class="flex items-center justify-center px-10 py-2 border border-black rounded-3xl font-semibold">
-            <img src = "../assets/images/google.svg"
-                 alt = "Google Logo"
-                 class="w-8 h-8 mr-2">
-            Continue with Google
-            <img src="../assets/images/right-arrow.svg"
-                 class="w-7 h-7 ml-2"
-                 alt="Right Arrow">
-          </button>
+
+          <button type="submit" @click="submitForm" class="border-2 w-40 h-9 rounded-full bg-[#253665] text-white font-semibold">Sign in</button>
         </div>
       </div>
 
@@ -56,7 +36,38 @@
 
 <script setup lang="ts">
 
-import EmailIcon from "@assets/icons/EmailIcon.vue";
-import LockIcon from "@assets/icons/LockIcon.vue";
-import Button from "@components/Button.vue";
+import {ref} from "vue";
+import {employeeStore} from "../store/employeeStore.ts";
+import {useRouter} from "vue-router";
+import {useMessage} from "naive-ui";
+
+const router = useRouter();
+const message = useMessage();
+
+const formValues = ref({
+  email: "",
+  password: "",
+});
+
+const submitForm = () => {
+  const store = employeeStore();
+  store.login(formValues.value)
+      .then((res) => {
+        if(res.employee.role === "Administrator"){
+          router.push({name: "AdminDashboard"});
+        }else if(res.employee.role === "Operator"){
+          router.push({name: "OperatorDashboard"});
+        }else if(res.employee.role === "Verifier"){
+          router.push({name: "VerifierDashboard"});
+        }
+
+        message.success("Successfully logged in");
+      }).catch((err) => {
+        throw err;
+    }).catch((err) => {
+      message.error("Invalid credentials. Please try again.")
+  });
+
+};
+
 </script>

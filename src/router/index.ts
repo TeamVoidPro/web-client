@@ -19,22 +19,17 @@ import RegisterPage from "../pages/parkOwner/RegisterPage.vue";
 import Register from "../pages/Register.vue";
 // @ts-ignore
 import OperatorLayout from "../layouts/OperatorLayout.vue";
-// @ts-ignore
 import OperatorPayments from "../pages/operator/OperatorPayments.vue";
-// @ts-ignore
 import OperatorReservations from "../pages/operator/OperatorReservations.vue";
-// @ts-ignore
 import OperatorCustomerServices from "../pages/operator/OperatorCustomerServices.vue";
-
 import OperatorAnalytics from "@pages/operator/OperatorAnalytics.vue";
-
 import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
-
 import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
-
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
-
 import EmployeeLogin from "../pages/EmployeeLogin.vue";
+import {employeeStore} from "../store/employeeStore.ts";
+import VerifyAccount from "@pages/VerifyAccount.vue";
+import ResetPassword from "@pages/ResetPassword.vue";
 
 import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
 
@@ -53,7 +48,6 @@ const routes = [
 
         path: '/auth',
         name: 'Auth',
-        component: () => AuthLayout,
         children: [
             {
                 path: '/login',
@@ -69,12 +63,24 @@ const routes = [
                 path: '/employee-login',
                 name: 'EmployeeLogin',
                 component: () => EmployeeLogin
+            },
+            {
+                path: '/verify-account/:id',
+                name: 'VerifyAccount',
+                component: () => VerifyAccount,
+                props: true
+            },
+            {
+                path: '/reset-password',
+                name: 'ResetPassword',
+                component: () => ResetPassword
             }
         ]
     },
     {
         path: '/operator-layout',
         name: 'OperatorLayout',
+        meta: { requiresAuth: true , role: 'Operator'},
         children: [
             {
                 path: '/operator-dashboard',
@@ -118,6 +124,7 @@ const routes = [
     {
         path: '/park-owner',
         name: 'Parking Owner',
+        meta: { requiresAuth: true , role: 'Parking Owner'},
         children: [
             {
                 path: 'register',
@@ -140,6 +147,7 @@ const routes = [
     {
         path: '/admin-layout',
         name: 'Administrator',
+        meta: { requiresAuth: true , role: 'Administrator'},
         children: [
             {
                 path: '/admin-dashboard',
@@ -168,6 +176,22 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    const store = employeeStore();
+    from;
+    if(to.meta.requiresAuth && !store.user.token) {
+        next({name: 'EmployeeLogin'});
+    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Administrator'){
+        next({name: 'AdminDashboard'});
+    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Operator') {
+        next({name: 'OperatorDashboard'});
+    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Verifier') {
+        next({name: 'VerifierDashboard'});
+    }else{
+        next();
+    }
 })
 
 export default router
