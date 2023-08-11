@@ -20,11 +20,11 @@ body{
 }
 
 .text-secondary{
-    color: #003C70;
+    color: #0074D9;
 }
 
 .text-accent{
-    color: #0074d9;
+    color: #EDF9FC;
 }
 
 .bg-primary{
@@ -32,11 +32,11 @@ body{
 }
 
 .bg-secondary{
-    background-color: #003C70;
+    background-color: #0074D9;
 }
 
 .bg-accent{
-    background-color: #0074d9;
+    background-color: #EDF9FC;
 }
 
 .font-roboto-slab{

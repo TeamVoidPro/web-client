@@ -1,61 +1,62 @@
 <template>
-    <div class="flex font-roboto-slab">
-        <div class="bg-[#253664] w-[35%] h-[100vh] flex items-center">
-          <img src = "../assets/images/logo.png"
-               alt = ""
-                class="w-[90%] m-auto">
-        </div>
-        <div class="w-[65%] flex justify-center items-center bg-blue-100">
-            <div class="w-[50%] shadow-md px-10 py-5 rounded-xl bg-white text-center text-primary">
-                <div class="text-3xl">Welcome Back</div>
-                <div class="text-xl">Please login to your account</div>
-                <form class="mt-5" @submit="login">
-                    <div class="text-left">
-                        <label class="font-semibold text-xl" for="email">Email</label>
-                        <input type="email" id="email" class="w-full border-2 border-gray-300 rounded p-2 focus:outline-none focus:border-primary"
-                        placeholder="Please enter your email"/>
+   <div>
+      <NavBar/>
+   </div>
+  <div class="h-[88.8vh] bg-accent flex items-center">
+      <div class="m-auto p-10 bg-white w-[80%] rounded-2xl flex justify-around shadow shadow-blue-200">
+          <div>
+              <div class="">
+                <div class="flex items-center text-primary">
+                    <h1 class="text-4xl font-bold">Hey, hello </h1>
+                    <img src = "../assets/images/wave.gif"
+                         alt = "Wave Emoji"
+                         class="w-20" >
+                </div>
+                <div class="font-semibold">Enter the information while you registered.</div>
+                <form class="mt-10">
+                    <div class="relative">
+                        <input type="text" class="px-20 py-2 border border-black rounded placeholder-gray-600 font-semibold" placeholder="Email">
+                        <EnvelopeIcon class="w-8 h-8 text-black absolute inset-y-1.5 left-5"/>
                     </div>
-                    <div class="text-left mt-5">
-                        <label class="font-semibold text-xl" for="password">Password</label>
-                        <input type="password" id="password" class="w-full border-2 border-gray-300 rounded p-2 focus:outline-none focus:border-primary"
-                        placeholder="Please enter your password"/>
-                        <div id="eye">
-                          <EyeIcon class="h-7 w-7 opacity-60 relative bottom-9 left-[92%]" @click="showPassword"/>
-                        </div>
-                        <div id="eye-slash" class="hidden">
-                          <EyeSlashIcon class="h-7 w-7 opacity-60 relative bottom-9 left-[92%]" @click="hidePassword"/>
-                        </div>
+                    <div class="relative mt-5">
+                        <input type="password" class="px-20 py-2 border border-black rounded placeholder-gray-600 font-semibold" placeholder="Password">
+                        <LockClosedIcon class="w-8 h-8 text-black absolute inset-y-1.5 left-5"/>
+                        <EyeSlashIcon class="w-8 h-8 text-black absolute inset-y-1.5 right-5 opacity-40"/>
+                        <EyeIcon class="w-8 h-8 text-black absolute inset-y-1.5 right-5 opacity-0 hidden"/>
                     </div>
-                    <div class="text-left">
-                        <input type="checkbox" id="remember" class="mr-2"/>
-                        <label for="remember">Remember me</label>
-                    </div>
-                    <div class="mt-5">
-                        <button type="submit" class="w-full bg-secondary text-white py-2 rounded hover:bg-[#253665]">Login</button>
-                    </div>
-                    <div class="mt-5">
-                        <a href="#" class="text-primary">Forgot password?</a>
+                    <div class="text-secondary text-right font-semibold cursor-pointer">Forgot password ?</div>
+                    <div class="flex justify-center mt-7">
+                        <Button>Sign In</Button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
+                <div class="flex items-center justify-center my-7">
+                    <div class="border-t-2 border-gray-400 w-[50%]"></div>
+                    <div class="mx-2 font-semibold">Or</div>
+                    <div class="border-t-2 border-gray-400 w-[50%]"></div>
+                </div>
+                <div class="flex justify-center">
+                    <button class="flex items-center justify-center px-10 py-2 border border-black rounded-3xl font-semibold">
+                        <img src = "../assets/images/google.svg"
+                             alt = "Google Logo"
+                             class="w-8 h-8 mr-2">
+                        Continue with Google
+                        <img src="../assets/images/right-arrow.svg"
+                             class="w-7 h-7 ml-2"
+                              alt="Right Arrow">
+                    </button>
+                </div>
+              </div>
+          </div>
+          <div>
+            <img src = "../assets/images/login-page-img.png"
+                 alt = "">
+          </div>
+      </div>
+  </div>
 </template>
 
-<script setup
-        lang = "ts">
-import {EyeIcon, EyeSlashIcon} from "@heroicons/vue/24/solid";
-
-const showPassword = () => {
-    document.getElementById('password').setAttribute('type', 'text');
-    document.getElementById('eye').classList.add('hidden');
-    document.getElementById('eye-slash').classList.remove('hidden');
-}
-
-const hidePassword = () => {
-    document.getElementById('password').setAttribute('type', 'password');
-    document.getElementById('eye').classList.remove('hidden');
-    document.getElementById('eye-slash').classList.add('hidden');
-}
-
+<script setup lang="ts">
+import {EnvelopeIcon, LockClosedIcon, EyeSlashIcon, EyeIcon} from "@heroicons/vue/24/solid";
+import NavBar from "../components/NavBar.vue";
+import Button from "../components/Button.vue";
 </script>

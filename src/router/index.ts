@@ -15,6 +15,12 @@ import VerifierDashboard from "../pages/verifier/VerifierDashboard.vue";
 import Home from "../pages/Home.vue";
 // @ts-ignore
 import RegisterPage from "../pages/parkOwner/RegisterPage.vue";
+// @ts-ignore
+import Register from "../pages/Register.vue";
+// @ts-ignore
+import OperatorLayout from "../layouts/OperatorLayout.vue";
+// @ts-ignore
+import OperatorPayments from "../pages/operator/OperatorPayments.vue";
 
 // @ts-ignore
 const routes = [
@@ -35,24 +41,22 @@ const routes = [
                 component: () => Login
             },
             {
-                path: '/admin-dashboard',
-                name: 'AdminDashboard',
-                component: () => AdminDashboard
-            },
+                path: '/register',
+                name: 'Register',
+                component: () => Register
+            }
+
+        ]
+    },
+    {
+        path: '/operator-layout',
+        name: 'OperatorLayout',
+        component: () => OperatorLayout,
+        children: [
             {
-                path: '/operator-dashboard',
-                name: 'OperatorDashboard',
-                component: () => OperatorDashboard
-            },
-            {
-                path: 'owner-dashboard',
-                name: 'OwnerDashboard',
-                component: () => OwnerDashboard
-            },
-            {
-                path: 'verifier-dashboard',
-                name: 'VerifierDashboard',
-                component: () => VerifierDashboard
+                path: '/operator-payments',
+                name: 'OperatorPayments',
+                component: () => OperatorPayments
             }
         ]
     },{
@@ -77,6 +81,7 @@ const routes = [
             }
             ]
     }
+
 ]
 
 const router = createRouter({
