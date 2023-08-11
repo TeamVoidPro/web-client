@@ -1,12 +1,12 @@
 <template>
   <div>
-  <NavBar/>
+  <ParkOwnerNavbar/>
     <div class="flex flex-col bg-accent justify-center items-center h-[100%] px-10 py-2.5">
-      <div class="flex bg-white justify-center items-center m-5 rounded-2xl shadow shadow-blue-200">
-          <div class="justify-center items-center m-5">
-            <div class="text-4xl font-bold text-center text-ternary">Welcome to</div>
-            <div class="text-4xl font-bold text-center text-ternary">Parking Management System</div>
-            <div class="text-2xl font-bold text-center text-ternary">We are here to help you</div>
+      <div class="flex bg-white justify-center items-center m-5 rounded-2xl relative h-full shadow shadow-blue-200">
+          <div class="flex flex-col justify-center items-center h-full m-5 gap-4">
+            <div  class="text-4xl font-bold text-center text-ternary absolute top-8">Park Ease</div>
+            <div class="text-3xl font-bold text-center text-ternary">Say Goodbye to Parking Woes</div>
+            <div class="text-3xl font-bold text-center text-ternary"> Discover the Future of Hassle-Free Parking</div>
           </div>
           <div class="m-5">
             <img src="../assets/images/parking_area.jpg">
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="px-5 m-5">
-        <Button class="flex mx-3">
+        <Button class="flex mx-3  ">
           <div class="mx-2">
           <div class="text-4xl font-bold text-center text-white">Are you a Parking Provider?</div>
           <div class="text-xl font-bold text-center text-white">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
@@ -103,5 +103,6 @@
 import NavBar from "../components/NavBar.vue";
 import Button from "../components/Button.vue";
 import Footer from "../components/Footer.vue";
+import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
 
 </script>

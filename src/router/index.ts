@@ -44,6 +44,7 @@ const routes = [
         name: 'Home',
         component: () => Home
     },
+    
     {
 
         path: '/auth',
