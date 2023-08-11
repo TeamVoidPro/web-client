@@ -20,6 +20,7 @@
     "naive-ui": "^2.34.4",
     "pinia": "^2.1.4",
     "three": "^0.154.0",
+    "tw-elements": "^1.0.0-beta3",
     "vue": "^3.2.47",
     "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.2"

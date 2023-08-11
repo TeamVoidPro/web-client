@@ -35,6 +35,11 @@ import AdminFeedbacksAndRatings from "@pages/administrator/AdminFeedbacksAndRati
 import AdminParkMonitoring from "@pages/administrator/AdminParkMonitoring.vue";
 import AdminPendingParkingPlaces from "@pages/administrator/AdminPendingParkingPlaces.vue";
 
+import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
+
+import ParkingPlaceInfo from "@pages/administrator/ParkingPlaceInfo.vue";
+
+
 
 // @ts-ignore
 const routes = [
@@ -178,11 +183,21 @@ const routes = [
                 name: 'AdminPendingParks',
                 component: () => AdminPendingParkingPlaces
             },
+            {
+
+                path: '/parking-places',
+                name: 'ParkingPlaces',
+                component: () => AdminParkingPlaces
+            },
+            {
+                path: '/parking-place-info',
+                name: 'ParkingPlaceInfo',
+                component: () => ParkingPlaceInfo
+            }
 
         ]
     }
-
-]
+    ]
 
 const router = createRouter({
     history: createWebHistory(),

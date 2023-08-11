@@ -1,5 +1,6 @@
 <template>
   <AdminLayout>
+
     <div>
       <div class="w-full flex justify-between">
         <div class="bg-white p-3 w-[20%] rounded-lg shadow flex flex-col items-center justify-center space-y-2">
