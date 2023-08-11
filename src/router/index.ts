@@ -27,7 +27,7 @@ import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
 import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
 import EmployeeLogin from "../pages/EmployeeLogin.vue";
-import {employeeStore} from "../store/employeeStore.ts";
+// import {employeeStore} from "../store/employeeStore.ts";
 import VerifyAccount from "@pages/VerifyAccount.vue";
 import ResetPassword from "@pages/ResetPassword.vue";
 

@@ -1,6 +1,5 @@
 <template>
-    <div class="bg-white h-[80vh] w-[80%] flex justify-around m-auto rounded-xl ">
-      <div class="w-[30%] mt-10 pl-8">
+
     <div class="bg-white h-[80vh] w-[85%] rounded-2xl flex justify-around m-auto">
       <div class="w-[30%] mt-10 pl-5">
         <p class="text-4xl text-primary font-semibold mb-4">Login</p>
@@ -25,12 +24,13 @@
 
       <div class="w-[60%] bg-primary rounded h-[70vh] m-auto shadow-2xl">
         <img src="../assets/images/park.png" alt="">
-
-      <div class="w-[60%] m-auto">
-        <div class=" bg-[#cffafe] rounded-2xl h-[70vh] shadow-lg">
-          <img  src="../assets/images/park.png" alt="">
-        </div>
       </div>
+
+<!--      <div class="w-[60%] m-auto">-->
+<!--        <div class=" bg-[#cffafe] rounded-2xl h-[70vh] shadow-lg">-->
+<!--          <img  src="../assets/images/park.png" alt="">-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
 </template>
 
