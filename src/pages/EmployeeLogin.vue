@@ -31,6 +31,9 @@
           <img  src="../assets/images/park.png" alt="">
         </div>
       </div>
+      </div>
+      </div>
+      </div>
     </div>
 </template>
 

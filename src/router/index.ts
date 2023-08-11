@@ -36,6 +36,16 @@ import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
 import ParkingPlaceInfo from "@pages/administrator/ParkingPlaceInfo.vue";
 
 
+// @ts-ignore
+import VerifierLegal from "../pages/verifier/VerifierLegal.vue";
+// @ts-ignore
+import VerifierOnsite from "../pages/verifier/VerifierOnsite.vue";
+// @ts-ignore
+import VerifierInspection from "../pages/verifier/VerifierInspection.vue";
+// @ts-ignore
+import VerifierHistory from "../pages/verifier/VerifierHistory.vue";
+
+
 
 // @ts-ignore
 const routes = [
@@ -170,6 +180,34 @@ const routes = [
                 component: () => ParkingPlaceInfo
             }
         ]
+    },
+    {
+        path: '/verifier',
+        name: 'verifier',
+        children: [
+            {
+                path: 'legal',
+                name: 'VerifierLegal',
+                component: () => VerifierLegal
+            },
+            {
+                path: 'onsite',
+                name: 'VerifierOnsite',
+                component: () => VerifierOnsite
+            },
+            {
+                path: 'inspection',
+                name: 'VerifierInspection',
+                component: () => VerifierInspection
+
+            },
+            {
+                path: 'history',
+                name: 'VerifierHistory',
+                component: () => VerifierHistory
+
+            }
+            ]
     }
     ]
 
