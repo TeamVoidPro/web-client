@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <nav class="bg-white dark:bg-black drop-shadow-sm absolute w-full top-0">
+  <nav class="bg-white dark:bg-black drop-shadow-sm  w-full top-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-24">
         <div class="flex-shrink-0">

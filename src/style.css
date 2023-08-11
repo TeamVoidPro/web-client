@@ -50,3 +50,7 @@ body{
 main{
     min-height: 100vh;
 }
+
+button{
+    background-color: #0074d9;
+}
