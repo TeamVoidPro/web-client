@@ -31,12 +31,19 @@ const themeOverrides: GlobalThemeOverrides = {
   <main>
     <n-config-provider :theme-overrides="themeOverrides">
       <n-notification-provider>
-        <RouterView />
+        <n-message-provider>
+          <RouterView />
+        </n-message-provider>
       </n-notification-provider>
     </n-config-provider>
   </main>
 </template>
 
 <style scoped>
-
+main{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>

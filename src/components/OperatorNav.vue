@@ -7,13 +7,68 @@
       </div>
       <div class="flex items-center gap-5">
         <img src="../assets/images/bell-icon.svg" alt="Bell Icon" class="w-8 h-8">
-        <img src="../assets/images/user.jpg" alt="User" class="w-14 h-14 rounded-full object-cover border border-black p-0.5">
-
+        <n-dropdown :options="options" @select="handleSelect">
+          <img src="../assets/images/user.jpg" alt="User" class="w-14 h-14 rounded-full object-cover border border-black p-0.5">
+        </n-dropdown>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { h } from 'vue'
+import type { Component } from 'vue'
+import {NIcon, useMessage} from 'naive-ui'
+import {
+  PersonCircleOutline as UserIcon,
+  Pencil as EditIcon,
+  LogOutOutline as LogoutIcon
+} from '@vicons/ionicons5'
+import {employeeStore} from "@/store/employeeStore.ts";
+import {useRouter} from "vue-router";
 
+const router = useRouter();
+const message = useMessage();
+
+const renderIcon = (icon: Component) => {
+  return () => {
+    return h(NIcon, null, {
+      default: () => h(icon)
+    })
+  }
+}
+
+const options = [
+  {
+    label: 'Profile',
+    key: 'profile',
+    icon: renderIcon(UserIcon)
+  },
+  {
+    label: 'Edit Profile',
+    key: 'editProfile',
+    icon: renderIcon(EditIcon)
+  },
+  {
+    label: 'Logout',
+    key: 'logout',
+    icon: renderIcon(LogoutIcon)
+  }
+]
+
+const handleSelect = (key: string) => {
+  const store = employeeStore();
+  if(key === 'logout'){
+    const user = {
+      'EmployeeId': store.user.data.id,
+    }
+    store.logout(user)
+        .then((data: any) => {
+          router.push({name: "EmployeeLogin"})
+          message.success(data.message)
+        }).catch((err: any) => {
+          throw err;
+        });
+  }
+}
 </script>

@@ -47,6 +47,7 @@ body{
     font-family: 'Roboto Slab', serif;
 }
 
+
 .bg-grey{
     background-color: #646464;
 }
@@ -56,6 +57,20 @@ body{
 }
 
 
+
+.late-departures-color{
+    background-color: #B8DEFF;
+}
+.payment-history-color{
+    background-color: #D9D9D9;
+}
+
+.price-tag-font-color{
+    color: #F13843;
+}
+
+
+
 #app{
     min-height: 100vh;
 }
@@ -63,6 +78,31 @@ body{
 main{
     min-height: 100vh;
 }
+
+.scroll-bar-w-sm::-webkit-scrollbar {
+    width: 5px;
+    margin-left: 3px;
+}
+
+.scroll-bar-thumb::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+}
+
+.scroll-bar-thumb::-webkit-scrollbar-thumb:hover {
+    background: #cecece;
+}
+
+.handle {
+    position: absolute;
+    bottom: -10px;
+    left: -6px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #4299e1; /* Change the color to match the background color of the message */
+}
+
 
 button{
     background-color: #0074d9;
