@@ -5,7 +5,6 @@
       <OperatorNav />
       <div class="px-10 py-10 max-h-[90vh] overflow-y-auto">
         <slot>
-
         </slot>
       </div>
     </div>

@@ -29,7 +29,7 @@ const themeOverrides: GlobalThemeOverrides = {
 
 <template>
   <main>
-    <n-config-provider :theme-overrides="themeOverrides">
+    <n-config-provider :theme-overrides="themeOverrides" class="w-full">
       <n-notification-provider>
         <n-message-provider>
           <RouterView />

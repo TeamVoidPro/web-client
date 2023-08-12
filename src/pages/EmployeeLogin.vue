@@ -63,7 +63,7 @@ const submitForm = () => {
 
         message.success("Successfully logged in");
       }).catch((err) => {
-        throw err;
+    console.log(err)
     }).catch((err) => {
       message.error("Invalid credentials. Please try again.")
   });
