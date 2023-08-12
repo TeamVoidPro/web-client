@@ -1,5 +1,6 @@
 <template>
-    <div class="bg-white h-[80vh] w-[85%] rounded-2xl flex justify-around m-auto">
+  <ParkOwnerNavbar current-page="login"/>
+    <div class="bg-white mt-10 h-[80vh] w-[85%] rounded-2xl flex justify-around m-auto">
       <div class="w-[30%] mt-10 pl-5">
         <p class="text-4xl text-primary font-semibold mb-4">Login</p>
         <p>Enter the information while you registered</p>
@@ -39,6 +40,7 @@ import {ref} from "vue";
 import {employeeStore} from "../store/employeeStore.ts";
 import {useRouter} from "vue-router";
 import {useMessage} from "naive-ui";
+import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
 
 const router = useRouter();
 const message = useMessage();
