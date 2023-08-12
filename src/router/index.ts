@@ -178,20 +178,20 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach((to, from, next) => {
-    const store = employeeStore();
-    from;
-    if(to.meta.requiresAuth && !store.user.token) {
-        next({name: 'EmployeeLogin'});
-    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Administrator'){
-        next({name: 'AdminDashboard'});
-    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Operator') {
-        next({name: 'OperatorDashboard'});
-    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Verifier') {
-        next({name: 'VerifierDashboard'});
-    }else{
-        next();
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     const store = employeeStore();
+//     from;
+//     if(to.meta.requiresAuth && !store.user.token) {
+//         next({name: 'EmployeeLogin'});
+//     }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Administrator'){
+//         next({name: 'AdminDashboard'});
+//     }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Operator') {
+//         next({name: 'OperatorDashboard'});
+//     }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Verifier') {
+//         next({name: 'VerifierDashboard'});
+//     }else{
+//         next();
+//     }
+// })
 
 export default router
