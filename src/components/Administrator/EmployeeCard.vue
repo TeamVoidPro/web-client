@@ -2,7 +2,7 @@
   <n-card>
     <div class="flex justify-between items-center">
       <n-checkbox v-model:checked="value"/>
-      <div class="px-3 py-0.5 bg-green-100 text-green-600 rounded-xl border border-green-600">Active</div>
+      <div class="px-3 py-0.5  rounded-xl border " :class="[status === 'Pending' ? 'text-yellow-600 bg-yellow-100 border-yellow-600' : 'bg-green-100 text-green-600 border-green-600']">{{status}}</div>
     </div>
     <div class="flex flex-col items-center justify-center mt-3 text-center">
       <img src="../../assets/images/user2.jpg" alt=""
@@ -58,5 +58,13 @@ const value = ref(false);
 const props = defineProps<{
   employee: object;
 }>();
+
+const status = ref("");
+
+if(props.employee.isActivated){
+  status.value = 'Activated';
+}else{
+  status.value = 'Pending';
+}
 
 </script>

@@ -1,36 +1,33 @@
 <template>
   <ParkOwnerNavbar current-page="login"/>
-    <div class="bg-white mt-10 h-[80vh] w-[85%] rounded-2xl flex justify-around m-auto">
-      <div class="w-[30%] mt-10 pl-5">
-        <p class="text-4xl text-primary font-semibold mb-4">Login</p>
-        <p>Enter the information while you registered</p>
-        <form class="mt-7">
+    <div class="bg-white mt-16 p-10 w-[60%] rounded-2xl flex justify-between m-auto shadow-xl">
+      <div class="w-[40%]  flex flex-col justify-center">
+        <p class="text-4xl text-primary font-semibold mb-5">Please Login</p>
+        <div class="text-sm font-semibold text-secondary mb-8">Welcome back! Your dedication drives our success.</div>
+        <n-form class=" space-y-4" :model="formValues">
           <div>
-            <label>Email</label>
-
-            <input v-model="formValues.email" class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-10 w-full pl-2" type="email">
+            <label class="font-semibold">Email</label>
+            <n-input v-model:value="formValues.email"  type="email" placeholder="Enter your email"/>
           </div>
           <div>
-            <label>Password</label>
-            <input v-model="formValues.password" class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-10 w-full pl-2" type="password">
+            <label class="font-semibold">Password</label>
+            <div class="relative">
+              <n-input v-model:value="formValues.password"  type="password" placeholder="Enter your password"/>
+              <EyeIcon class="hidden absolute right-3 top-1.5 text-gray-400 w-6 h-6 cursor-pointer" />
+              <EyeSlashIcon class="absolute right-3 top-1.5 text-gray-400 w-6 h-6 cursor-pointer" />
+            </div>
           </div>
-        </form>
+        </n-form>
         <p class="text-[#3B00E4] font-semibold text-xs flex flex-row-reverse mt-2">Forgot Password ?</p>
-        <div class="flex justify-center mt-5">
-
-          <button type="submit" @click="submitForm" class="border-2 w-40 h-9 rounded-full bg-[#253665] text-white font-semibold">Sign in</button>
+        <div class="flex justify-center mt-10">
+          <Button @click="submitForm">Sign In</Button>
         </div>
       </div>
 
-      <div class="w-[60%] bg-primary rounded h-[70vh] m-auto shadow-2xl">
-        <img src="../assets/images/park.png" alt="">
-
-<!--      <div class="w-[60%] m-auto">-->
-<!--        <div class=" bg-[#cffafe] rounded-2xl h-[70vh] shadow-lg">-->
-<!--          <img  src="../assets/images/park.png" alt="">-->
-<!--        </div>-->
-<!--      </div>-->
-    </div>
+      <div class="w-[45%] bg-primary rounded shadow-2xl">
+        <img src="../assets/images/park.png" alt=""
+        class="w-full h-full">
+      </div>
     </div>
 </template>
 
@@ -40,6 +37,8 @@ import {ref} from "vue";
 import {employeeStore} from "../store/employeeStore.ts";
 import {useRouter} from "vue-router";
 import {useMessage} from "naive-ui";
+import Button from "@components/Button.vue";
+import {EyeIcon, EyeSlashIcon} from "@heroicons/vue/24/solid";
 import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
 
 const router = useRouter();

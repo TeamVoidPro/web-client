@@ -65,17 +65,19 @@ export const employeeStore = defineStore('employee', {
                 })
         },
         getEmployees() : any {
-            return authService('employee/get-employees',this.user.token,{})
+            return authService('employee/get-employees','get',this.user.token,{})
                 .then((res: any) => {
                     return res
                 })
+            // return authService('employee/get-employees/EMP_1975_6231', 'get' ,this.user.token, {}).then()
         },
         getEmployee() {
-            return authService('employee/get-employees/EMP_1975_6231', this.user.token,{})
+            return authService('employee/get-employees/EMP_1975_6231','get', this.user.token,{})
                 .then((res : any)  => {
                     console.log(res)
                     return res
                 })
+
         },
         sendVerificationEmail(data: object){
             return axiosClient.post('email/verify-account-email', data)
