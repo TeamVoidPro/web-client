@@ -1,9 +1,10 @@
 import { createApp } from 'vue'
 import {createPinia} from 'pinia'
 import axios from "axios";
+import './style.css'
 import router from './router/index.ts'
 import naive from "naive-ui";
-import './style.css'
+
 
 
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';

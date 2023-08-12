@@ -40,7 +40,16 @@ import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
 import ParkingPlaceInfo from "@pages/administrator/ParkingPlaceInfo.vue";
 
 
+// @ts-ignore
+import FeedbacksRatings from "../pages/parkOwner/FeedbacksRatings.vue";
 
+import ManageParkingPlace from "@pages/parkOwner/ManageParkingPlace.vue";
+//@ts-ignore
+import OwnerSettings from "@pages/parkOwner/OwnerSettings.vue";
+//@ts-ignore
+import OwnerAnalytics from "@pages/parkOwner/OwnerAnalytics.vue";
+//@ts-ignore
+import OwnerPayments from "@pages/parkOwner/OwnerPayments.vue";
 // @ts-ignore
 const routes = [
     {
@@ -80,6 +89,7 @@ const routes = [
                 name: 'ResetPassword',
                 component: () => ResetPassword
             }
+
         ]
     },
     {
@@ -146,6 +156,31 @@ const routes = [
                 name: 'OwnerOverview',
                 component: () => OwnerDashboard
 
+            },
+            {
+                path:'feedbacks',
+                name:'OwnerFeedbacks',
+                component:()=>FeedbacksRatings
+            },
+            {
+                path:'manage-parking',
+                name:'ManageParking',
+                component:()=>ManageParkingPlace
+            },
+            {
+                path:'settings',
+                name:'OwnerSettings',
+                component:()=>OwnerSettings
+            },
+            {
+                path:'analytics',
+                name:'OwnerAnalytics',
+                component:()=>OwnerAnalytics
+            },
+            {
+                path: 'payments',
+                name: 'OwnerPayments',
+                component: () => OwnerPayments
             }
             ]
     },
