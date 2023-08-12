@@ -11,10 +11,8 @@
         </div>
         <div class="relative">
             <p class="absolute font-semibold text-gray-500 right-[40vh] bottom-[2.5vh] ">#247899SB</p>
-            <button class="absolute right-[20vh] bottom-[2.5vh]"><ChevronDown class="rotate-90  w-6 h-6 "/></button>
-        </div>
-
-
+            <LegalInfoPopup/>
+        </div>        
     </div>
 </template>
 
@@ -22,7 +20,6 @@
         lang = "ts">
 
 import LandIcon from "../../assets/icons/LandIcon.vue";
-import ChevronDown from "../../assets/icons/ChevronDown.vue";
 import LegalInfoPopup from "../verifier/LegalInfoPopup.vue";
 
 </script>
