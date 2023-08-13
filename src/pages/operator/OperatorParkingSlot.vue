@@ -175,73 +175,61 @@
                   <label for="">Name</label>
                   <n-input placeholder="Enter name" />
                 </div>
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2 ">
                   <label for="">Contact </label>
                   <n-input placeholder="Enter contact number" />
                 </div>
               </div>
               <div class="flex w-full justify-between">
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2 ">
                   <label for="">Vehicle Number</label>
                   <n-input placeholder="Enter vehicle number" />
                 </div>
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2 ">
                   <label for="">Vehicle Type</label>
                   <n-input placeholder="Select vehicle type" />
                 </div>
               </div>
               <div class="flex w-full justify-between">
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2 ">
                   <label for="">Reservation start at</label>
                   <n-time-picker />
                 </div>
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2">
                   <label for="">Reservation end at</label>
                   <n-time-picker />
                 </div>
               </div>
               <div class="flex w-full justify-between">
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2">
                   <label for="">Zone</label>
                   <div class="flex flex-wrap justify-around mt-3">
-                    <n-radio
-                        :checked="checkedValue === 'Definitely Maybe'"
-                        value="Zone A"
-                        name="zoneA"
-                        @change="handleChange"
-                    >
-                      Zone A
-                    </n-radio>
-                    <n-radio
-                        :checked="checkedValue === 'Definitely Maybe'"
-                        value="Zone B"
-                        name="zoneB"
-                        @change="handleChange"
-                    >
-                      Zone B
-                    </n-radio>
-
+                    <n-radio-group v-model:value="value2" name="radioGroup">
+                      <n-space>
+                        <n-radio
+                            v-for="zone in zones"
+                            :key="zone.value"
+                            :value="zone.value"
+                            :label="zone.label"
+                        />
+                      </n-space>
+                    </n-radio-group>
                   </div>
                 </div>
                 <div class="w-[49%] space-y-2">
                   <label for="">Payment Method</label>
                   <div class="flex flex-wrap justify-around mt-3">
-                    <n-radio
-                        :checked="checkedValue === 'Definitely Maybe'"
-                        value="Cash"
-                        name="cash"
-                        @change="handleChange"
-                    >
-                      Cash
-                    </n-radio>
-                    <n-radio
-                        :checked="checkedValue === 'Definitely Maybe'"
-                        value="Card"
-                        name="card"
-                        @change="handleChange"
-                    >
-                      Card
-                    </n-radio>
+                    <n-radio-group v-model:value="value1" name="radioGroup">
+                      <n-space>
+                        <n-radio
+                            v-for="paymentMethod in paymentMethods"
+                            :key="paymentMethod.value"
+                            :value="paymentMethod.value"
+                            :label="paymentMethod.label"
+                        />
+                      </n-space>
+                    </n-radio-group>
+
                   </div>
                 </div>
               </div>
@@ -293,10 +281,35 @@ import {ref} from "vue";
 import ReservationIcon from "@assets/icons/ReservationIcon.vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
 const showModal = ref(false);
+const value1 = ref(null);
+const value2 = ref(null);
 
-const handleChange = (e: any) => {
-  console.log(e);
-};
+const paymentMethods = [
+  {
+    label: "Cash",
+    value: "cash",
+  },
+  {
+    label: "Card",
+    value: "card",
+  }
+].map((s) => {
+  s.value = s.value.toLowerCase();
+  return s;
+});
 
-const checkedValue = ref("Definitely Maybe");
+const zones = [
+  {
+    label: "Zone A",
+    value: "zoneA",
+  },
+  {
+    label: "Zone B",
+    value: "zoneB",
+  }
+].map((s) => {
+  s.value = s.value.toLowerCase();
+  return s;
+});
+
 </script>
