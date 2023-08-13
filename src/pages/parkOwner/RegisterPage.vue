@@ -189,7 +189,7 @@ import PersonalDetailRegistrationForm from "@components/ParkOwner/PersonalDetail
 import LandRegistrationForm from "@components/ParkOwner/LandRegistrationForm.vue";
 import {useParkingOwnerRegistrationStore} from "@store/parkingOwnerRegisterStore.ts"
 import ParkDrawer from "@components/ParkOwner/ParkDrawer/ParkDrawer3D.vue";
-import {NModal,NRadio,NRadioGroup} from "naive-ui"
+import {NModal, NRadio, NRadioGroup, useMessage} from "naive-ui"
 
 // import LandRegistrationForm from "@/components/ParkOwner/LandRegistrationForm.vue";
 
@@ -215,7 +215,7 @@ const questionNo = ref([
     trigger: false
   }
 ])
-
+const message = useMessage()
 const parkSlots = ref({
   car: 0,
   van: 0,
@@ -228,13 +228,20 @@ const parkSlots = ref({
 const totalSlots = computed(() => {
   return Object.values(parkSlots.value).reduce((a, b) => a + b, 0);
 });
-const next = () => {
-  // store.nextStep()
-  if (currentQuestion.value>0){
-    questionNo.value[currentQuestion.value-1].trigger = false
+
+const pORStore = useParkingOwnerRegistrationStore()
+const next = async () => {
+  const response = await pORStore.addPersonalDetails()
+  if (response.status ===400 ){
+    message.error(response.data.message)
+  }else{
+    store.nextStep()
+    if (currentQuestion.value>0){
+      questionNo.value[currentQuestion.value-1].trigger = false
+    }
+    questionNo.value[currentQuestion.value].trigger = true
+    currentQuestion.value++
   }
-  questionNo.value[currentQuestion.value].trigger = true
-  currentQuestion.value++
 }
 
 const prev = () => {

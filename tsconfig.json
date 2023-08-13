@@ -39,6 +39,7 @@
         "@router/*": [
             "/src/router/*"
             ],
+
         },
 
     /* Bundler mode */
