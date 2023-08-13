@@ -165,9 +165,118 @@
             aria-modal="true"
         >
           <template #header-extra>
-            <CloseIcon class="w-6 h-6 text-red-600"/>
+            <CloseIcon class="w-6 h-6 text-red-600" @click="showModal = false"/>
           </template>
 
+          <div class="flex justify-between">
+            <n-form class="w-[70%] space-y-5">
+              <div class="flex w-full justify-between">
+                <div class="w-[49%] space-y-2">
+                  <label for="">Name</label>
+                  <n-input placeholder="Enter name" />
+                </div>
+                <div class="w-[49%] space-y-2 space-y-2">
+                  <label for="">Contact </label>
+                  <n-input placeholder="Enter contact number" />
+                </div>
+              </div>
+              <div class="flex w-full justify-between">
+                <div class="w-[49%] space-y-2 space-y-2">
+                  <label for="">Vehicle Number</label>
+                  <n-input placeholder="Enter vehicle number" />
+                </div>
+                <div class="w-[49%] space-y-2 space-y-2">
+                  <label for="">Vehicle Type</label>
+                  <n-input placeholder="Select vehicle type" />
+                </div>
+              </div>
+              <div class="flex w-full justify-between">
+                <div class="w-[49%] space-y-2 space-y-2">
+                  <label for="">Reservation start at</label>
+                  <n-time-picker />
+                </div>
+                <div class="w-[49%] space-y-2 space-y-2">
+                  <label for="">Reservation end at</label>
+                  <n-time-picker />
+                </div>
+              </div>
+              <div class="flex w-full justify-between">
+                <div class="w-[49%] space-y-2 space-y-2">
+                  <label for="">Zone</label>
+                  <div class="flex flex-wrap justify-around mt-3">
+                    <n-radio
+                        :checked="checkedValue === 'Definitely Maybe'"
+                        value="Zone A"
+                        name="zoneA"
+                        @change="handleChange"
+                    >
+                      Zone A
+                    </n-radio>
+                    <n-radio
+                        :checked="checkedValue === 'Definitely Maybe'"
+                        value="Zone B"
+                        name="zoneB"
+                        @change="handleChange"
+                    >
+                      Zone B
+                    </n-radio>
+
+                  </div>
+                </div>
+                <div class="w-[49%] space-y-2">
+                  <label for="">Payment Method</label>
+                  <div class="flex flex-wrap justify-around mt-3">
+                    <n-radio
+                        :checked="checkedValue === 'Definitely Maybe'"
+                        value="Cash"
+                        name="cash"
+                        @change="handleChange"
+                    >
+                      Cash
+                    </n-radio>
+                    <n-radio
+                        :checked="checkedValue === 'Definitely Maybe'"
+                        value="Card"
+                        name="card"
+                        @change="handleChange"
+                    >
+                      Card
+                    </n-radio>
+                  </div>
+                </div>
+              </div>
+            </n-form>
+
+            <div class="w-[28%] ps-[2%] border-l-2">
+              <div class="text-lg font-semibold">Available Slots</div>
+              <div class="mt-2">
+                <div class="text-md mt-1">Zone A</div>
+                <table>
+                  <tr>
+                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">10</div></td>
+                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">7</div></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="mt-2">
+                <div class="text-md mt-1">Zone B</div>
+                <table>
+                  <tr>
+                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">10</div></td>
+                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">7</div></td>
+                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">2</div></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="my-5 text-lg font-semibold">Total Payment</div>
+              <div class="w-full">
+                <div class="text-2xl text-center">Rs 470.00</div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full flex justify-center">
+            <button class="mt-10 px-10 py-2 text-lg font-semibold text-white rounded-lg">Make Reservation</button>
+          </div>
           <template #footer>
 
           </template>
@@ -184,4 +293,10 @@ import {ref} from "vue";
 import ReservationIcon from "@assets/icons/ReservationIcon.vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
 const showModal = ref(false);
+
+const handleChange = (e: any) => {
+  console.log(e);
+};
+
+const checkedValue = ref("Definitely Maybe");
 </script>
