@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar/>
+    <ParkOwnerNavbar/>
   </div>
   <div class="h-[88.8vh] bg-accent flex items-center">
     <div class="m-auto p-10 bg-white w-[80%] rounded-2xl flex justify-around items-center shadow shadow-blue-200">
@@ -60,4 +60,5 @@
 import {EnvelopeIcon, LockClosedIcon, EyeSlashIcon, EyeIcon} from "@heroicons/vue/24/solid";
 import NavBar from "../components/NavBar.vue";
 import Button from "../components/Button.vue";
+import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
 </script>
