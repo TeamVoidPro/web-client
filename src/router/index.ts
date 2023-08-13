@@ -50,7 +50,10 @@ import SurveyPhysical from "../pages/verifier/SurveyPhysical.vue";
 import SurveyLegal from "../pages/verifier/SurveyLegal.vue";
 // @ts-ignore
 import SurveyGeneral from "../pages/verifier/SurveyGeneral.vue";
-
+// @ts-ignore
+import VerifierInspection1 from "../pages/verifier/VerifierInspection1.vue";
+// @ts-ignore
+import VerifierInspection2 from "../pages/verifier/VerifierInspection2.vue";
 
 
 // @ts-ignore
@@ -229,6 +232,18 @@ const routes = [
                 path: 'SurveyGeneral',
                 name: 'SurveyGeneral',
                 component: () => SurveyGeneral
+
+            },
+            {
+                path: 'VerifierInspection1',
+                name: 'VerifierInspection1',
+                component: () => VerifierInspection1
+
+            },
+            {
+                path: 'VerifierInspection2',
+                name: 'VerifierInspection2',
+                component: () => VerifierInspection2
 
             }
             ]

@@ -3,7 +3,7 @@
         <div class="bg-white w-[100%] pb-2">
             <div>
                 <div class="flex items-center gap-5">
-                        <p class="mr-[100vh] text-xl font-bold text-white-500 pt-3 ml-10">Pending Inspections</p>
+                        <p class="mr-[100vh] text-xl font-bold text-gray-500 pt-3 ml-10">Pending Inspections</p>
                         <img src="../../assets/images/bell-icon.svg" alt="Bell Icon" class="w-9 h-9 pt-4">
                         <img src="../../assets/images/user.jpg" alt="User" class="w-10 h-10 rounded-full object-cover border border-black mt-4">
                 </div>

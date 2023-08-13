@@ -33,6 +33,9 @@
           </div>
         </div>
         </form>
+        <button class="rounded p-[3px] pr-7 pl-7 bg-[#0074D9] text-white mt-8 shadow-lg">
+            <router-link to="VerifierInspection1">Back</router-link>
+        </button>
         <button class="rounded p-[3px] pr-7 pl-7 bg-[#0074D9] text-white float-right mt-8 shadow-lg" @click="OpenModel('popup')">Submit</button>
 
         <n-modal v-model:show="showModal">
