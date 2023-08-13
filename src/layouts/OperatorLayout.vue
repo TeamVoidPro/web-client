@@ -1,7 +1,7 @@
 <template>
   <div class="bg-accent w-full flex">
     <SideBar/>
-    <div class="w-full">
+    <div class="w-[90vw]">
       <OperatorNav />
       <div class="px-10 py-10 max-h-[90vh] overflow-y-auto">
         <slot>

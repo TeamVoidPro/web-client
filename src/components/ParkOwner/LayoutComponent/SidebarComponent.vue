@@ -38,7 +38,7 @@ const changeRoute = (route:string)=>{
           <img src="/src/assets/images/logo-white.png" width="150">
         </div>
       </div>
-      <div class="overflow-y-auto overflow-x-hidden flex-grow">
+      <div class=" flex-grow">
         <ul class="flex flex-col py-4 space-y-3">
           <li class="px-5 pt-3 py-8">
             <div class="flex flex-col items-center justify-center gap-2">

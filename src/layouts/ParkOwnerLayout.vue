@@ -9,7 +9,7 @@ import ParkChange from "@/components/ParkOwner/LayoutComponent/ParkChangeCompone
 
 
 const userName = "Mr. Danodya Supun";
-const userImage = "/src/assets/images/user1.png";
+const userImage = "/src/assets/images/user1.svg";
 
 
 
@@ -20,14 +20,14 @@ const sideBarItems:Array<SidebarItem>=[
     link:'/park-owner/dashboard',
   },
   {
-    name: 'Overview',
+    name: 'Feedbacks',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>',
-    link: '/park-owner/overview',
+    link: '/park-owner/feedbacks',
   },
   {
     name: 'My Parks',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></g></svg>',
-    link: '/park-owner/my-parks',
+    link: '/park-owner/manage-parking',
   },
   {
     name: 'Analytics',

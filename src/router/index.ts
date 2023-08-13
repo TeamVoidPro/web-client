@@ -27,16 +27,28 @@ import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
 import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
 import EmployeeLogin from "../pages/EmployeeLogin.vue";
-// import {employeeStore} from "../store/employeeStore.ts";
 import VerifyAccount from "@pages/VerifyAccount.vue";
 import ResetPassword from "@pages/ResetPassword.vue";
+import AdminAnalytics from "@pages/administrator/AdminAnalytics.vue";
+import AdminFeedbacksAndRatings from "@pages/administrator/AdminFeedbacksAndRatings.vue";
+import AdminParkMonitoring from "@pages/administrator/AdminParkMonitoring.vue";
+import AdminPendingParkingPlaces from "@pages/administrator/AdminPendingParkingPlaces.vue";
 
 import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
 
 import ParkingPlaceInfo from "@pages/administrator/ParkingPlaceInfo.vue";
 
 
+// @ts-ignore
+import FeedbacksRatings from "../pages/parkOwner/FeedbacksRatings.vue";
 
+import ManageParkingPlace from "@pages/parkOwner/ManageParkingPlace.vue";
+//@ts-ignore
+import OwnerSettings from "@pages/parkOwner/OwnerSettings.vue";
+//@ts-ignore
+import OwnerAnalytics from "@pages/parkOwner/OwnerAnalytics.vue";
+//@ts-ignore
+import OwnerPayments from "@pages/parkOwner/OwnerPayments.vue";
 // @ts-ignore
 const routes = [
     {
@@ -44,6 +56,7 @@ const routes = [
         name: 'Home',
         component: () => Home
     },
+    
     {
 
         path: '/auth',
@@ -75,6 +88,7 @@ const routes = [
                 name: 'ResetPassword',
                 component: () => ResetPassword
             }
+
         ]
     },
     {
@@ -141,6 +155,31 @@ const routes = [
                 name: 'OwnerOverview',
                 component: () => OwnerDashboard
 
+            },
+            {
+                path:'feedbacks',
+                name:'OwnerFeedbacks',
+                component:()=>FeedbacksRatings
+            },
+            {
+                path:'manage-parking',
+                name:'ManageParking',
+                component:()=>ManageParkingPlace
+            },
+            {
+                path:'settings',
+                name:'OwnerSettings',
+                component:()=>OwnerSettings
+            },
+            {
+                path:'analytics',
+                name:'OwnerAnalytics',
+                component:()=>OwnerAnalytics
+            },
+            {
+                path: 'payments',
+                name: 'OwnerPayments',
+                component: () => OwnerPayments
             }
             ]
     },
@@ -160,6 +199,27 @@ const routes = [
                 component: () => AdminEmployees
             },
             {
+                path: '/admin-analytics',
+                name: 'AdminAnalytics',
+                component: () => AdminAnalytics
+            },
+            {
+                path: '/admin-feedbacks-and-ratings',
+                name: 'AdminFeedbacksAndRatings',
+                component: () => AdminFeedbacksAndRatings
+            },
+            {
+                path: '/admin-park-monitoring',
+                name: 'AdminParkMonitoring',
+                component: () => AdminParkMonitoring
+            },
+            {
+                path: '/admin-pending-parks',
+                name: 'AdminPendingParks',
+                component: () => AdminPendingParkingPlaces
+            },
+            {
+
                 path: '/parking-places',
                 name: 'ParkingPlaces',
                 component: () => AdminParkingPlaces
@@ -169,6 +229,7 @@ const routes = [
                 name: 'ParkingPlaceInfo',
                 component: () => ParkingPlaceInfo
             }
+
         ]
     }
     ]

@@ -1,58 +1,56 @@
 import axiosClient from "../plugins/axios.ts";
 import {authStore} from "../store/authStore.ts";
 
-export const authService = (url: string , token: string, data: object) => {
-    if(Object.keys(data).length === 0 && data.constructor === Object) {
-        return axiosClient.get(url, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then(({data}) => {
-            return data
-        }).catch((error) => {
-            if(error.response && error.response.status === 401){
-                const auth = authStore()
-                const result = auth.regenerateToken()
+export const authService = (url: string , method: string ,token: string, data: object) => {
+   if (method === 'get') {
+       return axiosClient.get(url, {
+              headers: {
+                  Authorization: `Bearer ${token}`
+              }
+       }).then(({data}) => {
+           return data;
+       }).catch((error) => {
+           if(error.response.status === 401) {
+               const store = authStore()
+               const result = store.regenerateToken()
 
-                if(result != null){
+                if(result != null) {
                     return axiosClient.get(url, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
                     }).then(({data}) => {
-                        return data
+                        return data;
                     }).catch((error) => {
-                        throw error
+                        throw error;
                     })
                 }
-            }
-        });
-    }else{
-        return axiosClient.get(url, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-            data
-        }).then(({data}) => {
-            return data
-        }).catch((error) => {
-            if(error.response && error.response.status === 401){
-                const auth = authStore()
-                const result = auth.regenerateToken()
+           }
+       })
+   }else  {
+         return axiosClient.post(url, data, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+         }).then(({data}) => {
+                return data;
+         }).catch((error) => {
+                if(error.response.status === 401) {
+                    const store = authStore()
+                    const result = store.regenerateToken()
 
-                if(result != null){
-                    return axiosClient.get(url, {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        },
-                        data
-                    }).then(({data}) => {
-                        return data
-                    }).catch((error) => {
-                        throw error
-                    })
+                     if(result != null) {
+                         return axiosClient.post(url, data, {
+                             headers: {
+                                 Authorization: `Bearer ${token}`
+                             }
+                         }).then(({data}) => {
+                             return data;
+                         }).catch((error) => {
+                             throw error;
+                         })
+                     }
                 }
-            }
-        });
+         })
     }
 }
