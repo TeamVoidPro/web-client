@@ -44,6 +44,12 @@ import VerifierOnsite from "../pages/verifier/VerifierOnsite.vue";
 import VerifierInspection from "../pages/verifier/VerifierInspection.vue";
 // @ts-ignore
 import VerifierHistory from "../pages/verifier/VerifierHistory.vue";
+// @ts-ignore
+import SurveyPhysical from "../pages/verifier/SurveyPhysical.vue";
+// @ts-ignore
+import SurveyLegal from "../pages/verifier/SurveyLegal.vue";
+// @ts-ignore
+import SurveyGeneral from "../pages/verifier/SurveyGeneral.vue";
 
 
 
@@ -205,6 +211,24 @@ const routes = [
                 path: 'history',
                 name: 'VerifierHistory',
                 component: () => VerifierHistory
+
+            },
+            {
+                path: 'SurveyPhysical',
+                name: 'SurveyPhysical',
+                component: () => SurveyPhysical
+
+            },
+            {
+                path: 'SurveyLegal',
+                name: 'SurveyLegal',
+                component: () => SurveyLegal
+
+            },
+            {
+                path: 'SurveyGeneral',
+                name: 'SurveyGeneral',
+                component: () => SurveyGeneral
 
             }
             ]

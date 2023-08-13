@@ -1,5 +1,5 @@
 <template>
-    <div class="border-2 outline-gray-100 rounded w-[95%] ml-7 mb-4 pb-5 bg-gray-100 relative">
+    <div class="border-2 rounded w-[95%] ml-7 mb-4 pb-5 bg-gray-100 relative">
         <LandIcon class="ml-[5vh] mt-5 w-12 h-12 absolute"/>
         <div class="ml-[17vh] mt-5">
             <p class="font-bold inline mr-3">Owner Name :</p>
