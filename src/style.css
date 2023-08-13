@@ -4,10 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body{
     /*font-family: 'Inter', sans-serif;*/
     font-family: 'Poppins', sans-serif;
     background-color: #EDF9FC;
+    scroll-behavior: smooth;
     /*background-color: #ffffff;*/
 }
 
@@ -21,6 +23,10 @@ body{
 
 .text-secondary{
     color: #0074D9;
+}
+
+.text-ternary{
+    color:#0F72B7;
 }
 
 .text-accent{
@@ -52,6 +58,8 @@ body{
     color: #646464;
 }
 
+
+
 .late-departures-color{
     background-color: #B8DEFF;
 }
@@ -67,6 +75,8 @@ body{
 
 #app{
     min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 main{
@@ -97,3 +107,7 @@ main{
     border-top: 10px solid #4299e1; /* Change the color to match the background color of the message */
 }
 
+
+button{
+    background-color: #0074d9;
+}

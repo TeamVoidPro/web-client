@@ -1,8 +1,9 @@
 <template>
-    <div class="bg-white p-10 w-[60%] rounded-2xl flex justify-between m-auto shadow-xl">
+  <ParkOwnerNavbar current-page="login"/>
+    <div class="bg-white mt-16 p-10 w-[60%] rounded-2xl flex justify-between m-auto shadow-xl">
       <div class="w-[40%]  flex flex-col justify-center">
         <p class="text-4xl text-primary font-semibold mb-5">Please Login</p>
-        <div class="text-xl font-semibold text-secondary mb-8">Welcome back! Your dedication drives our success.</div>
+        <div class="text-sm font-semibold text-secondary mb-8">Welcome back! Your dedication drives our success.</div>
         <n-form class=" space-y-4" :model="formValues">
           <div>
             <label class="font-semibold">Email</label>
@@ -23,10 +24,16 @@
         </div>
       </div>
 
-      <div class="w-[55%] bg-primary rounded shadow-2xl">
+      <div class="w-[45%] bg-primary rounded shadow-2xl">
         <img src="../assets/images/park.png" alt=""
-        class="w-full">
+        class="w-full h-full">
       </div>
+
+<!--      <div class="w-[60%] m-auto">-->
+<!--        <div class=" bg-[#cffafe] rounded-2xl h-[70vh] shadow-lg">-->
+<!--          <img  src="../assets/images/park.png" alt="">-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
 </template>
 
@@ -38,6 +45,7 @@ import {useRouter} from "vue-router";
 import {useMessage} from "naive-ui";
 import Button from "@components/Button.vue";
 import {EyeIcon, EyeSlashIcon} from "@heroicons/vue/24/solid";
+import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
 
 const router = useRouter();
 const message = useMessage();
@@ -61,7 +69,7 @@ const submitForm = () => {
 
         message.success("Successfully logged in");
       }).catch((err) => {
-        throw err;
+    console.log(err)
     }).catch((err) => {
       message.error("Invalid credentials. Please try again.")
   });

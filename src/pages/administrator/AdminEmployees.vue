@@ -102,7 +102,7 @@
                         <div class="w-1/2 ps-2">
                           <label>Select role <span class="text-red-600">*</span></label>
                           <n-select v-model:value="formValue.Role" :options="options2"/>
-                          <div class="text-red-600 text-xs" v-if="errors.Role != null">{{errors.Role}}</div>
+                          <div  class="text-red-600 text-xs" v-if="errors.Role != null">{{errors.Role}}</div>
                         </div>
                       </div>
                       <div class="flex justify-center">

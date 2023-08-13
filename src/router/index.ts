@@ -27,7 +27,6 @@ import OperatorParkingSlot from "@pages/operator/OperatorParkingSlot.vue";
 import AdminEmployees from "@pages/administrator/AdminEmployees.vue";
 import OperatorSettings from "../pages/operator/OperatorSettings.vue";
 import EmployeeLogin from "../pages/EmployeeLogin.vue";
-import {employeeStore} from "../store/employeeStore.ts";
 import VerifyAccount from "@pages/VerifyAccount.vue";
 import ResetPassword from "@pages/ResetPassword.vue";
 import AdminAnalytics from "@pages/administrator/AdminAnalytics.vue";
@@ -40,7 +39,16 @@ import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
 import ParkingPlaceInfo from "@pages/administrator/ParkingPlaceInfo.vue";
 
 
+// @ts-ignore
+import FeedbacksRatings from "../pages/parkOwner/FeedbacksRatings.vue";
 
+import ManageParkingPlace from "@pages/parkOwner/ManageParkingPlace.vue";
+//@ts-ignore
+import OwnerSettings from "@pages/parkOwner/OwnerSettings.vue";
+//@ts-ignore
+import OwnerAnalytics from "@pages/parkOwner/OwnerAnalytics.vue";
+//@ts-ignore
+import OwnerPayments from "@pages/parkOwner/OwnerPayments.vue";
 // @ts-ignore
 const routes = [
     {
@@ -48,6 +56,7 @@ const routes = [
         name: 'Home',
         component: () => Home
     },
+    
     {
 
         path: '/auth',
@@ -79,6 +88,7 @@ const routes = [
                 name: 'ResetPassword',
                 component: () => ResetPassword
             }
+
         ]
     },
     {
@@ -145,6 +155,31 @@ const routes = [
                 name: 'OwnerOverview',
                 component: () => OwnerDashboard
 
+            },
+            {
+                path:'feedbacks',
+                name:'OwnerFeedbacks',
+                component:()=>FeedbacksRatings
+            },
+            {
+                path:'manage-parking',
+                name:'ManageParking',
+                component:()=>ManageParkingPlace
+            },
+            {
+                path:'settings',
+                name:'OwnerSettings',
+                component:()=>OwnerSettings
+            },
+            {
+                path:'analytics',
+                name:'OwnerAnalytics',
+                component:()=>OwnerAnalytics
+            },
+            {
+                path: 'payments',
+                name: 'OwnerPayments',
+                component: () => OwnerPayments
             }
             ]
     },
@@ -204,20 +239,20 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach((to, from, next) => {
-    const store = employeeStore();
-    from;
-    if(to.meta.requiresAuth && !store.user.token) {
-        next({name: 'EmployeeLogin'});
-    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Administrator'){
-        next({name: 'AdminDashboard'});
-    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Operator') {
-        next({name: 'OperatorDashboard'});
-    }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Verifier') {
-        next({name: 'VerifierDashboard'});
-    }else{
-        next();
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     const store = employeeStore();
+//     from;
+//     if(to.meta.requiresAuth && !store.user.token) {
+//         next({name: 'EmployeeLogin'});
+//     }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Administrator'){
+//         next({name: 'AdminDashboard'});
+//     }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Operator') {
+//         next({name: 'OperatorDashboard'});
+//     }else if(store.user.token && to.name === 'EmployeeLogin' && store.user.data.role === 'Verifier') {
+//         next({name: 'VerifierDashboard'});
+//     }else{
+//         next();
+//     }
+// })
 
 export default router

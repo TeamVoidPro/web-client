@@ -28,6 +28,7 @@ export const employeeStore = defineStore('employee', {
         login(user : any) : Promise<AxiosResponse<any>> {
             return axiosClient.post('auth/employee-login', user)
                 .then(({data}) => {
+                    console.log(data);
                     console.log(data.tokens)
                     this.user.data = data.employee;
                     this.user.token = data.tokens.token;
