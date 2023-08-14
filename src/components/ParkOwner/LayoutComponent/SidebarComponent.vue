@@ -28,6 +28,10 @@ const changeRoute = (route:string)=>{
 }
 
 
+const signOut = ()=>{
+  router.push('/login');
+}
+
 </script>
 
 <template>
@@ -48,6 +52,7 @@ const changeRoute = (route:string)=>{
               <span class="text-md text-black font-bold">
                 {{sideBarUserName}}
                 </span>
+              <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2" @click="signOut">Sign Out</button>
             </div>
           </li>
           <li v-for="item in sideBarItems" :key="item.name">

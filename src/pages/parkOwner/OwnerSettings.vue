@@ -6,7 +6,7 @@ const showModal = ref(false)
 </script>
 
 <template>
-<ParkOwnerLayout>
+<ParkOwnerLayout :park-selector="false">
   <div class="w-full flex justify-center items-center">
     <div class="bg-white w-[60%] py-10 space-y-8 rounded-lg shadow-lg">
       <div class="flex justify-center items-center">

@@ -3,10 +3,39 @@
   <ParkOwnerNavbar currentPage="home"/>
     <div class="flex flex-col bg-accent justify-center items-center h-[100%] px-10 py-2.5">
       <div class="flex bg-white justify-center items-center m-5 rounded-2xl relative h-[85vh] shadow shadow-blue-200">
-          <div class="w-1/3 flex flex-col justify-center items-center h-full m-5 gap-4">
-            <div  class="text-6xl font-bold text-center text-primary top-8">Park Ease</div>
-            <div class="text-xl px-4 font-semibold text-center text-ternary">Say Goodbye to Parking Woes</div>
-            <div class="text-xl px-4 font-semibold text-center text-ternary"> Discover the Future of Hassle-Free Parking</div>
+          <div class="w-1/3 flex flex-col justify-center items-center h-full m-5 gap-10">
+            <div class="flex flex-col gap-2 ">
+              <div  class="text-6xl font-bold text-center text-primary top-8">Park Ease</div>
+              <div class="text-xl px-4 font-semibold text-center text-ternary">Say Goodbye to Parking Woes</div>
+              <div class="text-xl px-4 font-semibold text-center text-ternary"> Discover the Future of Hassle-Free Parking</div>
+              <div class="flex justify-center items-center">
+                <button class="flex mt-5 bg-black text-white font-bold rounded-2xl px-5 py-2.5 ml-2.5 mr-2.5">
+                  <div class="flex gap-4">
+                    <img src="../assets/images/playstore.png">
+                      <div class="flex items-center justify-center flex-col">
+                        <div>
+                          GET IT ON
+                        </div>
+                        <div>
+                          GOOGLE PLAY
+                        </div>
+                      </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 ">
+              <div class="text-xl px-4 font-semibold text-center text-ternary">Want to Earn Money from your vacant space?</div>
+              <div class="text-xl px-4 font-semibold text-center text-ternary"> Join With Us & Make Profits</div>
+              <div class="flex justify-center items-center">
+                <button class="flex bg-blue-600 text-white font-bold rounded-2xl px-5 py-2.5 ml-2.5 mr-2.5">
+                  <div>
+                    Join Now
+                  </div>
+                </button>
+              </div>
+            </div>
+
           </div>
           <div class="w-2/3 p-6">
             <n-carousel class="w-full" autoplay>

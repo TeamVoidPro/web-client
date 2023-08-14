@@ -1,6 +1,6 @@
 <template>
   <OperatorLayout>
-    <div class="flex gap-3">
+    <div class="flex w-full gap-3">
       <div class="w-44 h-10 late-departures-color rounded flex gap-2 px-2">
         <div class="flex justify-center items-center">
           <img class="w-5 h-5"   src="../../assets/images/warning.png" alt="">
