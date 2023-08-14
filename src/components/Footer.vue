@@ -56,6 +56,7 @@
           <div class="text-xl font-semibold text-white">Login/Signup</div>
         </div>
       </div>
+      <div class="bg-white w-[2px] ml-2.5"></div>
     </div>
 <!--    All Right Reserved-->
     <div class="flex justify-center items-center bg-primary py-1 w-screen">
