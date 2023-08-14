@@ -21,7 +21,7 @@
             <div class="flex justify-around items-baseline">
               <div class="flex flex-col justify-center">
                 <div class="text-xl font-semibold">Slot Number</div>
-                <div class="text-center text-5xl mt-2">6</div>
+                <div class="text-center text-5xl mt-2">10</div>
               </div>
               <div class="flex flex-col justify-center">
                 <div class="text-xl font-semibold">Slot Status</div>
