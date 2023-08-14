@@ -28,6 +28,9 @@
         <img src="../assets/images/park.png" alt=""
         class="w-full h-full">
       </div>
+      </div>
+      </div>
+      </div>
     </div>
 </template>
 
