@@ -27,7 +27,7 @@
             </div>
             <div class="text-secondary text-right font-semibold cursor-pointer">Already have an account ?</div>
             <div class="flex justify-center mt-7">
-              <Button>Sign In</Button>
+              <Button @click="redirectDashboard">Sign In</Button>
             </div>
           </form>
           <div class="flex items-center justify-center my-7">
@@ -61,4 +61,8 @@ import {EnvelopeIcon, LockClosedIcon, EyeSlashIcon, EyeIcon} from "@heroicons/vu
 import NavBar from "../components/NavBar.vue";
 import Button from "../components/Button.vue";
 import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
+
+const redirectDashboard = ()=>{
+  this.$router.push('/park-owner/dashboard');
+}
 </script>

@@ -13,10 +13,11 @@ import {UploadFileInfo} from "naive-ui";
 // import ParkDrawer from "@/components/ParkDrawer/ParkDrawer3D.vue";
 
 
-
 const PersonalDetails =ref<UserPersonalDetails>({
   FirstName : '',
   LastName: '',
+  Email: '',
+  Password: '',
   PhoneNo: '',
   NICNo: '',
   Address1: '',
@@ -94,6 +95,20 @@ const sample = ()=>{
                   Your Last Name
                 </div>
                 <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.LastName" type="text" placeholder="Last Name" />
+              </div>
+            </div>
+            <div class="flex justify-around gap-3">
+              <div class="flex flex-col gap-2 w-5/12">
+                <div class="flex">
+                  Email
+                </div>
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.Email" type="text" placeholder="Your Email" />
+              </div>
+              <div class="flex flex-col gap-2 w-5/12">
+                <div class="flex">
+                  Password
+                </div>
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.Password" type="text" placeholder="Password" />
               </div>
             </div>
             <div class="flex justify-around gap-3">
@@ -185,7 +200,7 @@ const sample = ()=>{
                   </div>
                 </div>
                 <div class="flex flex-col mt-6 gap-2">
-                  <div class="flex items-center justify-center w-full">
+                  <div class="flex flex-col  justify-center w-full">
                     <div class="flex font-bold w-4/12">
                       {{PersonalDetails.IdentificationType === 'NIC' ? 'NIC ' : 'License '}} Front
                     </div>
@@ -224,7 +239,7 @@ const sample = ()=>{
                       </n-upload-dragger>
                     </n-upload>
                   </div>
-                  <div class="flex items-center justify-center w-full">
+                  <div class="flex flex-col justify-center w-full">
                     <div class="flex font-bold w-4/12">
                       {{PersonalDetails.IdentificationType === 'NIC' ? 'NIC ' : 'License '}} Back
                     </div>
