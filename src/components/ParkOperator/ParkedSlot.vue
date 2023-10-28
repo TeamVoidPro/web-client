@@ -2,7 +2,7 @@
 <template>
   <div class="cursor-pointer">
     <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600" @click="showModal = true">
-      <div class="text-2xl"><slot></slot></div>
+      <div class="text-2xl">{{ props.slot.slotNumber }}</div>
     </div>
     <n-modal v-model:show="showModal">
       <n-card
@@ -115,6 +115,10 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
+
+const props = defineProps<{
+  slot: object;
+}>();
 
 const showModal = ref(false)
 

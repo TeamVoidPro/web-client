@@ -1,7 +1,7 @@
 <template>
   <div class="cursor-pointer">
     <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-yellow-300/30 border-2 border-yellow-600" @click="showModal = true">
-      <div class="text-2xl"><slot></slot></div>
+      <div class="text-2xl">{{ props.slot.slotNumber }}</div>
     </div>
     <n-modal v-model:show="showModal">
       <n-card
@@ -119,6 +119,11 @@ import {useMessage} from "naive-ui";
 const message = useMessage();
 
 const showModal = ref(false)
+
+const props = defineProps<{
+  slot: object;
+}>();
+
 const rowProps = () => {
   return {
     class: "cursor-pointer",

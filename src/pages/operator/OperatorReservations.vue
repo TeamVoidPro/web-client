@@ -503,18 +503,88 @@
     <div>
       <n-modal v-model:show="showModal">
         <n-card
-            style="width: 50em;"
+            style="width: 60em;"
             class="rounded-xl"
             title="Reservation - R001"
             :bordered="false"
             role="dialog"
             aria-modal="true"
+            header-style="font-size: 2em; font-weight: 600; color: #1F2937"
         >
           <template #header-extra>
-            <CloseIcon class="w-5 h-5 text-red-700"/>
+            <CloseIcon class="w-5 h-5 text-red-700 cursor-pointer" @click="showModal = false"/>
           </template>
           <div>
-            <div><img src="../../assets/images/QR.png" alt=""></div>
+            <div class="flex gap-10">
+              <div class="w-[18em] p-2 border-2 rounded-xl">
+                <div class="text-lg font-semibold">Slot:</div>
+                <div class="flex justify-center text-5xl my-5 font-semibold">24</div>
+                <div class="text-center text-xl">8.00 A.M - 2.00 P.M</div>
+              </div>
+              <div class="p-2 w-[38em]">
+                <div class="flex gap-10">
+                  <div class="w-[45%] space-y-8">
+                    <div class="">
+                      <div class="text-lg font-semibold">Name:</div>
+                      <div class="ps-2">Danodya Supun</div>
+                    </div>
+                    <div class="">
+                      <div class="text-lg font-semibold">Vehicle Number:</div>
+                      <div class="ps-2">ABC - 1234</div>
+                    </div>
+                  </div>
+                  <div class="w-[45%] space-y-8">
+                    <div class="">
+                      <div class="text-lg font-semibold">Contact:</div>
+                      <div class="ps-2">0766023645</div>
+                    </div>
+                    <div class="">
+                      <div class="text-lg font-semibold">Vehicle Type:</div>
+                      <div class="ps-2">Car</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-6">
+              <div class="flex gap-8">
+                <div class="w-[30%] p-2">
+                  <div class="text-lg font-semibold">Reservation Date:</div>
+                  <div class="ps-2">Today</div>
+                </div>
+                <div class="w-[30%] p-2 ms-2">
+                  <div class="text-lg font-semibold">Reserved At:</div>
+                  <div class="ps-2">Yesterday at 16:32:00</div>
+                </div>
+                <div class="w-[30%] py-2">
+                  <div class="text-lg font-semibold">Total Cost:</div>
+                  <div class="ps-2">Rs 800.00</div>
+                </div>
+              </div>
+              <div class="flex gap-8">
+                <div class="w-[30%] p-2">
+                  <div class="text-lg font-semibold">Payment Method:</div>
+                  <div class="ps-2">Cash - Onsite</div>
+                </div>
+                <div class="w-[30%] p-2 ms-2">
+                  <div class="text-lg font-semibold">Payment Status:</div>
+                  <div class="ps-2">Not Paid</div>
+                </div>
+                <div class="w-[30%] py-2">
+                  <div class="text-lg font-semibold">Zone:</div>
+                  <div class="ps-2">Zone A</div>
+                </div>
+              </div>
+              <div>
+                <div class="text-lg font-semibold">Vehicle Description:</div>
+                <div class="ps-2">Vehicle under restoration, avoid touching.</div>
+              </div>
+            </div>
+
+            <div class="flex justify-between mt-10">
+              <button class="w-[10em] flex items-center justify-center gap-2 border-none text-white rounded-lg text-xl py-2 bg-green-500 hover:bg-green-600 cursor-pointer"><PhoneIcon class="font-semibold"/> Contact</button>
+              <button class="w-[10em] flex items-center justify-center gap-2 border-none text-white rounded-lg text-xl py-2 bg-red-500 hover:bg-red-600 cursor-pointer"><CloseIcon class="font-semibold"/> Cancel</button>
+            </div>
           </div>
           <template #footer>
           </template>
@@ -531,6 +601,7 @@ import OperatorLayout from "../../layouts/OperatorLayout.vue";
 import InfoIcon from "../../assets/icons/InfoIcon.vue";
 import {ref } from 'vue'
 import CloseIcon from "../../assets/icons/CloseIcon.vue";
+import PhoneIcon from "@assets/icons/PhoneIcon.vue";
 
 const showModal = ref(false)
 const currentReservation = ref({
