@@ -2,67 +2,9 @@
   <OperatorLayout>
     <div class="flex justify-between">
       <div class="w-[57%] space-y-4">
-        <ParkingZone />
-        <div>
-          <div class="text-xl font-semibold mb-5">Zone B</div>
-          <table class="border-collapse w-full">
-            <tr>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-green-300/30 border-2 border-green-600">
-                  <div class="text-2xl">10</div>
-                </div>
-              </td>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">9</div>
-                </div>
-              </td>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">8</div>
-                </div>
-              </td>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-green-300/30 border-2 border-green-600">
-                  <div class="text-2xl">7</div>
-                </div>
-              </td>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-yellow-300/30 border-2 border-yellow-600">
-                  <div class="text-2xl">6</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">1</div>
-                </div>
-              </td>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-green-300/30 border-2 border-green-600">
-                  <div class="text-2xl">2</div>
-                </div>
-              </td>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-yellow-300/30 border-2 border-yellow-600">
-                  <div class="text-2xl">3</div>
-                </div>
-              </td>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">4</div>
-                </div>
-              </td>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">5</div>
-                </div>
-              </td>
-            </tr>
-          </table>
+        <div v-for="zone in zoneList">
+          <ParkingZone :zone="zone" />
         </div>
-
       </div>
       <div class="w-[39%]">
         <div>
@@ -152,7 +94,7 @@
       </div>
     </div>
     <div class="absolute bottom-10 right-10">
-      <button @click="showModal = true" class="border-2 border-green-600 bg-green-300/30 rounded opacity-50 hover:opacity-100">
+      <button @click="showModal = true; getFreeSlots();" class="border-2 border-green-600 bg-green-300/30 rounded opacity-50 hover:opacity-100">
         <ReservationIcon class="w-12 h-12 text-green-600"/>
       </button>
       <n-modal v-model:show="showModal">
@@ -175,73 +117,61 @@
                   <label for="">Name</label>
                   <n-input placeholder="Enter name" />
                 </div>
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2 ">
                   <label for="">Contact </label>
                   <n-input placeholder="Enter contact number" />
                 </div>
               </div>
               <div class="flex w-full justify-between">
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2 ">
                   <label for="">Vehicle Number</label>
                   <n-input placeholder="Enter vehicle number" />
                 </div>
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2 ">
                   <label for="">Vehicle Type</label>
                   <n-input placeholder="Select vehicle type" />
                 </div>
               </div>
               <div class="flex w-full justify-between">
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2 ">
                   <label for="">Reservation start at</label>
                   <n-time-picker />
                 </div>
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2">
                   <label for="">Reservation end at</label>
                   <n-time-picker />
                 </div>
               </div>
               <div class="flex w-full justify-between">
-                <div class="w-[49%] space-y-2 space-y-2">
+                <div class="w-[49%] space-y-2">
                   <label for="">Zone</label>
                   <div class="flex flex-wrap justify-around mt-3">
-                    <n-radio
-                        :checked="checkedValue === 'Definitely Maybe'"
-                        value="Zone A"
-                        name="zoneA"
-                        @change="handleChange"
-                    >
-                      Zone A
-                    </n-radio>
-                    <n-radio
-                        :checked="checkedValue === 'Definitely Maybe'"
-                        value="Zone B"
-                        name="zoneB"
-                        @change="handleChange"
-                    >
-                      Zone B
-                    </n-radio>
-
+                    <n-radio-group v-model:value="value2" name="radioGroup">
+                      <n-space>
+                        <n-radio
+                            v-for="zone in zones"
+                            :key="zone.value"
+                            :value="zone.value"
+                            :label="zone.label"
+                        />
+                      </n-space>
+                    </n-radio-group>
                   </div>
                 </div>
                 <div class="w-[49%] space-y-2">
                   <label for="">Payment Method</label>
                   <div class="flex flex-wrap justify-around mt-3">
-                    <n-radio
-                        :checked="checkedValue === 'Definitely Maybe'"
-                        value="Cash"
-                        name="cash"
-                        @change="handleChange"
-                    >
-                      Cash
-                    </n-radio>
-                    <n-radio
-                        :checked="checkedValue === 'Definitely Maybe'"
-                        value="Card"
-                        name="card"
-                        @change="handleChange"
-                    >
-                      Card
-                    </n-radio>
+                    <n-radio-group v-model:value="value1" name="radioGroup">
+                      <n-space>
+                        <n-radio
+                            v-for="paymentMethod in paymentMethods"
+                            :key="paymentMethod.value"
+                            :value="paymentMethod.value"
+                            :label="paymentMethod.label"
+                        />
+                      </n-space>
+                    </n-radio-group>
+
                   </div>
                 </div>
               </div>
@@ -289,14 +219,65 @@
 <script lang="ts" setup>
 import OperatorLayout from "../../layouts/OperatorLayout.vue";
 import ParkingZone from "@components/ParkOperator/ParkingZone.vue";
-import {ref} from "vue";
 import ReservationIcon from "@assets/icons/ReservationIcon.vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
+import {parkingOperatorStore} from "../../store/parkingOperatorStore.ts";
+import {zonesStore} from "../../store/zonesStore.ts";
+import {onMounted, ref} from "vue";
+
 const showModal = ref(false);
+const value1 = ref(null);
+const value2 = ref(null);
+const zoneList = ref(null);
 
-const handleChange = (e: any) => {
-  console.log(e);
-};
+onMounted(() => {
+  const operatorStore = parkingOperatorStore();
+  const zoneStore = zonesStore();
 
-const checkedValue = ref("Definitely Maybe");
+  const parkingPlace =  ref(null);
+
+  operatorStore.getParkingPlace().then((res:any) => {
+    parkingPlace.value = res.parking;
+
+    const id = parkingPlace.value.parkingPlaceId;
+
+    zoneStore.getZones(id).then((res:any) => {
+      zoneList.value = res.data;
+    });
+  });
+});
+
+function getFreeSlots()
+{
+
+}
+
+const paymentMethods = [
+  {
+    label: "Cash",
+    value: "cash",
+  },
+  {
+    label: "Card",
+    value: "card",
+  }
+].map((s) => {
+  s.value = s.value.toLowerCase();
+  return s;
+});
+
+const zones = [
+  {
+    label: "Zone A",
+    value: "zoneA",
+  },
+  {
+    label: "Zone B",
+    value: "zoneB",
+  }
+].map((s) => {
+  s.value = s.value.toLowerCase();
+  return s;
+});
+
 </script>
