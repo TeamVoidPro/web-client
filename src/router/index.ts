@@ -33,6 +33,7 @@ import AdminAnalytics from "@pages/administrator/AdminAnalytics.vue";
 import AdminFeedbacksAndRatings from "@pages/administrator/AdminFeedbacksAndRatings.vue";
 import AdminParkMonitoring from "@pages/administrator/AdminParkMonitoring.vue";
 import AdminPendingParkingPlaces from "@pages/administrator/AdminPendingParkingPlaces.vue";
+import PendingParkingPlaceInfo from "@pages/administrator/PendingParkingPlaceInfo.vue";
 
 import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
 
@@ -228,6 +229,12 @@ const routes = [
                 path: '/parking-place-info',
                 name: 'ParkingPlaceInfo',
                 component: () => ParkingPlaceInfo
+            },
+            {
+                path:'/pending-parking-place-info',
+                name:'PendingParkingPlaceInfo',
+                component: () => PendingParkingPlaceInfo
+
             }
 
         ]
