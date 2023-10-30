@@ -19,10 +19,10 @@
               title="Park Details"
               description="Detail of the park"
           />
-          <n-step
-              title="Make your park"
-              description="View of your park"
-          />
+<!--          <n-step-->
+<!--              title="Make your park"-->
+<!--              description="View of your park"-->
+<!--          />-->
           <n-step
               title="Verify your park"
               description="Verify your park"
@@ -34,15 +34,18 @@
         <PersonalDetailRegistrationForm v-if="store.registrationStep === 1" />
         <LandRegistrationForm v-if="store.registrationStep === 2" />
         <ParkDetails v-if="store.registrationStep === 3" />
-        <ParkDrawer class="h-full" v-if="store.registrationStep === 4" />
-        <ParkVerification v-if="store.registrationStep===5"/>
+<!--        <ParkDrawer class="h-full" v-if="store.registrationStep === 4" />-->
+        <ParkVerification v-if="store.registrationStep===4"/>
       </div>
       <div class="w-full flex items-center justify-center gap-3 mt-4">
         <button class="bg-primary text-white rounded-3xl text-xl px-6 py-2" @click="prevStep()">
           Back
         </button>
-        <button class="bg-primary text-white rounded-3xl text-xl px-6 py-2" @click="nextStep()">
+        <button class="bg-primary text-white rounded-3xl text-xl px-6 py-2" @click="nextStep()" v-if="store.registrationStep!=4">
           Next
+        </button>
+        <button class="bg-primary text-white rounded-3xl text-xl px-6 py-2" @click="nextStep()" v-if="store.registrationStep===4">
+          Submit
         </button>
       </div>
     </div>
@@ -57,7 +60,7 @@ import ParkOwnerNavbar from "@/components/Navbar/ParkOwnerNavbar.vue";
 import PersonalDetailRegistrationForm from "@components/ParkOwner/PersonalDetailRegistrationForm.vue";
 import LandRegistrationForm from "@components/ParkOwner/LandRegistrationForm.vue";
 import ParkDetails from "@components/ParkOwner/ParkDetails.vue";
-import ParkDrawer from "@components/ParkOwner/ParkDrawer/ParkDrawer2D.vue";
+// import ParkDrawer from "@components/ParkOwner/ParkDrawer/ParkDrawer2D.vue";
 import ParkVerification from "@components/ParkOwner/ParkVerification.vue";
 import {useParkingOwnerRegistrationStore} from "@store/parkingOwnerRegisterStore.ts"
 
@@ -78,11 +81,13 @@ const prevStep = () => {
 }
 
 const nextStep = () => {
-  store.nextStep()
-  console.log(store.registrationStep)
   if(store.registrationStep === 4){
     submitForm()
+    return
   }
+  store.nextStep()
+  console.log(store.registrationStep)
+
 }
 
 </script>

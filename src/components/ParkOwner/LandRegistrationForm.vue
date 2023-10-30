@@ -48,16 +48,23 @@ function handlePreview (file: UploadFileInfo) {
   previewImageUrl.value = URL.createObjectURL(file.file as Blob) as string
   showModal.value = true
 }
-const handleFrontUpload = (info:UploadFileInfo) => {
+const handleDeedUpload = (info:UploadFileInfo) => {
   console.log(info)
-  PersonalDetails.value.IdentificationFrontImage = info?.file ?? null
   if (info?.file.file) {
-    NICFrontImage.value = URL.createObjectURL(info.file.file as Blob) as string
+    store.LandDetails.deedImage = URL.createObjectURL(info.file.file as Blob) as string
   }
 }
-const handleBackUpload = (file:UploadFileInfo) => {
-  PersonalDetails.value.IdentificationBackImage = file?.file ?? null
-  NICBackImage.value = URL.createObjectURL(file.file as Blob) as string
+
+const handleMapUpload = (file:UploadFileInfo) => {
+  if(file?.file.file){
+    store.LandDetails.landMapImage = URL.createObjectURL(file.file.file as Blob) as string
+  }
+}
+
+const handleLandImagestUpload = (file:UploadFileInfo) => {
+  if(file?.file.file){
+    store.LandDetails.landImages = URL.createObjectURL(file.file.file as Blob) as string
+  }
 }
 
 
@@ -79,13 +86,13 @@ const handleBackUpload = (file:UploadFileInfo) => {
                 <div class="flex">
                   Address No
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.FirstName" type="text" placeholder="Land Address line no" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="store.LandDetails.AddressNo" type="text" placeholder="Land Address line no" />
               </div>
               <div class="flex flex-col gap-2 w-5/12">
                 <div class="flex">
                   Address Street
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.LastName" type="text" placeholder="Land Address street" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="store.LandDetails.AddressStreet" type="text" placeholder="Land Address street" />
               </div>
             </div>
             <div class="flex justify-around gap-3">
@@ -93,13 +100,13 @@ const handleBackUpload = (file:UploadFileInfo) => {
                 <div class="flex">
                   City
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.PhoneNo" type="text" placeholder="Land city" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="store.LandDetails.parkingCity" type="text" placeholder="Land city" />
               </div>
               <div class="flex flex-col gap-2 w-5/12">
                 <div class="flex">
                   Province
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.NICNo" type="text" placeholder="Land Province" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="store.LandDetails.parkingProvince" type="text" placeholder="Land Province" />
               </div>
             </div>
           </div>
@@ -138,15 +145,14 @@ const handleBackUpload = (file:UploadFileInfo) => {
                     <div class="flex w-9/12">
                       <n-upload
                           directory-dnd
-                          action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
-                          @finish="handleFrontUpload"
+                          @change="handleDeedUpload"
                           @preview="handlePreview"
                           show-preview-button
                           :max="1"
                           accept="image/*"
                       >
                         <n-upload-dragger class="rounded-3xl border-3 border-green-500">
-                          <div v-if="PersonalDetails.IdentificationFrontImage===null">
+                          <div v-if="store.LandDetails.deedImage===''">
                             <div style="margin-bottom: 12px">
                               <n-icon size="36" :depth="3">
                                 <archive-icon />
@@ -164,7 +170,7 @@ const handleBackUpload = (file:UploadFileInfo) => {
                           <div v-else>
                             <n-image
                                 width="100"
-                                :src="NICFrontImage"
+                                :src="store.LandDetails.deedImage"
                             />
                             <!--                          Success Image-->
                             <n-icon :size="18" :component="Checkmark16Filled" />
@@ -186,15 +192,14 @@ const handleBackUpload = (file:UploadFileInfo) => {
                     <div class="flex w-9/12">
                       <n-upload
                           directory-dnd
-                          action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
-                          @finish="handleFrontUpload"
+                          @change="handleMapUpload"
                           @preview="handlePreview"
                           show-preview-button
                           :max="1"
                           accept="image/*"
                       >
                         <n-upload-dragger class="rounded-3xl border-3 border-green-500">
-                          <div v-if="PersonalDetails.IdentificationFrontImage===null">
+                          <div v-if="store.LandDetails.landMapImage===''">
                             <div style="margin-bottom: 12px">
                               <n-icon size="36" :depth="3">
                                 <archive-icon />
@@ -212,7 +217,7 @@ const handleBackUpload = (file:UploadFileInfo) => {
                           <div v-else>
                             <n-image
                                 width="100"
-                                :src="NICFrontImage"
+                                :src="store.LandDetails.landMapImage"
                             />
                             <!--                          Success Image-->
                             <n-icon :size="18" :component="Checkmark16Filled" />
@@ -234,15 +239,14 @@ const handleBackUpload = (file:UploadFileInfo) => {
                     <div class="flex w-9/12">
                       <n-upload
                           directory-dnd
-                          action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
-                          @finish="handleFrontUpload"
+                          @change="handleLandImagestUpload"
                           @preview="handlePreview"
                           show-preview-button
                           :max="1"
                           accept="image/*"
                       >
                         <n-upload-dragger class="rounded-3xl border-3 border-green-500">
-                          <div v-if="PersonalDetails.IdentificationFrontImage===null">
+                          <div v-if="store.LandDetails.landImages ===''">
                             <div class="mb-2">
                               <n-icon size="36" :depth="3">
                                 <archive-icon />
@@ -260,7 +264,7 @@ const handleBackUpload = (file:UploadFileInfo) => {
                           <div v-else>
                             <n-image
                                 width="100"
-                                :src="NICFrontImage"
+                                :src="store.LandDetails.landImages"
                             />
                             <!--                          Success Image-->
                             <n-icon :size="18" :component="Checkmark16Filled" />
