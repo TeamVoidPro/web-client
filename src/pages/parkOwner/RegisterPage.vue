@@ -63,15 +63,28 @@ import ParkDetails from "@components/ParkOwner/ParkDetails.vue";
 // import ParkDrawer from "@components/ParkOwner/ParkDrawer/ParkDrawer2D.vue";
 import ParkVerification from "@components/ParkOwner/ParkVerification.vue";
 import {useParkingOwnerRegistrationStore} from "@store/parkingOwnerRegisterStore.ts"
+import {useMessage} from "naive-ui";
 
 // import LandRegistrationForm from "@/components/ParkOwner/LandRegistrationForm.vue";
 //
 
-
+const message = useMessage()
 const store = useParkingOwnerRegistrationStore();
 
-function submitForm () {
-  store.registerOwner();
+let showAlert = false;
+
+
+
+async  function submitForm () {
+  let response= await store.registerOwner();
+  if(response && response.status===200){
+    message.success("Parking Owner Registered Successfully")
+    return true
+  }
+  else{
+    message.error("Error Occurred")
+    return false
+  }
 }
 
 

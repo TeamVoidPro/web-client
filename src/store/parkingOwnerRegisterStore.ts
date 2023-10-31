@@ -34,6 +34,8 @@ export const useParkingOwnerRegistrationStore = defineStore('parkingOwnerRegistr
         },
         parkingDetails: {
             parkAvailable:'1',
+            parkName: '',
+            parkDescription: '',
             width: 0,
             length: 0,
             parkingCategory: '1',
@@ -105,7 +107,17 @@ export const useParkingOwnerRegistrationStore = defineStore('parkingOwnerRegistr
                 'landMapImage': this.LandDetails.landMapImage,
                 'landImages': this.LandDetails.landImages,
                 'latitude': this.LandDetails.latitude,
-                'longitude': this.LandDetails.longitude
+                'longitude': this.LandDetails.longitude,
+                'parkAvailable': this.parkingDetails.parkAvailable,
+                'parkName': this.parkingDetails.parkName,
+                'parkDescription': this.parkingDetails.parkDescription,
+                'parkWidth': this.parkingDetails.width,
+                'parkLength': this.parkingDetails.length,
+                'parkCategory': this.parkingDetails.parkingCategory,
+                'noOfStories': this.parkingDetails.noOfStories,
+                'hasUndergroundParking': this.parkingDetails.hasUndergroundParking,
+                'parkImage': this.parkingDetails.parkMapImage,
+                // 'storyList': this.parkingDetails.storyList[1]
             };
             console.log(data)
             return axiosClient.post('parkingOwner/register-parking-owner', data

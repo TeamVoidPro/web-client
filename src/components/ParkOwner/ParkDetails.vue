@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white h-fit rounded-3xl p-5 w-3/5">
+  <div class="bg-white h-fit rounded-3xl p-5 ">
     <div class="text-2xl font-bold flex text-center justify-center mb-4">
       Enter your park details
     </div>
@@ -94,6 +94,17 @@
         </n-card>
       </div>
       <div>
+        <n-card v-if="questionNo[5].trigger && parkingOwnerRegistrationStore.parkingDetails.parkAvailable==='1'" class="mb-2">
+          <div class="flex gap-7 mb-2">
+            Name of the park
+            <n-input v-model:value="parkingOwnerRegistrationStore.parkingDetails.parkName" size="small" round placeholder="Park Name" />
+          </div>
+          <div class="flex gap-1">
+            Description of the park
+            <n-input v-model:value="parkingOwnerRegistrationStore.parkingDetails.parkDescription" size="small" round placeholder="Park Description" />
+          </div>
+
+        </n-card>
         <n-card v-if="questionNo[4].trigger && parkingOwnerRegistrationStore.parkingDetails.parkAvailable==='1'"
             class="bg-white rounded flex  w-4/5 justify-center text-center mb-2"
             title="Enter the number of parking slots"
@@ -166,8 +177,6 @@
               </div>
             </n-collapse>
         </n-card>
-
-
       </div>
     </div>
   </div>
