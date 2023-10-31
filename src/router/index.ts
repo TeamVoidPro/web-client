@@ -30,7 +30,6 @@ import EmployeeLogin from "../pages/EmployeeLogin.vue";
 import VerifyAccount from "@pages/VerifyAccount.vue";
 import ResetPassword from "@pages/ResetPassword.vue";
 import AdminAnalytics from "@pages/administrator/AdminAnalytics.vue";
-import AdminFeedbacksAndRatings from "@pages/administrator/AdminFeedbacksAndRatings.vue";
 import AdminParkMonitoring from "@pages/administrator/AdminParkMonitoring.vue";
 import AdminPendingParkingPlaces from "@pages/administrator/AdminPendingParkingPlaces.vue";
 import PendingParkingPlaceInfo from "@pages/administrator/PendingParkingPlaceInfo.vue";
@@ -204,11 +203,7 @@ const routes = [
                 name: 'AdminAnalytics',
                 component: () => AdminAnalytics
             },
-            {
-                path: '/admin-feedbacks-and-ratings',
-                name: 'AdminFeedbacksAndRatings',
-                component: () => AdminFeedbacksAndRatings
-            },
+           
             {
                 path: '/admin-park-monitoring',
                 name: 'AdminParkMonitoring',

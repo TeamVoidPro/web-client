@@ -73,86 +73,33 @@
           <td> </td>
         </tr>
         <tr>
-          <td>Ratings</td>
+          <td>
+            <div class="w-full flex justify-center ">
+              <button @click="showModal = true" class="py-2 px-4 rounded text-white">Reviews & Ratings</button>
+              <n-modal v-model:show="showModal">
+                <n-card
+                  style="width: 600px"
+                  title="Modal"
+                  :bordered="false"
+                  size="huge"
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <template #header-extra>
+                    Oops!
+                  </template>
+                  Content
+                  <template #footer>
+                    Footer
+                  </template>
+                </n-card>
+              </n-modal>
+            </div>
+        </td>
           <td> </td>
         </tr>
         </tbody>
       </n-table>
-<!--      <div class="flex gap-20 justify-items-start">-->
-<!--        <p class="font-bold">Location:</p>-->
-<!--        <a  href="https://maps.app.goo.gl/K3hoj2uWMgfEJiz87" class="underline">https://maps.app.goo.gl/K3hoj2uWMgfEJiz87</a>-->
-<!--      </div>-->
-<!--      <div class="flex gap-20">-->
-<!--        <p class="font-bold">Services Provide:</p>-->
-<!--        <ul class="list-inside list-[square]">-->
-<!--          <li>Mitigate Parking Abuse</li>-->
-<!--          <li>Enhance Parking Efficiency</li>-->
-<!--          <li>Improve Parking Experience</li>-->
-<!--          <li>Reduce Traffic Congestion</li>-->
-<!--          <li>Mitigate Carbon Footprint</li>-->
-<!--          <li>Deter Anti-Social Behaviour</li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--      <div class="flex gap-20">-->
-<!--        <p class="font-bold">Parking Owner:</p>-->
-<!--        <p>Viharsha Jayathilaka</p>-->
-<!--      </div>-->
-<!--      <div class="flex gap-20">-->
-<!--        <p class="font-bold">Parking Owner ID:</p>-->
-<!--        <p>A0001</p>-->
-<!--      </div>-->
-<!--      <div class="flex gap-20">-->
-<!--        <p class="font-bold">Parking Verifier:</p>-->
-<!--        <p>Danodya Supun</p>-->
-<!--      </div>-->
-<!--      <div class="flex gap-20">-->
-<!--        <p class="font-bold">Parking Place Verified Date:</p>-->
-<!--        <p>27/04/2020</p>-->
-<!--      </div>-->
-<!--      <div class="flex gap-20">-->
-<!--        <p class="font-bold">Compliance Monitoring Report</p>-->
-<!--        <p>27/04/2020</p>-->
-<!--      </div>-->
-<!--      <div class="flex gap-20">-->
-<!--        <p class="font-bold">Documents</p>-->
-<!--        <p>27/04/2020</p>-->
-<!--      </div>-->
-<!--      <div class="flex gap-20">-->
-<!--        <p class="font-bold">Ratings</p>-->
-<!--        <div>-->
-<!--          <button class="text-secondary" @click="showModal = true">Reviews</button>-->
-<!--          <n-modal v-model:show="showModal">-->
-<!--            <n-card-->
-<!--                style="width: 600px"-->
-<!--                title="P0001"-->
-<!--                :bordered="false"-->
-<!--                size="huge"-->
-<!--                role="dialog"-->
-<!--                aria-modal="true"-->
-<!--            >-->
-<!--              <template #header-extra>-->
-<!--                <CloseIcon class="text-red-600 w-5 h-5" />-->
-<!--              </template>-->
-<!--              <div class="flex flex-col">-->
-<!--                <div class="flex justify-center pt-0">-->
-<!--                  <StarIcon class="text-yellow-300 w-14 h-20  "/>-->
-<!--                  <p class="text-5xl font-medium">5.0</p>-->
-<!--                </div>-->
-<!--                <div class="flex flex-col">-->
-<!--                  <div class="flex gap-2 text-center">-->
-<!--                    <img class="w-10 h-10" src="../../assets/images/user.jpg">-->
-<!--                    <div class="flex justify-center">Danodya Supun</div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-
-
-
-<!--            </n-card>-->
-<!--          </n-modal>-->
-<!--        </div>-->
-<!--      </div>-->
-
     </div>
   </div>
 </AdminLayout>
@@ -168,9 +115,9 @@
 
 <script setup lang="ts">
 import AdminLayout from "@layouts/AdminLayout.vue";
-import { defineComponent, ref } from 'vue'
-import StarIcon from "@assets/icons/StarIcon.vue";
-import CloseIcon from "@assets/icons/CloseIcon.vue";
+import {ref} from "vue";
 
-const showModal = ref(false)
+const showModal = ref(false);
+
+
 </script>

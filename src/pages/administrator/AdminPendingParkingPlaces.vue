@@ -235,6 +235,9 @@
           </div>
       </n-card>
     </div>
+    <div class="w-full flex justify-center">
+      <Pagination class="mt-10" :total="100" :page-size="10" />
+    </div>
   </AdminLayout>
 </template>
 
@@ -247,6 +250,7 @@ import PersonIcon from '../../assets/icons/PersonIcon.vue';
 import  PhoneIcon  from '../../assets/icons/PhoneIcon.vue';
 import EmailIcon from '../../assets/icons/EmailIcon.vue';
 import ParkingPlaceIdIcon from '../../assets/icons/ParkingPlaceIdIcon.vue';
+import Pagination from '../../components/Pagination.vue';
 
 
 const selectedValue =  ref(null);
