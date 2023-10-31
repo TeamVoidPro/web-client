@@ -128,6 +128,16 @@ export const useParkingOwnerRegistrationStore = defineStore('parkingOwnerRegistr
                 }).catch((e:any) => {
                     throw e;
                 })
+        },
+        login(){
+        },
+        getReviewData(){
+            return axiosClient.get('parkingOwner/get-parking-ratings/1')
+                .then((res:any) => {
+                    return res;
+                }).catch((e:any) => {
+                    throw e;
+                })
         }
     }
 })

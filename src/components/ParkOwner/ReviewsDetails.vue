@@ -1,7 +1,11 @@
 <script setup lang="ts">
 
 import {NEllipsis, NPagination} from "naive-ui";
-import {ref} from "vue";
+import {ref, watch} from "vue";
+import {useParkingOwnerRegistrationStore} from "@store/parkingOwnerRegisterStore.ts";
+import {useStore} from "@headlessui/vue/dist/hooks/use-store";
+
+const parkingOwnerRegistrationStore= useParkingOwnerRegistrationStore();
 
 const reviews = ref([
   {
@@ -29,6 +33,7 @@ const reviews = ref([
     review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam sit amet dictum ultrices, nunc ipsum ultricies libero, vitae tincidunt justo arcu quis nisl. Sed euismod, diam sit amet dictum ultrices, nunc ipsum ultricies libero, vitae tincidunt justo arcu quis nisl.",
   },
 ])
+
 </script>
 
 <template>

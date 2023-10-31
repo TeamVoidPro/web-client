@@ -8,7 +8,7 @@ import ParkChange from "@/components/ParkOwner/LayoutComponent/ParkChangeCompone
 
 
 
-const userName = "Mr. Danodya Supun";
+const userName = "Isurika Arunodi";
 const userImage = "/src/assets/images/user1.svg";
 
 const props = defineProps({
