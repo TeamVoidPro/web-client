@@ -222,7 +222,7 @@ import PeakIcon from "../../assets/icons/PeakIcon.vue";
 import ProfitIcon from "@assets/icons/ProfitIcon.vue";
 import ScanIcon from "@assets/icons/ScanIcon.vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
-import QRScanner from "@components/ParkOperator/QRScanner.vue";
+import QRScanner from "@components/ParkOperator/QRScanner.vue"
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,Filler,LineElement,PointElement,RadialLinearScale)
 
