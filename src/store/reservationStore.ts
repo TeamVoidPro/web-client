@@ -44,6 +44,33 @@ export const reservationStore = defineStore('reservations', {
                 }).catch((err : any) => {
                     throw err;
                 })
-        }
+        },
+        async getUpcomingReservations(date : string, from : string, to : string) : Promise<AxiosResponse<any>> {
+    
+                return axiosClient.get(`Reservations/get-upcoming-reservations/${date}/${from}/${to}`)
+                    .then((res : any) => {
+                        return res.data;
+                    }).catch((err : any) => {
+                        throw err;
+                    })
+            },
+        async getCancelledReservations(date : string, from : string, to : string) : Promise<AxiosResponse<any>> {
+    
+                return axiosClient.get(`Reservations/get-cancelled-reservations/${date}/${from}/${to}`)
+                    .then((res : any) => {
+                        return res.data;
+                    }).catch((err : any) => {
+                        throw err;
+                    })
+            },
+        async getCompletedReservations(date : string, from : string, to : string) : Promise<AxiosResponse<any>> {
+                return axiosClient.get(`Reservations/get-completed-reservations/${date}/${from}/${to}`)
+                    .then((res : any) => {
+                        return res.data;
+                    }).catch((err : any) => {
+                        throw err;
+                    })
+            }
+
     }
 })

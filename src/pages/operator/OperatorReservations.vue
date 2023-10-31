@@ -44,14 +44,14 @@
           </form>
         </div>
 
-        <n-button strong secondary type="info" size="large">
+        <n-button strong secondary type="info" size="large" @click="getReservations">
           Filter
         </n-button>
 
       </div>
 
       <div class="mt-10 space-y-2">
-        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
+        <div v-for="reservation in reservationList" class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
           <div class="flex items-center">
             <div>
               <img src="../../assets/images/user.jpg" alt=""
@@ -60,126 +60,36 @@
             <div class="flex flex-col px-4 border-r-2">
               <div>
                 <div class="font-semibold">Name</div>
-                <div>Mr. Danodya Supun</div>
+                <div>{{ reservation.name }}</div>
               </div>
               <div>
                 <div class="font-semibold">Time</div>
-                <div>8.00 A.M - 4.00 P.M</div>
+                <div>{{ reservation.reservationStartedAt }} - {{ reservation.reservationEndedAt }}</div>
               </div>
             </div>
             <div class="flex flex-col px-4 border-r-2">
               <div>
                 <div class="font-semibold">Contact</div>
-                <div>076 60 23 645</div>
+                <div>{{ reservation.contactNumber }}</div>
               </div>
               <div>
                 <div class="font-semibold">Vehicle number</div>
-                <div>ABC - 1234</div>
+                <div>{{ reservation.vehicleNumber }}</div>
               </div>
             </div>
             <div class="flex flex-col px-4 border-r-2">
               <div>
                 <div class="font-semibold">Vehicle type</div>
-                <div>Car</div>
+                <div>{{ reservation.vehicleType }}</div>
               </div>
               <div>
                 <div class="font-semibold">Vehicle model</div>
-                <div>Toyota premio</div>
+                <div>{{ reservation.vehicleModel }}</div>
               </div>
             </div>
             <div class="px-4">
               <div class="font-semibold">Slot number</div>
-              <div class="text-4xl font-semibold text-center">#24</div>
-            </div>
-          </div>
-          <div >
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
-          </div>
-        </div>
-        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
-          <div class="flex items-center">
-            <div>
-              <img src="../../assets/images/user.jpg" alt=""
-                   class="w-14 h-14 rounded-full p-0.5 border border-black">
-            </div>
-            <div class="flex flex-col px-4 border-r-2">
-              <div>
-                <div class="font-semibold">Name</div>
-                <div>Mr. Danodya Supun</div>
-              </div>
-              <div>
-                <div class="font-semibold">Time</div>
-                <div>8.00 A.M - 4.00 P.M</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-4 border-r-2">
-              <div>
-                <div class="font-semibold">Contact</div>
-                <div>076 60 23 645</div>
-              </div>
-              <div>
-                <div class="font-semibold">Vehicle number</div>
-                <div>ABC - 1234</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-4 border-r-2">
-              <div>
-                <div class="font-semibold">Vehicle type</div>
-                <div>Car</div>
-              </div>
-              <div>
-                <div class="font-semibold">Vehicle model</div>
-                <div>Toyota premio</div>
-              </div>
-            </div>
-            <div class="px-4">
-              <div class="font-semibold">Slot number</div>
-              <div class="text-4xl font-semibold text-center">#24</div>
-            </div>
-          </div>
-          <div >
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
-          </div>
-        </div>
-        <div class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
-          <div class="flex items-center">
-            <div>
-              <img src="../../assets/images/user.jpg" alt=""
-                   class="w-14 h-14 rounded-full p-0.5 border border-black">
-            </div>
-            <div class="flex flex-col px-4 border-r-2">
-              <div>
-                <div class="font-semibold">Name</div>
-                <div>Mr. Danodya Supun</div>
-              </div>
-              <div>
-                <div class="font-semibold">Time</div>
-                <div>8.00 A.M - 4.00 P.M</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-4 border-r-2">
-              <div>
-                <div class="font-semibold">Contact</div>
-                <div>076 60 23 645</div>
-              </div>
-              <div>
-                <div class="font-semibold">Vehicle number</div>
-                <div>ABC - 1234</div>
-              </div>
-            </div>
-            <div class="flex flex-col px-4 border-r-2">
-              <div>
-                <div class="font-semibold">Vehicle type</div>
-                <div>Car</div>
-              </div>
-              <div>
-                <div class="font-semibold">Vehicle model</div>
-                <div>Toyota premio</div>
-              </div>
-            </div>
-            <div class="px-4">
-              <div class="font-semibold">Slot number</div>
-              <div class="text-4xl font-semibold text-center">#24</div>
+              <div class="text-4xl font-semibold text-center">#{{ reservation.slotNumber }}</div>
             </div>
           </div>
           <div >
@@ -294,9 +204,10 @@
 import Pagination from "../../components/Pagination.vue";
 import OperatorLayout from "../../layouts/OperatorLayout.vue";
 import InfoIcon from "../../assets/icons/InfoIcon.vue";
-import {ref } from 'vue'
+import {ref, onMounted } from 'vue'
 import CloseIcon from "../../assets/icons/CloseIcon.vue";
 import PhoneIcon from "@assets/icons/PhoneIcon.vue";
+import {reservationStore} from "../../store/reservationStore.ts"
 
 const showModal = ref(false)
 const currentReservation = ref({
@@ -320,7 +231,9 @@ const formattedDate = `${year}-${month}-${day}`
 
 const formattedValue = ref(formattedDate)
 
-const from = ref("08:00:00");
+const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
+
+const from = ref(formattedTime);
 const to = ref("21:00:00");
 
 const options = ref( [
@@ -338,7 +251,43 @@ const options = ref( [
         }
       ])
 
+const reservation_store = reservationStore();
+
 onMounted(() => {
-  
-}),
+  reservation_store.getUpcomingReservations(formattedValue.value, from.value, to.value)
+  .then((res) => {
+    reservationList.value = res.reservations;
+  })
+  .catch((err) => console.log(err))
+})
+
+const reservationList = ref([])
+
+function getReservations(){
+
+  if(filterBy.value === "Upcoming")
+  {
+    reservation_store.getUpcomingReservations(formattedValue.value, from.value, to.value)
+    .then((res) => {
+      reservationList.value = res.reservations;
+    })
+    .catch((err) => console.log(err))
+  }
+  else if(filterBy.value === "Cancelled")
+  {
+    reservation_store.getCancelledReservations(formattedValue.value, from.value, to.value)
+    .then((res) => {
+      reservationList.value = res.reservations
+    })
+    .catch((err) => console.log(err))
+  }
+  else if(filterBy.value === "Completed")
+  {
+    reservation_store.getCompletedReservations(formattedValue.value, from.value, to.value)
+    .then((res) => {
+      reservationList.value = res.reservations
+    })
+    .catch((err) => console.log(err))
+  }
+}
 </script>
