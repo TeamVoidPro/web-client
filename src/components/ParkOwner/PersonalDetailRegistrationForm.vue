@@ -7,16 +7,19 @@ import {ref} from "vue";
 
 import {UserPersonalDetails} from "@/types/LandOwnerInterfaces.ts";
 import {UploadFileInfo} from "naive-ui";
+import {useParkingOwnerRegistrationStore} from "@store/parkingOwnerRegisterStore.ts";
 
 
 // ts-ignore
 // import ParkDrawer from "@/components/ParkDrawer/ParkDrawer3D.vue";
 
-
+const parkingOwnerRegisterStore = useParkingOwnerRegistrationStore()
 
 const PersonalDetails =ref<UserPersonalDetails>({
   FirstName : '',
   LastName: '',
+  Email: '',
+  Password: '',
   PhoneNo: '',
   NICNo: '',
   Address1: '',
@@ -34,7 +37,7 @@ const NICBackImage = ref('')
 const handleChange = (e: Event) => {
   if (e.target) {
     const target = e.target as HTMLInputElement
-    PersonalDetails.value.IdentificationType = target.value
+    parkingOwnerRegisterStore.personalDetails.IdentificationType = target.value
   }
 }
 
@@ -48,14 +51,15 @@ function handlePreview (file: UploadFileInfo) {
 }
 const handleFrontUpload = (info:UploadFileInfo) => {
   console.log(info)
-  PersonalDetails.value.IdentificationFrontImage = info?.file ?? null
   if (info?.file.file) {
-    NICFrontImage.value = URL.createObjectURL(info.file.file as Blob) as string
+    parkingOwnerRegisterStore.personalDetails.IdentificationFrontImage = URL.createObjectURL(info.file.file as Blob) as string
   }
 }
 const handleBackUpload = (file:UploadFileInfo) => {
-  PersonalDetails.value.IdentificationBackImage = file?.file ?? null
-  NICBackImage.value = URL.createObjectURL(file.file as Blob) as string
+  console.log(file)
+  if (file?.file.file) {
+    parkingOwnerRegisterStore.personalDetails.IdentificationBackImage = URL.createObjectURL(file.file.file as Blob) as string
+  }
 }
 
 const sample = ()=>{
@@ -87,13 +91,27 @@ const sample = ()=>{
                 <div class="flex">
                   Your First Name
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.FirstName" type="text" placeholder="First Name" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.firstName" type="text" placeholder="First Name" />
               </div>
               <div class="flex flex-col gap-2 w-5/12">
                 <div class="flex">
                   Your Last Name
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.LastName" type="text" placeholder="Last Name" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.lastName" type="text" placeholder="Last Name" />
+              </div>
+            </div>
+            <div class="flex justify-around gap-3">
+              <div class="flex flex-col gap-2 w-5/12">
+                <div class="flex">
+                  Email
+                </div>
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.email" type="text" placeholder="Your Email" />
+              </div>
+              <div class="flex flex-col gap-2 w-5/12">
+                <div class="flex">
+                  Password
+                </div>
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.password" type="password" placeholder="Password" />
               </div>
             </div>
             <div class="flex justify-around gap-3">
@@ -101,13 +119,13 @@ const sample = ()=>{
                 <div class="flex">
                   Phone No
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.PhoneNo" type="text" placeholder="Your Phone No" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.mobileNo" type="text" placeholder="Your Phone No" />
               </div>
               <div class="flex flex-col gap-2 w-5/12">
                 <div class="flex">
                   NIC No
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.NICNo" type="text" placeholder="Your NIC No" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.NICNo" type="text" placeholder="Your NIC No" />
               </div>
             </div>
           </div>
@@ -120,13 +138,13 @@ const sample = ()=>{
                 <div class="flex">
                   Your Home No
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.Address1" type="text" placeholder="Your Home No" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.Address1" type="text" placeholder="Your Home No" />
               </div>
               <div class="flex flex-col gap-2 w-5/12">
                 <div class="flex">
                   Your Street
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.Address2" type="text" placeholder="Your Home Street" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.Address2" type="text" placeholder="Your Home Street" />
               </div>
             </div>
             <div class="flex justify-around gap-3">
@@ -134,13 +152,13 @@ const sample = ()=>{
                 <div class="flex">
                   City
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.City" type="text" placeholder="Your City"  />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.City" type="text" placeholder="Your City"  />
               </div>
               <div class="flex flex-col gap-2 w-5/12">
                 <div class="flex">
                   Province
                 </div>
-                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="PersonalDetails.Province" type="text" placeholder="Your Province" />
+                <n-input class="rounded-3xl border-2 border-gray-300" v-model:value="parkingOwnerRegisterStore.personalDetails.Province" type="text" placeholder="Your Province" />
               </div>
             </div>
 
@@ -157,27 +175,27 @@ const sample = ()=>{
                   Identified Using
                 </div>
                 <div class="flex justify-around gap-3 gap-5 w-full">
-                  <div :class="PersonalDetails.IdentificationType === 'NIC' ? 'bg-accent text-white  border-2 border-green-800 rounded-3xl px-3 py-2' : ' rounded-3xl border-2 px-3 py-2' + ''">
+                  <div :class="parkingOwnerRegisterStore.personalDetails.IdentificationType === 'NIC' ? 'bg-accent text-white  border-2 border-green-800 rounded-3xl px-3 py-2' : ' rounded-3xl border-2 px-3 py-2' + ''">
                     <n-radio
 
-                        :checked="PersonalDetails.IdentificationType === 'NIC'"
+                        :checked="parkingOwnerRegisterStore.personalDetails.IdentificationType === 'NIC'"
                         value="NIC"
                         name="basic-demo"
                         @change="handleChange"
                     >
-                  <span :class="PersonalDetails.IdentificationType === 'NIC' ? 'text-white font-bold text-md ' : 'text-black' + ''">
-                  National Identity Card
-                  </span>
+                    <span :class="parkingOwnerRegisterStore.personalDetails.IdentificationType === 'NIC' ? 'text-white font-bold text-md ' : 'text-black' + ''">
+                      National Identity Card
+                    </span>
                     </n-radio>
                   </div>
-                  <div :class="PersonalDetails.IdentificationType === 'DrivingLicense' ? 'bg-accent text-white  border-2 border-green-800 rounded-3xl px-3 py-2' : ' rounded-3xl border-2 px-3 py-2' + ''">
+                  <div :class="parkingOwnerRegisterStore.personalDetails.IdentificationType === 'DrivingLicense' ? 'bg-accent text-white  border-2 border-green-800 rounded-3xl px-3 py-2' : ' rounded-3xl border-2 px-3 py-2' + ''">
                     <n-radio
-                        :checked="PersonalDetails.IdentificationType === 'DrivingLicense'"
+                        :checked="parkingOwnerRegisterStore.personalDetails.IdentificationType === 'DrivingLicense'"
                         value="DrivingLicense"
                         name="basic-demo"
                         @change="handleChange"
                     >
-                  <span :class="PersonalDetails.IdentificationType === 'DrivingLicense' ? 'text-white font-bold text-md ' : 'text-black' + ''">
+                  <span :class="parkingOwnerRegisterStore.personalDetails.IdentificationType === 'DrivingLicense' ? 'text-white font-bold text-md ' : 'text-black' + ''">
                   Driving Licenses
 
                   </span>
@@ -185,21 +203,20 @@ const sample = ()=>{
                   </div>
                 </div>
                 <div class="flex flex-col mt-6 gap-2">
-                  <div class="flex items-center justify-center w-full">
+                  <div class="flex flex-col  justify-center w-full">
                     <div class="flex font-bold w-4/12">
-                      {{PersonalDetails.IdentificationType === 'NIC' ? 'NIC ' : 'License '}} Front
+                      {{parkingOwnerRegisterStore.personalDetails.IdentificationType === 'NIC' ? 'NIC ' : 'License '}} Front
                     </div>
                     <n-upload
                         directory-dnd
-                        action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
-                        @finish="handleFrontUpload"
+                        @change="handleFrontUpload"
                         @preview="handlePreview"
                         show-preview-button
                         :max="1"
                         accept="image/*"
                     >
                       <n-upload-dragger class="rounded-3xl border-3 border-green-500">
-                        <div v-if="PersonalDetails.IdentificationFrontImage===null">
+                        <div v-if="parkingOwnerRegisterStore.personalDetails.IdentificationFrontImage===''">
                           <div style="margin-bottom: 12px">
                             <n-icon size="48" :depth="3">
                               <archive-icon />
@@ -215,7 +232,7 @@ const sample = ()=>{
                         <div v-else>
                           <n-image
                               width="100"
-                              :src="NICFrontImage"
+                              :src="parkingOwnerRegisterStore.personalDetails.IdentificationFrontImage"
                           />
                           <!--                          Success Image-->
                           <n-icon :size="18" :component="Checkmark16Filled" />
@@ -224,19 +241,19 @@ const sample = ()=>{
                       </n-upload-dragger>
                     </n-upload>
                   </div>
-                  <div class="flex items-center justify-center w-full">
+                  <div class="flex flex-col justify-center w-full">
                     <div class="flex font-bold w-4/12">
-                      {{PersonalDetails.IdentificationType === 'NIC' ? 'NIC ' : 'License '}} Back
+                      {{parkingOwnerRegisterStore.personalDetails.IdentificationType === 'NIC' ? 'NIC ' : 'License '}} Back
                     </div>
                     <n-upload
                         directory-dnd
-                        action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
-                        @finish="handleBackUpload"
+                        @change="handleBackUpload"
                         @preview="handlePreview"
                         :max="1"
                         accept="image/*"
                     >
                       <n-upload-dragger class=" border-3 rounded-3xl border-green-500">
+                        <div v-if="parkingOwnerRegisterStore.personalDetails.IdentificationBackImage===''">
                         <div style="margin-bottom: 12px">
                           <n-icon size="48" :depth="3">
                             <archive-icon />
@@ -248,6 +265,17 @@ const sample = ()=>{
                         <n-p depth="3" style="margin: 8px 0 0 0">
                           SVG, PNG, JPG, GIF up to 10MB
                         </n-p>
+                        </div>
+
+                        <div v-else>
+                          <n-image
+                              width="100"
+                              :src="parkingOwnerRegisterStore.personalDetails.IdentificationBackImage"
+                          />
+                          <!--                          Success Image-->
+                          <n-icon :size="18" :component="Checkmark16Filled" />
+                        </div>
+
                       </n-upload-dragger>
                     </n-upload>
                   </div>

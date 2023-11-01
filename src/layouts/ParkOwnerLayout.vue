@@ -6,9 +6,7 @@ import {SidebarItem} from "@types/SidebarItems.ts";
 import NotificationButton from "@/components/ParkOwner/LayoutComponent/NotificationButton.vue";
 import ParkChange from "@/components/ParkOwner/LayoutComponent/ParkChangeComponent.vue";
 
-
-
-const userName = "Mr. Danodya Supun";
+const userName = "Isurika Arunodi";
 const userImage = "/src/assets/images/user1.svg";
 
 const props = defineProps({
@@ -57,7 +55,7 @@ const sideBarItems:Array<SidebarItem>=[
 
 <template>
 
-<!--  Sidebaar-->
+<!--  Sidebar-->
   <NotificationButton />
   <ParkChange v-if="props.parkSelector" />
   <div class="flex w-screen">

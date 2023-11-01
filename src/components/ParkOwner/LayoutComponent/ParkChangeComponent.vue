@@ -1,16 +1,32 @@
 <script setup lang="ts">
 
-import {onMounted, ref} from "vue";
+import {onBeforeMount, onMounted, ref} from "vue";
+import {parkingPlaceStore} from "@store/parkingPlaceStore.ts";
+
+const placeStore =parkingPlaceStore();
+
+
+
+onBeforeMount(async () => {
+  const parkingPlaces = await placeStore.getParkingPlaces();
+  for (const place of parkingPlaces) {
+    parks.value.push({
+      id: place.parkingPlaceId,
+      name: place.name,
+      location: place.location,
+      rate: 5,
+    })
+  }
+  currentPark.value = parks.value[0];
+  // console.log(currentPark.value);
+  placeStore.changeCurrentParkingPlaceId(currentPark.value.id);
+})
+
+
 
 const percentage = ref<number>(50);
 const NotificationTrigger = ref<boolean>(false);
-const currentPark = ref(
-    {
-      id: 1,
-      name: 'Tibirigasyaya Park',
-      location: 'Tibirigasyaya',
-      rate: 4,
-    }
+const currentPark = ref(null
 );
 
 const props = defineProps({
@@ -21,24 +37,6 @@ const props = defineProps({
 })
 
 const parks = ref([
-  {
-    id: 1,
-    name: 'Tibirigasyaya Park',
-    location: 'Tibirigasyaya',
-    rate: 4,
-  },
-  {
-    id: 2,
-    name : 'Nugegoda Park',
-    location: 'Nugegoda',
-    rate: 1,
-  },
-  {
-    id: 3,
-    name: 'Borella Park',
-    location: 'Borella',
-    rate: 3,
-  }
 ])
 
 const closeNotification=()=> {
@@ -59,8 +57,10 @@ const handleOuterClick = ()=>{
   })
 }
 
-const changePark = (id:number)=>{
+const changePark = (id:string)=>{
   currentPark.value = parks.value.find((park)=> park.id === id);
+  placeStore.changeCurrentParkingPlaceId(id);
+  console.log(placeStore.currentParkingPlaceId)
 }
 
 onMounted(()=>{
@@ -77,7 +77,7 @@ onMounted(()=>{
           <circle cx="20" cy="20" r="18" fill="none" stroke="#119DF9" stroke-width="4" stroke-dasharray="113.097" stroke-dashoffset="28.274" transform="rotate(-90 20 20)" />
           <image xlink:href="/src/assets/icons/carIcon.svg" x="10" y="10" width="20" height="20" />
         </svg>
-        <div class="ml-2 flex flex-col">
+        <div class="ml-2 flex flex-col" v-if="currentPark !== null">
           <div class="text-md font-bold">
             {{currentPark.name}}
           </div>

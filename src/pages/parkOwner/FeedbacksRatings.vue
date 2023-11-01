@@ -4,6 +4,8 @@ import {ref} from "vue";
 import ParkOwnerLayout from "@layouts/ParkOwnerLayout.vue";
 import {NEllipsis,NPagination,NProgress} from "naive-ui"
 import ReviewsDetails from "@components/ParkOwner/ReviewsDetails.vue";
+import {parkingPlaceStore} from "@store/parkingPlaceStore.ts";
+
 
 const ratings = ref([
   {
@@ -33,6 +35,8 @@ const ratings = ref([
   },
 ])
 
+const placeStore =parkingPlaceStore();
+
 </script>
 <template>
   <ParkOwnerLayout>
@@ -52,7 +56,7 @@ const ratings = ref([
                 <img src="../../assets/icons/star.svg">
                 <img src="../../assets/icons/star.svg">
               </div>
-               Based on 54 reviews
+<!--               Based on {{(placeStore.reviewData.parkingPlaceRatings)}} reviews-->
               <div>
           </div>
         </div>

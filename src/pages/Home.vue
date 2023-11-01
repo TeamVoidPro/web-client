@@ -94,7 +94,7 @@
           </div>
         </div>
         <div class="px-5 m-5 w-full cursor-pointer">
-          <div class="flex justify-around  mx-3 gap-3 bg-primary px-8 rounded-2xl w-full py-8 ">
+          <button class="flex justify-around  mx-3 gap-3 bg-primary px-8 rounded-2xl w-full py-8 " @click="registration()">
             <div class="mx-2 flex flex-col gap-4 justify-around">
               <div class="text-4xl font-bold text-center text-white">Are you a Parking Provider?</div>
               <div class="text-sm  text-center text-white">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
@@ -102,7 +102,7 @@
             <div class="mx-2 flex-col flex items-center justify-center pl-2">
               <img src="../assets/images/Vector.png" class="h-10 w-12"/>
             </div>
-          </div>
+          </button>
         </div>
       </section>
       <section id="features" class="h-[100vh] flex flex-col justify-center items-center p-8 ">
@@ -189,5 +189,10 @@ import Button from "../components/Button.vue";
 import Footer from "../components/Footer.vue";
 import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
 import { NCarousel,NInput } from "naive-ui";
+import router from "@/router";
+
+const registration = () => {
+  router.push("/park-owner/register");
+};
 
 </script>

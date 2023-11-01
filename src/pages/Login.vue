@@ -40,7 +40,6 @@
 import {EnvelopeIcon, LockClosedIcon, EyeSlashIcon, EyeIcon} from "@heroicons/vue/24/solid";
 import Button from "../components/Button.vue";
 import AuthLayout from "@layouts/AuthLayout.vue";
-import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
 import router from "@/router";
 import {ref} from "vue";
 import {useMessage} from "naive-ui";
@@ -65,4 +64,5 @@ const login = () => {
 };
 
 
+import ParkOwnerNavbar from "@components/Navbar/ParkOwnerNavbar.vue";
 </script>

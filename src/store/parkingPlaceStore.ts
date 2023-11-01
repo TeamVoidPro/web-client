@@ -9,7 +9,9 @@ export const parkingPlaceStore = defineStore('parkingPlace', {
             data: JSON.parse(localStorage.getItem('user') || '{}'),
             token: localStorage.getItem('token') || '',
         },
-        parkingPlace:[]
+        parkingPlace:[],
+        currentParkingPlaceId: "",
+        reviewData: [],
     }),
 
     actions: {
@@ -22,6 +24,30 @@ export const parkingPlaceStore = defineStore('parkingPlace', {
                 .catch((err)=>{
                     throw err
                 })
-            }
+            },
+
+        getParkingPlaces(){
+            return axiosClient.get(`parkingOwner/get-parking-places/OWN_4650_5722`)
+                .then((res:any) => {
+                    // console.log(res)
+                    return res.data.parkingPlaces;
+                }).catch((e:any) => {
+                    throw e;
+                })
+        },
+        getReviewData(){
+            return axiosClient.get(`parkingOwner/get-parking-ratings/${this.currentParkingPlaceId}`)
+                .then((res:any) => {
+                    this.reviewData = res.data;
+                    return res.data;
+                }).catch((e:any) => {
+                    throw e;
+                })
+
+            // console.log(this.currentParkingPlaceId)
+        },
+        changeCurrentParkingPlaceId(id:string){
+            this.currentParkingPlaceId = id;
+        }
     }
 })
