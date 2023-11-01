@@ -40,13 +40,8 @@
 
                             <!-- padding -->
                             <div class="mt-12"></div>
-                            <LegalInfo/>
-                            <LegalInfo/>
-                            <LegalInfo/>
-                            <LegalInfo/>
-                            <LegalInfo/>
-                            <LegalInfo/>
-                            <LegalInfo/>
+                            
+                            <LegalInfo  v-for="(owner, index) in ownerDetails" :key="index" :owner="owner" />
 
 
                     </div>
@@ -64,5 +59,20 @@ import VerifierLayout from "../../layouts/VerifierLayout.vue";
 import SortIcon from "../../assets/icons/SortIcon.vue";
 import SearchIcon from "../../assets/icons/SearchIcon.vue";
 import LegalInfo from "../../components/Verifier/LegalInfo.vue";
+
+import { basicOwnerInfo } from "../../store/verifierStore";
+import {onMounted, ref} from 'vue';
+
+const Ownerstore = basicOwnerInfo();
+const ownerDetails = ref(Array());
+
+onMounted(() => {
+        Ownerstore.getOwners().then((res) =>{
+                ownerDetails.value = res;
+                
+        }).catch((err) =>{
+                console.log(err);
+        })
+})
 
 </script>

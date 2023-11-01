@@ -1,29 +1,29 @@
 <template>
     <div class="popup">
         <slot/>
-        <button class="absolute right-[20vh] bottom-[2.5vh]" @click="OpenModel('popup')"><ChevronDown class="rotate-90  w-6 h-6 "/></button>
+        <button class="absolute right-[20vh] bottom-[2.5vh]" @click="OpenModel('popup'), getIndividualOwner()"><ChevronDown class="rotate-90  w-6 h-6 "/></button>
         <div>
             <n-modal v-model:show="showModal">
                 <n-card class="rounded-l w-[120vh] h-[50vh] ml-[53vh] mt-[20vh]">
                     <div class="ml-[1vh] mt-5">
-                        <p class="font-bold inline mr-3">Owner Name :</p>
-                        <p class="inline font-medium">Tharusha Atukorala</p>
+                        <p class="font-bold inline mr-3">Owner Name:</p>
+                        <p class="inline font-medium">{{ ownerDetails.firstName }} {{ ownerDetails.lastName }}</p>
                     </div>
                     <div class="ml-[1vh] mt-3">
                         <p class="font-bold inline mr-3">Land Address:</p>
-                        <p class="inline font-medium">No:15, Circular Road, Malwala, Rathnapura</p>
+                        <p class="inline font-medium">{{ ownerDetails.landAddressNumber }}, {{ ownerDetails.landAddressStreet }}, {{ ownerDetails.landAddressCity }}, {{ ownerDetails.landAddressProvince }}</p>
                     </div>
                     <div class="ml-[1vh] mt-3">
                         <p class="font-bold inline mr-3">Telephone &nbsp; &nbsp; &nbsp; :</p>
-                        <p class="inline font-medium">071 490 0086</p>
+                        <p class="inline font-medium">{{ ownerDetails.contactNumber }}</p>
                     </div>
                     <div class="ml-[1vh] mt-3">
                         <p class="font-bold inline mr-3">Email &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  :</p>
-                        <p class="inline font-medium">atukoralat@gmail.com</p>
+                        <p class="inline font-medium">{{ ownerDetails.email }}</p>
                     </div>
                     <div class="ml-[1vh] mt-3">
                         <p class="font-bold inline mr-3">ID &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :</p>
-                        <p class="inline font-medium">#247899SB</p>
+                        <p class="inline font-medium">{{ ownerDetails.ownerId }}</p>
                     </div>
                     <ImagePopup/>
                     <div class="mt-[7.5vh] ml-[5vh] text-[#0074D9]">
@@ -43,6 +43,28 @@
             <n-modal v-model:show="showPdf">
                 <embed src="https://www.africau.edu/images/default/sample.pdf" class="w-[150vh] h-[80vh] ml-[40vh] mt-[8vh]"/>
             </n-modal>
+
+            <n-modal v-model:show="date">
+                <n-card class="rounded-xl w-[40vh] h-[29vh] ml-[92vh] mt-[35vh] ">
+                    <form>
+                        <div class="mb-4">
+                            <p class="pl-[5vh]">Select date of Inspection</p>
+                            <input type="date" id="datepicker" v-model="formData.Date" class="border-[#00000] border rounded p-[3px] ml-[7vh] mt-[1vh]" :min="tomorrow" required/>
+                        </div>
+                        <div class="mb-4">
+                            <p class="pl-[5.5vh]">Enter Time of Inspection</p>
+                            <input class="border-[#00000] border rounded p-[3px] ml-2 mt-[1vh]" v-model="formData.Time"  type="text" required/>
+                            <select class="border-[#00000] border rounded p-[3px] ml-1" v-model="formData.Format" required>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                        </div>
+                        <button class="rounded p-[3px] pr-3 pl-3 bg-[#0074D9] text-white mr-2 ml-[8vh]" @click="CloseAll('popup'), postSchedule()" type="submit">Confirm Visit</button>   
+                    </form>
+                       
+                </n-card>
+            </n-modal>
+
             <n-modal v-model:show="Confirmation">
                 <n-card class="rounded-xl w-[40vh] h-[55vh] ml-[92vh] mt-[26vh]">
                     <div class="w-[25vh] mt-12 ml-7">
@@ -51,7 +73,7 @@
                     <div >
                         <ConfirmationIcon class="w-[20vh] h-[20vh] mt-10 ml-[6.5vh]"/>
                     </div>
-                    <p class="font-medium text-center leading-5 mt-6">Land owner has been notified to schedule a date for inspection.</p>
+                    <p class="font-medium text-center leading-5 mt-6">Land owner has been notified on the visit.</p>
 
                 </n-card>
             </n-modal>
@@ -80,8 +102,20 @@ import CalendarIcon from "../../assets/icons/CalendarIcon.vue";
 import DeclineIcon from "../../assets/icons/DeclineIcon.vue";
 import ConfirmationIcon from "../../assets/icons/ConfirmationIcon.vue";
 import ImagePopup from "../Verifier/ImagePopup.vue";
-
 import { ref } from 'vue';
+import { defineProps } from 'vue';
+import { basicOwnerInfo } from "../../store/verifierStore";
+const Ownerstore = basicOwnerInfo();
+
+import { computed } from 'vue';
+
+const selectedDate = ref('');
+
+const tomorrow = computed(() => {
+  const today = new Date();
+  today.setDate(today.getDate() + 1);
+  return today.toISOString().split('T')[0];
+});
 
 const showModal = ref(false)
 const Confirmation= ref(false)
@@ -89,8 +123,8 @@ const OpenModel = (name: string) => {
   showModal.value = true
 }
 const CloseModel = (name: string) => {
-    Confirmation.value = true
-  showModal.value = false
+    date.value = true
+
 }
 
 const showPdf = ref(false)
@@ -98,14 +132,54 @@ const OpenPdf = (name: string) => {
   showPdf.value = true
 }
 
-const Decline = ref(false)
 const DeclineModel = (name: string) => {
-  Decline.value = true
+    showModal.value = false
 }
 
 const CloseAll = (name:string) => {
-    Decline.value = false
+    date.value = false
     showModal.value = false
+    Confirmation.value = true
+}
+
+const date = ref(false)
+
+const props = defineProps<{
+    id: string;
+}>();
+
+const ownerId = props.id;
+const ownerDetails = ref(Array());
+
+function getIndividualOwner(){
+    Ownerstore.getIndividualOwner(ownerId).then((res) =>{
+                ownerDetails.value = res;
+                console.log(ownerDetails.value)
+                
+        }).catch((err) =>{
+                console.log(err);
+        })
+
+}
+
+const formData = ref({
+    OwnerId: ownerId,
+    OwnerName: '',
+    LandAddress: '',
+    Date: '',
+    Time: '',
+    Format: '',
+    EmployeeId: 'EMP_0022_4588',
+})
+
+function postSchedule(){
+    Ownerstore.addSchedule(formData.value).then((res) =>{
+        response = res;
+        console.log(response)
+
+    }).catch((err) =>{
+        console.log(err);
+        })
 }
 
 

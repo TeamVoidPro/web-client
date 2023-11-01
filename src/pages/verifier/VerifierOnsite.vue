@@ -40,13 +40,7 @@
 
                 <!-- padding -->
                 <div class="mt-12"></div>
-                <SurveyInfo/>
-                <SurveyInfo/>
-                <SurveyInfo/>
-                <SurveyInfo/>
-                <SurveyInfo/>
-                <SurveyInfo/>
-                <SurveyInfo/>
+                <SurveyInfo v-for="(owner, index) in ownerDetails" :key="index" :owner="owner" />
 
             </div>
 
@@ -64,5 +58,20 @@ import VerifierLayout from "../../layouts/VerifierLayout.vue";
 import SortIcon from "../../assets/icons/SortIcon.vue";
 import SearchIcon from "../../assets/icons/SearchIcon.vue";
 import SurveyInfo from "../../components/Verifier/SurveyInfo.vue";
+
+import { basicOwnerInfo } from "../../store/verifierStore";
+import {onMounted, ref} from 'vue';
+
+const Ownerstore = basicOwnerInfo();
+const ownerDetails = ref(Array());
+
+onMounted(() => {
+        Ownerstore.getSchedule().then((res) =>{
+                ownerDetails.value = res;
+                
+        }).catch((err) =>{
+                console.log(err);
+        })
+})
 
 </script>
