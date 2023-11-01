@@ -6,40 +6,12 @@
     }
     </style>
 <template>
-  <AdminLayout>
-    <n-table :bordered="false" :single-line="false">
-    <thead>
-      <tr>
-        <th>Parking Place ID</th>
-        <th>Parking Place Name</th>
-        <th>Verifier</th>
-        <th>Verified Date</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="parkingPlace in parkingPlaces">
-        <td>{{ parkingPlace.parkingPlaceId }}</td>
-        <td>{{ parkingPlace.name }}</td>
-        <td>{{ parkingPlace.parkingVerifier }}</td>
-        <td>{{ parkingPlace.date }}</td>
-        <td>
-          <button @click="showModal = true" class="bg-white">
-            <InfoIcon class="text-blue-700 w-8 h-8"/> 
-          </button>
-          <n-modal v-model:show="showModal">
-            <n-card
-              style="width: 1000px"
-              title="Modal"
-              :bordered="false"
-              size="huge"
-              role="dialog"
-              aria-modal="true"
-            >
-            <template #header-extra>
-              <CloseIcon @click = "showModal = false"  class="w-5 h-5 text-red-600"/>
-            </template>
-            <div class="flex">
+    <AdminLayout>
+      <div class="flex justify-between mb-4">
+        <div class="font-semibold text-xl">Kalutara Park</div>
+        <div class="font-semibold text-xl">P0001</div>
+      </div>
+      <div class="flex">
         <div class="w-1/3 bg-white flex flex-col gap-5">
           <div>
             <n-carousel show-arrow>
@@ -115,40 +87,11 @@
           </n-table>
         </div>
       </div>
-            <template #footer>
-              Footer
-            </template>
-          </n-card>
-        </n-modal>
-        </td>
-      </tr>
-     
-    </tbody>
-  </n-table>
-  </AdminLayout>
-</template>
-
-<script setup lang="ts">
-import AdminLayout from "../../layouts/AdminLayout.vue";
-import InfoIcon from "../../assets/icons/InfoIcon.vue";
-import {ref, onMounted} from "vue";
-import CloseIcon from "../../assets/icons/CloseIcon.vue";
-import {parkingPlaceStore} from "../../store/parkingPlaceStore";
-
-const showModal = ref(false);
-const parkingPlaces = ref(Array());
-
-onMounted(() => {
-  const parkingPlacesStore = parkingPlaceStore();
-  parkingPlacesStore.getAllParkingPlaces()
-  .then((res)=>{
-    parkingPlaces.value = res.data;
-    // console.log(parkingPlaces.value)
+    </AdminLayout>
+    </template>
     
-  })
-  .catch((err)=> {
-    throw err
-  })
-  
-})
-</script>
+    <script setup lang="ts">
+    import AdminLayout from "@layouts/AdminLayout.vue";
+    
+    
+    </script>

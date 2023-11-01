@@ -2,25 +2,19 @@ import {defineStore} from "pinia";
 import {authService} from "../services/authService";
 
 
-export const parkingOperatorStore = defineStore('parkingOperator', {
+export const zonesStore = defineStore('zones', {
     state: () => ({
         user: {
             data: JSON.parse(localStorage.getItem('user') || '{}'),
             token: localStorage.getItem('token') || '',
         },
-        parkingPlace: {},
+        zones: [],
     }),
-    getters: {
-        // getParkingPlace(): any {
-        //     return this.parkingPlace;
-        // }
-    },
     actions: {
-        getParkingPlace() {
-            const user = this.user.data.id;
-            return authService(`ParkingOperator/get-operator-parking?parkingOperatorId=${user}`, 'get', this.user.token, {})
+        getZones(parkingPlaceId: string) : Promise<any> {
+            return authService(`Zone/get-zones-by-parking-place/${parkingPlaceId}`, 'get', this.user.token, {})
                 .then((res: any) => {
-                    this.parkingPlace = res.parking;
+                    this.zones = res.data;
                     return res;
                 }).catch((error) => {
                     throw error;

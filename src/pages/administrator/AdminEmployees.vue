@@ -102,7 +102,7 @@
                         <div class="w-1/2 ps-2">
                           <label>Select role <span class="text-red-600">*</span></label>
                           <n-select v-model:value="formValue.Role" :options="options2"/>
-                          <div class="text-red-600 text-xs" v-if="errors.Role != null">{{errors.Role}}</div>
+                          <div  class="text-red-600 text-xs" v-if="errors.Role != null">{{errors.Role}}</div>
                         </div>
                       </div>
                       <div class="flex justify-center">
@@ -118,7 +118,7 @@
           </div>
         </div>
       </div>
-      <div class="mt-10 flex flex-wrap justify-between gap-y-4">
+      <div class="mt-10 flex flex-wrap gap-x-4 gap-y-4 justify-center">
         <EmployeeCard v-for="emp in employees" :employee="emp"/>
       </div>
       <div class="w-full flex justify-center">

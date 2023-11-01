@@ -22,6 +22,12 @@
       <div class="flex justify-center mt-10">
         <Button @click="submitForm">Sign In</Button>
       </div>
+
+<!--      <div class="w-[60%] m-auto">-->
+<!--        <div class=" bg-[#cffafe] rounded-2xl h-[70vh] shadow-lg">-->
+<!--          <img  src="../assets/images/park.png" alt="">-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
 
     <div class="w-[45%] bg-primary rounded shadow-2xl">

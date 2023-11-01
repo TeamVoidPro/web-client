@@ -2,7 +2,7 @@
 <template>
   <div class="cursor-pointer">
     <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600" @click="showModal = true">
-      <div class="text-2xl"><slot></slot></div>
+      <div class="text-2xl">{{ props.slot.slotNumber }}</div>
     </div>
     <n-modal v-model:show="showModal">
       <n-card
@@ -22,28 +22,28 @@
             <div class="flex justify-around items-baseline">
               <div class="flex flex-col justify-center">
                 <div class="text-xl font-semibold">Slot Number</div>
-                <div class="text-center text-5xl mt-2">8</div>
+                <div class="text-center text-5xl mt-2">{{props.slot.slotNumber}}</div>
               </div>
               <div class="flex flex-col justify-center">
                 <div class="text-xl font-semibold">Slot Status</div>
-                <div class="text-center text-lg text-red-600 mt-2">Parked</div>
+                <div class="text-center text-lg text-red-600 mt-2">{{props.slotDetails.slotStatus}}</div>
               </div>
             </div>
             <div class="space-y-5 mt-5">
               <div class="flex justify-between">
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Slot ID:</div>
-                  <div>SLOT_1234_5678</div>
+                  <div>{{props.slotDetails.slotId}}</div>
                 </div>
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Zone:</div>
-                  <div>Zone A</div>
+                  <div>{{props.slotDetails.zoneName}}</div>
                 </div>
               </div>
               <div class="flex justify-between">
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Slot Category:</div>
-                  <div>Car/Van</div>
+                  <div>{{props.slotDetails.slotCategory}}</div>
                 </div>
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Dimensions:</div>
@@ -53,7 +53,7 @@
               <div>
                 <div class="font-semibold">Slot Description:</div>
                 <div class="text-justify px-5 mt-3">
-                  This is a parking slot that is specifically designed for electric vehicles. It typically has a charging station nearby.
+                  {{props.slotDetails.slotDescription}}
                 </div>
               </div>
               <div>
@@ -61,11 +61,11 @@
                 <div class="flex justify-around mt-2">
                   <div class="flex gap-2">
                     <div class="font-semibold">From:</div>
-                    <div>8.00 AM</div>
+                    <div>{{props.slotDetails.reservationStartedAt}}</div>
                   </div>
                   <div class="flex gap-2">
                     <div class="font-semibold">To:</div>
-                    <div>11.00 AM</div>
+                    <div>{{props.slotDetails.reservationEndedAt}}</div>
                   </div>
 
                 </div>
@@ -73,21 +73,21 @@
               <div class="flex justify-between">
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Reservation ID:</div>
-                  <div>RES_1234_5678</div>
+                  <div>{{props.slotDetails.reservationId}}</div>
                 </div>
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Vehicle Number:</div>
-                  <div>ABC-1945</div>
+                  <div>{{props.slotDetails.vehicleNumber}}</div>
                 </div>
               </div>
               <div class="flex justify-between">
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Vehicle Owner:</div>
-                  <div>Raveen Shahasra</div>
+                  <div>{{props.slotDetails.vehicleOwner}}</div>
                 </div>
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Contact Number:</div>
-                  <div>077 23 96 456</div>
+                  <div>{{props.slotDetails.contactNumber}}</div>
                 </div>
               </div>
 
@@ -102,6 +102,41 @@
                 :bordered="true"
                 :single-line="false"
             />
+
+            <div class="w-full flex justify-center mt-10">
+              <n-button type="primary" @click="showModal1 = true">
+                Release Slot
+              </n-button>
+              <n-modal v-model:show="showModal1">
+                <n-card
+                    style="width: 35em"
+                    title="Do you want to release this slot?"
+                    :bordered="false"
+                    size="huge"
+                    role="dialog"
+                    aria-modal="true"
+                >
+                  <template #header-extra>
+                    <CloseIcon class="cursor-pointer text-red-600 w-6 h-6" @click="showModal1 = false" />
+                  </template>
+
+                  <div class="flex justify-around">
+                    <n-button type="primary" round @click="updateSlot()">
+                      Yes
+                    </n-button>
+                    <n-button type="warning" round @click="showModal1 =  false">
+                      No
+                    </n-button>
+                  </div>
+
+                  <template #footer>
+
+                  </template>
+                </n-card>
+              </n-modal>
+
+            </div>
+
           </div>
         </div>
 
@@ -115,8 +150,19 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
+import {slotStore} from "@store/slotStore.ts";
+import {useMessage} from "naive-ui";
+
+const props = defineProps<{
+  slot: object;
+  slotDetails: object;
+}>();
+
 
 const showModal = ref(false)
+const showModal1 = ref(false)
+const slot_store = slotStore()
+const message = useMessage()
 
 const rowProps = () => {
   return {
@@ -125,6 +171,18 @@ const rowProps = () => {
       message.info("Clicked!");
     },
   };
+}
+
+
+function updateSlot()
+{
+  slot_store.updateSlotState(props.slotDetails.slotId, "Available")
+      .then((res : any) => {
+        window.location.reload()
+        message.create(res.message)
+      }).catch((err : any) => {
+        throw err;
+  })
 }
 
 const columns = [
