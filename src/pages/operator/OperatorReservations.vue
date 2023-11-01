@@ -93,7 +93,7 @@
             </div>
           </div>
           <div >
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel(reservation.reservationId)"/>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel(reservation.reservationID)"/>
           </div>
         </div>
         
