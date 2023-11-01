@@ -44,56 +44,56 @@
             </n-modal>
           </div>
           <div>
-            <button class="bg-[#22c55e] text-white rounded h-8 w-44">Edit Profile</button>
+            <button class="bg-[#22c55e] text-white rounded h-8 w-44" @click="toggleFields">Edit Profile</button>
           </div>
         </div>
         <form class="w-[70%] m-auto space-y-3">
           <div class="flex  w-full justify-between">
             <div class="flex flex-col w-[49%]">
               <label class="text-xs">First Name</label>
-              <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 pl-1"   type="text" value="Viharsha" disabled>
+              <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 pl-1"   type="text" v-model:value="employee.firstName"  :disabled="fieldsDisabled"/>
             </div>
             <div class="flex flex-col w-[49%]">
               <label class="text-xs"> Last Name</label>
-              <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 pl-1"  type="text" value="Jayathilaka" disabled>
+              <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 pl-1"  type="text" v-model:value="employee.lastName"  :disabled="fieldsDisabled"/>
             </div>
           </div>
           <div class="flex flex-col">
             <label class="text-xs">EmployeeID</label>
-            <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" value="E0023" disabled>
+            <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" v-model:value="employee.employeeId"  disabled/>
           </div>
           <div class="flex flex-col">
             <label class="text-xs">Email</label>
-            <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="email" value="vpjayathilake@gmail.com" disabled>
+            <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="email" v-model:value="employee.email"  disabled/>
           </div>
           <div class="flex flex-col">
             <label class="text-xs">NIC</label>
-            <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" value="995512203V" disabled>
+            <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" v-model:value="employee.nic"  disabled/>
           </div>
           <div class="flex flex-col">
             <label class="text-xs">Contact Number</label>
-            <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" value="0773921108" disabled>
+            <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" v-model:value="employee.contactNumber"  :disabled="fieldsDisabled"/>
           </div>
           <div class="flex flex-col">
             <label class="text-xs">Address Line 1</label>
-            <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" value="25/1, Monarahanduwila Road" disabled>
+            <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" v-model:value="employee.addressLine1"  :disabled="fieldsDisabled"/>
+          </div>
+          <div class="flex flex-col">
+            <label class="text-xs">Address Line 2</label>
+            <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="text" v-model:value="employee.addressLine2"  :disabled="fieldsDisabled"/>
           </div>
           <div class="flex  w-full justify-between">
             <div class="flex flex-col w-[49%]">
               <label class="text-xs">Street</label>
-              <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 pl-2"   type="text" value="Wettawa" disabled>
+              <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 pl-2"   type="text" v-model:value="employee.street" :disabled="fieldsDisabled"/>
             </div>
             <div class="flex flex-col w-[49%]">
               <label class="text-xs"> City</label>
-              <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 pl-2"  type="text" value="Matugama" disabled>
+              <n-input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 pl-2"  type="text" v-model:value="employee.city" :disabled="fieldsDisabled"/>
             </div>
           </div>
-          <div class="flex flex-col">
-            <label class="text-xs">Account Created Date</label>
-            <input class="border-[1px] border-[#253665]  bg-[#EDF9FC]/40 rounded text-sm text-grey h-8 w-full pl-2" type="date" value="04/05/2024" disabled>
-          </div>
           <div class="w-full flex justify-center">
-            <button class="w-48 h-8 bg-secondary rounded shadow-lg  text-white mt-5">Save</button>
+            <button class="w-48 h-8 bg-secondary rounded shadow-lg  text-white mt-5" @click="saveEmployeeDetails">Save</button>
           </div>
         </form>
       </div>
@@ -107,8 +107,74 @@
 <script setup lang="ts">
 
 import OperatorLayout from "../../layouts/OperatorLayout.vue";
-import { defineComponent, ref } from 'vue'
+import { ref,onMounted } from 'vue'
+import { employeeStore } from "../../store/employeeStore";
+import { useMessage } from "naive-ui";
+
+const message = useMessage();
 
  const showModal = ref(false)
 
+ const employee = ref(Object());
+ const formValues = ref(
+    {
+      firstName: "",
+      lastName: "",
+      employeeId: "",
+      email: "",
+      nic: "",
+      contactNumber: "",
+      addressLine1: "",
+      addressLine2: "",
+      street: "",
+      city: "",
+    }
+ );
+
+ const fieldsDisabled = ref(true);
+
+ function toggleFields() {
+   fieldsDisabled.value = !fieldsDisabled.value;
+ }
+
+ onMounted(() => {
+  const store = employeeStore();
+
+  store.getEmployee()
+    .then((res) => {
+      // console.log(res.emp);
+      employee.value = res.emp;
+      // console.log(employee.value);
+
+    }).catch((err) => {
+      console.log(err);
+    })
+
+ })
+
+
+function saveEmployeeDetails(e : any) {
+  e.preventDefault();
+
+  formValues.value.firstName = employee.value.firstName;
+  formValues.value.lastName = employee.value.lastName;
+  formValues.value.employeeId = employee.value.employeeId;
+  formValues.value.email = employee.value.email;
+  formValues.value.nic = employee.value.nic;
+  formValues.value.contactNumber = employee.value.contactNumber;
+  formValues.value.addressLine1 = employee.value.addressLine1;
+  formValues.value.addressLine2 = employee.value.addressLine2;
+  formValues.value.street = employee.value.street;
+  formValues.value.city = employee.value.city;
+
+  const store = employeeStore();
+  store.saveEmployeeDetails(formValues.value)
+    .then((res) => {
+      console.log(res);
+      message.success("Employee Details Updated Successfully");
+      window.location.reload();
+    }).catch((err) => {
+      console.log(err);
+    })
+}
 </script>

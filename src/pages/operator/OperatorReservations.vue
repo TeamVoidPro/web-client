@@ -2,7 +2,6 @@
   <OperatorLayout>
     <div>
       <div class="flex justify-between items-center">
-
         <div class="flex items-center p-2 bg-white shadow rounded gap-3">
           <form action="">
             <div class="flex items-center gap-3">
@@ -227,13 +226,13 @@ const year = currentTime.getFullYear();
 const month = currentTime.getMonth() + 1;
 const day = currentTime.getDate();
 
-const formattedDate = `${year}-${month}-${day}`
+const formattedDate = `${year}-${month}-0${day}`
 
 const formattedValue = ref(formattedDate)
 
-const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
+// const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
 
-const from = ref(formattedTime);
+const from = ref("08:00:00");
 const to = ref("21:00:00");
 
 const options = ref( [

@@ -22,6 +22,18 @@ export const parkingPlaceStore = defineStore('parkingPlace', {
                 .catch((err)=>{
                     throw err
                 })
+            },
+
+        async getNewParkingPlaces(role : string) : Promise<AxiosResponse<any>> {
+
+            return axiosClient.get(`ParkingPlaces/get-new-parking-places/${role}`)
+                .then((res)=>{
+                    return res.data
+                })
+                .catch((err)=>{
+                    throw err
+                })
             }
     }
+    
 })

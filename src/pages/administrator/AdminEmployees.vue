@@ -101,9 +101,22 @@
                         </div>
                         <div class="w-1/2 ps-2">
                           <label>Select role <span class="text-red-600">*</span></label>
-                          <n-select v-model:value="formValue.Role" :options="options2"/>
+                          <n-select v-model:value="formValue.Role" :options="options2"  @change= "getParkingPlaces"/>
                           <div  class="text-red-600 text-xs" v-if="errors.Role != null">{{errors.Role}}</div>
                         </div>
+                      </div>
+                      <div class="flex justify-between">
+                        <div class="w-1/2">
+                          <label>Assign Parking Place <span class="text-red-600">*</span></label>
+                          <n-select
+                              v-model:value="formValue.ParkingPlaceId"
+                              filterable
+                              placeholder="Please selesct a parking place"
+                              :options="options"
+                          />
+                          <div class="text-red-600 text-xs" v-if="errors.Nic != null">{{errors.Nic}}</div>
+                        </div>
+                        
                       </div>
                       <div class="flex justify-center">
                         <button @click="submitForm" type="submit" class="text-lg px-3 py-1 text-white rounded bg-secondary w-[20em] hover:bg-blue-600 mt-5">Add Employee</button>
@@ -140,6 +153,7 @@ import Pagination from "../../components/Pagination.vue";
 import {onMounted, ref} from "vue";
 import CloseIcon from "../../assets/icons/CloseIcon.vue";
 import { employeeStore } from "../../store/employeeStore.ts";
+import{ parkingPlaceStore } from "../../store/parkingPlaceStore.ts";
 
 const message = useMessage()
 const showModal = ref(false)
@@ -155,6 +169,7 @@ const formValue = ref({
   City: '',
   Nic: '',
   Role: '',
+  ParkingPlaceId: '',
 })
 
 const errors = ref({
@@ -253,4 +268,27 @@ const options2 = [
     value: 'Verifier'
   },
 ]
+
+const options = ref([{}]) // Array of objects 
+
+function getParkingPlaces()
+{
+  const role = formValue.value.Role;
+  const store = parkingPlaceStore();
+  store.getNewParkingPlaces(role)
+      .then((res) => {
+        const data = res.data;
+        data.forEach(element => {
+          const obj : {label: string, value: string} = {
+            label: element.name,
+            value: element.parkingPlaceId
+          }
+          options.value.push(obj)
+        });
+        // console.log(data)
+      }).catch((errors) => {
+    console.log(errors)
+  });
+
+}
 </script>

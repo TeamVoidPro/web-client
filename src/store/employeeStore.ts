@@ -73,9 +73,9 @@ export const employeeStore = defineStore('employee', {
             // return authService('employee/get-employees/EMP_1975_6231', 'get' ,this.user.token, {}).then()
         },
         getEmployee() {
-            return authService('employee/get-employees/EMP_1975_6231','get', this.user.token,{})
+            return authService('employee/get-employees/EMP_0022_4589','get', this.user.token,{})
                 .then((res : any)  => {
-                    console.log(res)
+                    // console.log(res)
                     return res
                 })
 
@@ -115,6 +115,13 @@ export const employeeStore = defineStore('employee', {
                 }).catch((error) => {
                     throw error
                 })
-        }
+        },
+        saveEmployeeDetails(data:object){
+            return axiosClient.post('Employee/update-employee', data)
+            .then(({data}) => {
+                return data
+            }).catch((error) => {
+                throw error
+            })        }
     }
 })
