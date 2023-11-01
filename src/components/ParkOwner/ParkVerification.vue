@@ -25,13 +25,13 @@ const store = useParkingOwnerRegistrationStore();
             <div class="flex">
               Your First Name
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.personalDetails.firstName}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.personalDetails.firstName}}</n-input>
           </div>
           <div class="flex flex-col gap-2 w-5/12">
             <div class="flex">
               Your Last Name
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.personalDetails.lastName}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.personalDetails.lastName}}</n-input>
           </div>
         </div>
         <div class="flex justify-around gap-3">
@@ -39,7 +39,7 @@ const store = useParkingOwnerRegistrationStore();
             <div class="flex">
               Email
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.personalDetails.email}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="Email" >{{store.personalDetails.email}}</n-input>
           </div>
         </div>
         <div class="flex justify-around gap-3">
@@ -47,14 +47,14 @@ const store = useParkingOwnerRegistrationStore();
             <div class="flex">
               Phone No
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.personalDetails.mobileNo}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="Phone No" >{{store.personalDetails.mobileNo}}</n-input>
 
           </div>
           <div class="flex flex-col gap-2 w-5/12">
             <div class="flex">
               NIC No
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.personalDetails.NICNo}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="NIC No" >{{store.personalDetails.NICNo}}</n-input>
           </div>
         </div>
       </div>
@@ -67,13 +67,13 @@ const store = useParkingOwnerRegistrationStore();
             <div class="flex">
               Address No
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.LandDetails.AddressNo}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="Address No" >{{store.LandDetails.AddressNo}}</n-input>
           </div>
           <div class="flex flex-col gap-2 w-5/12">
             <div class="flex">
               Address Street
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.LandDetails.AddressStreet}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="Street" >{{store.LandDetails.AddressStreet}}</n-input>
 
           </div>
         </div>
@@ -82,14 +82,14 @@ const store = useParkingOwnerRegistrationStore();
             <div class="flex">
               City
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.LandDetails.parkingCity}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="City" >{{store.LandDetails.parkingCity}}</n-input>
 
           </div>
           <div class="flex flex-col gap-2 w-5/12">
             <div class="flex">
               Province
             </div>
-            <div class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="First Name" >{{store.LandDetails.parkingProvince}}</div>
+            <n-input class="rounded-3xl border-2 border-gray-300 px-2 min-w-[10rem] min-h-[1rem]"  type="text" placeholder="Province" >{{store.LandDetails.parkingProvince}}</n-input>
 
           </div>
         </div>

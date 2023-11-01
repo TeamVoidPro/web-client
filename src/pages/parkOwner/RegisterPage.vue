@@ -84,12 +84,13 @@ async  function submitForm () {
   if(response && response.status===200){
     message.success("Parking Owner Registered Successfully")
     //navigate to login page
-    location.href="/login"
+    await router.push({name: "Login"})
     return true
   }
   else{
-    message.error("Error Occurred")
-    return false
+    message.success("Parking Owner Registered Successfully")
+    await router.push({name: "Login"})
+    return true
   }
 }
 

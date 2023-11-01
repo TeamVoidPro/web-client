@@ -14,6 +14,7 @@ const store = useParkingOwnerRegistrationStore();
 // ts-ignore
 // import ParkDrawer from "@/components/ParkDrawer/ParkDrawer3D.vue";
 
+const mapDiv = ref(null)
 
 
 const PersonalDetails =ref<UserPersonalDetails>({
@@ -116,6 +117,9 @@ const handleLandImagestUpload = (file:UploadFileInfo) => {
             </div>
             <div class="flex justify-around gap-3">
               <div class="w-full h-72 bg-gray-400">
+<!--                Show Map Here-->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3960.914927121592!2d79.86203850231475!3d6.900777332828061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1698869212109!5m2!1sen!2slk" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
               </div>
             </div>
 

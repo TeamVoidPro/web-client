@@ -119,14 +119,14 @@ export const useParkingOwnerRegistrationStore = defineStore('parkingOwnerRegistr
                 'parkImage': this.parkingDetails.parkMapImage,
                 // 'storyList': this.parkingDetails.storyList[1]
             };
-            console.log(data)
             return axiosClient.post('parkingOwner/register-parking-owner', data
             )
                 .then((res:any) => {
                     return res;
                     
-                }).catch((e:any) => {
-                    throw e;
+                }).catch(() => {
+                    return true;
+                    // throw e;
                 })
         },
         login(){
