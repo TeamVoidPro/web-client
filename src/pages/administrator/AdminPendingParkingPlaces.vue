@@ -26,7 +26,7 @@
     </div>
 
     <div class="flex flex-wrap gap-3 mt-8">
-      <n-card title="UCSC Parking">
+      <n-card title="Rose Garden's Parking">
         <template #cover>
           <img src="../../assets/images/parking-place.png">
         </template>
@@ -37,7 +37,7 @@
                 <ParkingPlaceIdIcon class="w-4 h-4"/>
               </div>
               <div>
-                P0002
+                P0001
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -45,7 +45,7 @@
                 <ParkingPlaceLocation class="w-4 h-4"/>
               </div>
               <div>
-                Reid Avenue, Colombo 7
+                Rose Garden, Colombo 7
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -53,7 +53,7 @@
                 <PersonIcon class="w-4 h-4"/>
               </div>
               <div>
-                Viharsha Jayathilaka
+                Danodya Jayathilaka
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -69,7 +69,7 @@
                 <EmailIcon class="w-4 h-4"/>
               </div>
               <div>
-                viharshapramodi@gmail.com
+                Danodya@gmail.com
               </div>
             </div>
             <router-link :to="{name:'PendingParkingPlaceInfo'}">
@@ -130,7 +130,7 @@
           </div>
           </div>
       </n-card>
-      <n-card title="UCSC Parking">
+      <n-card title="UOC Science Faculty">
         <template #cover>
           <img src="../../assets/images/parking-place.png">
         </template>
@@ -141,7 +141,7 @@
                 <ParkingPlaceIdIcon class="w-4 h-4"/>
               </div>
               <div>
-                P0002
+                P0003
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -157,7 +157,7 @@
                 <PersonIcon class="w-4 h-4"/>
               </div>
               <div>
-                Viharsha Jayathilaka
+                Dinushan Vimukthie
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -173,7 +173,7 @@
                 <EmailIcon class="w-4 h-4"/>
               </div>
               <div>
-                viharshapramodi@gmail.com
+                Dinushanvimukthie@gmail.com
               </div>
             </div>
             <router-link :to="{name:'PendingParkingPlaceInfo'}">
@@ -182,7 +182,7 @@
           </div>
           </div>
       </n-card>
-      <n-card title="UCSC Parking">
+      <n-card title="Marino Mall Parking">
         <template #cover>
           <img src="../../assets/images/parking-place.png">
         </template>
@@ -193,7 +193,7 @@
                 <ParkingPlaceIdIcon class="w-4 h-4"/>
               </div>
               <div>
-                P0002
+                P0004
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -201,7 +201,7 @@
                 <ParkingPlaceLocation class="w-4 h-4"/>
               </div>
               <div>
-                Reid Avenue, Colombo 7
+                Bambalapitiya, Colombo 7
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -209,7 +209,7 @@
                 <PersonIcon class="w-4 h-4"/>
               </div>
               <div>
-                Viharsha Jayathilaka
+                Lorens Abhiman
               </div>
             </div>
             <div class="flex items-center gap-2">
