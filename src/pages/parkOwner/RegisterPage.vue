@@ -64,6 +64,7 @@ import ParkDetails from "@components/ParkOwner/ParkDetails.vue";
 import ParkVerification from "@components/ParkOwner/ParkVerification.vue";
 import {useParkingOwnerRegistrationStore} from "@store/parkingOwnerRegisterStore.ts"
 import {useMessage} from "naive-ui";
+import router  from "@/router";
 
 // import LandRegistrationForm from "@/components/ParkOwner/LandRegistrationForm.vue";
 //
@@ -73,12 +74,17 @@ const store = useParkingOwnerRegistrationStore();
 
 let showAlert = false;
 
+const navigateTo = (path: string) => {
+  router.push(path);
+};
 
 
 async  function submitForm () {
   let response= await store.registerOwner();
   if(response && response.status===200){
     message.success("Parking Owner Registered Successfully")
+    //navigate to login page
+    location.href="/login"
     return true
   }
   else{
