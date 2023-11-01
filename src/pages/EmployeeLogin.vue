@@ -65,7 +65,7 @@ const submitForm = () => {
         } else if (res.employee.role === "Operator") {
           router.push({name: "OperatorDashboard"});
         } else if (res.employee.role === "Verifier") {
-          router.push({name: "VerifierDashboard"});
+          router.push({name: "VerifierLegal"});
         }
 
         message.success("Successfully logged in");
