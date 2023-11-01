@@ -15,7 +15,7 @@
           <AvailableSlot @click="getSlotDetails(slot.slotId)" v-if="slot.slotStatus === 'Available'" :slot="slot" :slotDetails="slotDetails">1</AvailableSlot>
           <ParkedSlot @click="getSlotDetails(slot.slotId)" v-if="slot.slotStatus === 'Parked'" :slot="slot" :slotDetails="slotDetails">1</ParkedSlot>
           <ReservedSlot @click="getReservedSlotDetails(slot.slotId)" v-if="slot.slotStatus === 'Reserved'" :slot="slot" :slotDetails="slotDetails">1</ReservedSlot>
-          <EmergencySlot @click="getSlotDetails(slot.slotId)" v-if="slot.slotStatus === 'Emergency'" :slot="slot" :slotDetails="slotDetails">1</EmergencySlot>
+          <EmergencySlot @click="getEmergencySlotDetails(slot.slotId)" v-if="slot.slotStatus === 'Emergency'" :slot="slot" :slotDetails="slotDetails">1</EmergencySlot>
         </td>
       </tr>
     </table>
@@ -72,6 +72,15 @@ function getSlotDetails(slot : string){
 
 function getReservedSlotDetails(slot : string){
   slot_store.getReservedSlotDetails(slot).then((res : any) => {
+    slotDetails.value = res.data;
+    console.log(slotDetails.value);
+  }).catch((err : any) => {
+    console.log(err);
+  })
+}
+
+function getEmergencySlotDetails(slot : string){
+  slot_store.getEmergencySlotDetails(slot).then((res : any) => {
     slotDetails.value = res.data;
     console.log(slotDetails.value);
   }).catch((err : any) => {

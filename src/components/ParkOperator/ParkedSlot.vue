@@ -102,6 +102,41 @@
                 :bordered="true"
                 :single-line="false"
             />
+
+            <div class="w-full flex justify-center mt-10">
+              <n-button type="primary" @click="showModal1 = true">
+                Release Slot
+              </n-button>
+              <n-modal v-model:show="showModal1">
+                <n-card
+                    style="width: 35em"
+                    title="Do you want to release this slot?"
+                    :bordered="false"
+                    size="huge"
+                    role="dialog"
+                    aria-modal="true"
+                >
+                  <template #header-extra>
+                    <CloseIcon class="cursor-pointer text-red-600 w-6 h-6" @click="showModal1 = false" />
+                  </template>
+
+                  <div class="flex justify-around">
+                    <n-button type="primary" round @click="updateSlot()">
+                      Yes
+                    </n-button>
+                    <n-button type="warning" round @click="showModal1 =  false">
+                      No
+                    </n-button>
+                  </div>
+
+                  <template #footer>
+
+                  </template>
+                </n-card>
+              </n-modal>
+
+            </div>
+
           </div>
         </div>
 
@@ -115,15 +150,19 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
+import {slotStore} from "@store/slotStore.ts";
+import {useMessage} from "naive-ui";
 
 const props = defineProps<{
   slot: object;
   slotDetails: object;
 }>();
 
-console.log(props.slotDetails);
 
 const showModal = ref(false)
+const showModal1 = ref(false)
+const slot_store = slotStore()
+const message = useMessage()
 
 const rowProps = () => {
   return {
@@ -132,6 +171,18 @@ const rowProps = () => {
       message.info("Clicked!");
     },
   };
+}
+
+
+function updateSlot()
+{
+  slot_store.updateSlotState(props.slotDetails.slotId, "Available")
+      .then((res : any) => {
+        window.location.reload()
+        message.create(res.message)
+      }).catch((err : any) => {
+        throw err;
+  })
 }
 
 const columns = [

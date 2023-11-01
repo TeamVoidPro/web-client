@@ -118,7 +118,7 @@
           </div>
         </div>
       </div>
-      <div class="mt-10 flex flex-wrap justify-between gap-y-4">
+      <div class="mt-10 flex flex-wrap gap-x-4 gap-y-4 justify-center">
         <EmployeeCard v-for="emp in employees" :employee="emp"/>
       </div>
       <div class="w-full flex justify-center">

@@ -70,7 +70,16 @@ export const reservationStore = defineStore('reservations', {
                     }).catch((err : any) => {
                         throw err;
                     })
+            },
+        async getReservationById(id : string) : Promise<AxiosResponse<any>> {
+                return axiosClient.get(`Reservations/get-reservation/${id}`)
+                    .then((res : any) => {
+                        return res.data;
+                    }).catch((err : any) => {
+                        throw err;
+                    })
             }
+
 
     }
 })

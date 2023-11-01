@@ -54,7 +54,7 @@
         <div v-for="reservation in reservationList" class="px-5 py-2 w-full bg-white rounded-xl flex items-center shadow justify-between">
           <div class="flex items-center">
             <div>
-              <img src="../../assets/images/user.jpg" alt=""
+              <img src="../../assets/images/user2.jpg" alt=""
                    class="w-14 h-14 rounded-full p-0.5 border border-black">
             </div>
             <div class="flex flex-col px-4 border-r-2">
@@ -93,7 +93,7 @@
             </div>
           </div>
           <div >
-            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel('Dinushan')"/>
+            <InfoIcon class="w-14 h-14 text-blue-500 font-semibold" @click="OpenModel(reservation.reservationId)"/>
           </div>
         </div>
         
@@ -110,7 +110,7 @@
         <n-card
             style="width: 60em;"
             class="rounded-xl"
-            title="Reservation - R001"
+            :title="`Reservation Details - ${currentReservation.name}`"
             :bordered="false"
             role="dialog"
             aria-modal="true"
@@ -123,29 +123,29 @@
             <div class="flex gap-10">
               <div class="w-[18em] p-2 border-2 rounded-xl">
                 <div class="text-lg font-semibold">Slot:</div>
-                <div class="flex justify-center text-5xl my-5 font-semibold">24</div>
-                <div class="text-center text-xl">8.00 A.M - 2.00 P.M</div>
+                <div class="flex justify-center text-5xl my-5 font-semibold">{{reservationDetails.slotNumber}}</div>
+                <div class="text-center text-xl">{{reservationDetails.reservationStartedAt}} - {{reservationDetails.reservationEndedAt}}</div>
               </div>
               <div class="p-2 w-[38em]">
                 <div class="flex gap-10">
                   <div class="w-[45%] space-y-8">
                     <div class="">
                       <div class="text-lg font-semibold">Name:</div>
-                      <div class="ps-2">Danodya Supun</div>
+                      <div class="ps-2">{{reservationDetails.name}}</div>
                     </div>
                     <div class="">
                       <div class="text-lg font-semibold">Vehicle Number:</div>
-                      <div class="ps-2">ABC - 1234</div>
+                      <div class="ps-2">{{reservationDetails.vehicleNumber}}</div>
                     </div>
                   </div>
                   <div class="w-[45%] space-y-8">
                     <div class="">
                       <div class="text-lg font-semibold">Contact:</div>
-                      <div class="ps-2">0766023645</div>
+                      <div class="ps-2">{{reservationDetails.contactNumber}}</div>
                     </div>
                     <div class="">
                       <div class="text-lg font-semibold">Vehicle Type:</div>
-                      <div class="ps-2">Car</div>
+                      <div class="ps-2">{{reservationDetails.vehicleType}}</div>
                     </div>
                   </div>
                 </div>
@@ -155,25 +155,25 @@
               <div class="flex gap-8">
                 <div class="w-[30%] p-2">
                   <div class="text-lg font-semibold">Reservation Date:</div>
-                  <div class="ps-2">Today</div>
+                  <div class="ps-2">{{reservationDetails.reservationDate}}</div>
                 </div>
                 <div class="w-[30%] p-2 ms-2">
                   <div class="text-lg font-semibold">Reserved At:</div>
-                  <div class="ps-2">Yesterday at 16:32:00</div>
+                  <div class="ps-2">{{reservationDetails.reservedAt}}</div>
                 </div>
                 <div class="w-[30%] py-2">
                   <div class="text-lg font-semibold">Total Cost:</div>
-                  <div class="ps-2">Rs 800.00</div>
+                  <div class="ps-2">Rs {{reservationDetails.reservationAmount}}.00</div>
                 </div>
               </div>
               <div class="flex gap-8">
                 <div class="w-[30%] p-2">
                   <div class="text-lg font-semibold">Payment Method:</div>
-                  <div class="ps-2">Cash - Onsite</div>
+                  <div class="ps-2">{{reservationDetails.paymentMethod}}</div>
                 </div>
                 <div class="w-[30%] p-2 ms-2">
                   <div class="text-lg font-semibold">Payment Status:</div>
-                  <div class="ps-2">Not Paid</div>
+                  <div class="ps-2">{{reservationDetails.paymentStatus}}</div>
                 </div>
                 <div class="w-[30%] py-2">
                   <div class="text-lg font-semibold">Zone:</div>
@@ -182,14 +182,14 @@
               </div>
               <div>
                 <div class="text-lg font-semibold">Vehicle Description:</div>
-                <div class="ps-2">Vehicle under restoration, avoid touching.</div>
+                <div class="ps-2">{{reservationDetails.additionalNote}}</div>
               </div>
             </div>
 
-            <div class="flex justify-between mt-10">
-              <button class="w-[10em] flex items-center justify-center gap-2 border-none text-white rounded-lg text-xl py-2 bg-green-500 hover:bg-green-600 cursor-pointer"><PhoneIcon class="font-semibold"/> Contact</button>
-              <button class="w-[10em] flex items-center justify-center gap-2 border-none text-white rounded-lg text-xl py-2 bg-red-500 hover:bg-red-600 cursor-pointer"><CloseIcon class="font-semibold"/> Cancel</button>
-            </div>
+<!--            <div class="flex justify-between mt-10">-->
+<!--              <button class="w-[10em] flex items-center justify-center gap-2 border-none text-white rounded-lg text-xl py-2 bg-green-500 hover:bg-green-600 cursor-pointer"><PhoneIcon class="font-semibold"/> Contact</button>-->
+<!--              <button class="w-[10em] flex items-center justify-center gap-2 border-none text-white rounded-lg text-xl py-2 bg-red-500 hover:bg-red-600 cursor-pointer"><CloseIcon class="font-semibold"/> Cancel</button>-->
+<!--            </div>-->
           </div>
           <template #footer>
           </template>
@@ -209,15 +209,25 @@ import CloseIcon from "../../assets/icons/CloseIcon.vue";
 import PhoneIcon from "@assets/icons/PhoneIcon.vue";
 import {reservationStore} from "../../store/reservationStore.ts"
 
+const reservation_store = reservationStore();
+
 const showModal = ref(false)
 const currentReservation = ref({
   name: 'Danodya Supun',
 })
 
-  const OpenModel = (name: string) => {
-    console.log(name)
+const reservationDetails = ref(Object())
+
+const OpenModel = (name: string) => {
   showModal.value = true
   currentReservation.value.name = name
+
+  reservation_store.getReservationById(name)
+      .then((res : any) => {
+        reservationDetails.value = res.data
+      }).catch((err : any) => {
+        throw err;
+  })
 }
 
 const filterBy = ref("Upcoming")
@@ -227,13 +237,20 @@ const year = currentTime.getFullYear();
 const month = currentTime.getMonth() + 1;
 const day = currentTime.getDate();
 
-const formattedDate = `${year}-${month}-${day}`
+const formattedDate = `${year}-${month}-0${day}`
 
 const formattedValue = ref(formattedDate)
 
-const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
+// let formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
+//
+// if(currentTime.getHours() < 10 && currentTime.getMinutes() < 10 && currentTime.getSeconds() < 10){
+//   console.log("Hi")
+//   formattedTime = `0${currentTime.getHours()}:0${currentTime.getMinutes()}:0${currentTime.getSeconds()}`
+// }
+//
+// console.log(formattedTime)
 
-const from = ref(formattedTime);
+const from = ref("08:00:00");
 const to = ref("21:00:00");
 
 const options = ref( [
@@ -251,7 +268,6 @@ const options = ref( [
         }
       ])
 
-const reservation_store = reservationStore();
 
 onMounted(() => {
   reservation_store.getUpcomingReservations(formattedValue.value, from.value, to.value)

@@ -57,6 +57,26 @@ export const slotStore = defineStore('slots', {
                 .catch((err : any) => {
                     throw err;
                 })
+        },
+        async updateSlotState(slotId : string, state : string) : Promise<AxiosResponse<any>> {
+
+            console.log(slotId, state);
+            return axiosClient.put(`Slot/update-slot-state/${slotId}/${state}`)
+                .then((res : any) => {
+                    return res.data;
+                })
+                .catch((err : any) => {
+                    throw err;
+                })
+        },
+        async getEmergencySlotDetails(slotId : string) : Promise<AxiosResponse<any>> {
+            return axiosClient.get(`Slot/get-emergency-slot-details/${slotId}`)
+                .then((res : any) => {
+                    return res.data;
+                })
+                .catch((err : any) => {
+                    throw err;
+                })
         }
     }
 })

@@ -223,11 +223,13 @@ import {zonesStore} from "../../store/zonesStore.ts";
 import {onMounted, ref} from "vue";
 import {slotStore} from "../../store/slotStore.ts";
 import {reservationStore} from "@store/reservationStore.ts";
+import {useMessage} from "naive-ui";
 
 const showModal = ref(false);
 const zoneList = ref(null);
 const clicked = ref("");
 const reservation_store = reservationStore();
+const message = useMessage();
 
 onMounted(() => {
   const operatorStore = parkingOperatorStore();
@@ -297,7 +299,9 @@ function makeReservation()
 
   reservation_store.makeReservation(formValues.value)
       .then((res:any) => {
-        console.log(res.message)
+        // console.log(res.message)
+        message.create(res.message);
+        window.location.reload();
       }).catch((err : any) => {
         throw err
       });
