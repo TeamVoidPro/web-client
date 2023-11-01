@@ -22,11 +22,11 @@ const props = defineProps({
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
             <!-- Navbar links go here -->
-            <a href="#" :class="currentPage === 'home' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">Home</a>
-            <a href="#about" :class="currentPage === 'about' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">About</a>
-            <a href="#" :class="currentPage === 'contact' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">Contact</a>
-            <a href="/employee-login" :class="currentPage === 'login' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">Login</a>
-            <a href="#" :class="currentPage === 'register' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">Register</a>
+            <a href="/" :class="currentPage === 'home' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">Home</a>
+            <a href="/" :class="currentPage === 'about' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">About</a>
+            <a href="/" :class="currentPage === 'contact' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">Contact</a>
+            <a href="/login" :class="currentPage === 'login' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">Login</a>
+<!--            <a href="#" :class="currentPage === 'register' ? 'bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-black hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium'">Register</a>-->
 
           </div>
         </div>

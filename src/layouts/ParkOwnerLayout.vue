@@ -11,7 +11,13 @@ import ParkChange from "@/components/ParkOwner/LayoutComponent/ParkChangeCompone
 const userName = "Mr. Danodya Supun";
 const userImage = "/src/assets/images/user1.svg";
 
-
+const props = defineProps({
+  parkSelector: {
+    type: Boolean,
+    default: true,
+  },
+});
+console.log(props.parkSelector);
 
 const sideBarItems:Array<SidebarItem>=[
   {
@@ -53,14 +59,14 @@ const sideBarItems:Array<SidebarItem>=[
 
 <!--  Sidebaar-->
   <NotificationButton />
-  <ParkChange />
+  <ParkChange v-if="props.parkSelector" />
   <div class="flex w-screen">
-  <SidebarComponent :side-bar-items="sideBarItems" :side-bar-user-name="userName" :side-bar-user-image="userImage" />
-  <div class=" w-full px-2 mt-16 pb-2 pt-3">
-    <slot>
+    <SidebarComponent :side-bar-items="sideBarItems" :side-bar-user-name="userName" :side-bar-user-image="userImage" />
+    <div class=" w-full px-2 mt-16 pb-2 pt-3">
+      <slot>
 
-    </slot>
-  </div>
+      </slot>
+    </div>
   </div>
 
 

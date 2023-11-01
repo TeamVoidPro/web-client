@@ -1,7 +1,7 @@
 <template>
   <div class="cursor-pointer">
     <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-gray-300/30 border-2 border-gray-600" @click="showModal = true">
-      <div class="text-2xl"><slot></slot></div>
+      <div class="text-2xl">{{props.slot.slotNumber}}</div>
     </div>
     <n-modal v-model:show="showModal">
       <n-card
@@ -21,7 +21,7 @@
               <div class="flex justify-around items-baseline">
                 <div class="flex flex-col justify-center">
                   <div class="text-xl font-semibold">Slot Number</div>
-                  <div class="text-center text-5xl mt-2">6</div>
+                  <div class="text-center text-5xl mt-2">2</div>
                 </div>
                 <div class="flex flex-col justify-center">
                   <div class="text-xl font-semibold">Slot Status</div>
@@ -68,7 +68,9 @@
               />
             </div>
           </div>
-
+          <div class="w-full flex justify-center">
+            <button class="px-20 rounded-lg cursor-pointer py-2 text-xl font-semibold bg-secondary text-white mt-10">Use Slot</button>
+          </div>
         <template #footer>
 
         </template>
@@ -80,6 +82,12 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
+import {param} from "ts-interface-checker";
 
 const showModal = ref(false)
+
+const props = defineProps<{
+  slot: object;
+}>();
+
 </script>

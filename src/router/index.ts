@@ -30,9 +30,9 @@ import EmployeeLogin from "../pages/EmployeeLogin.vue";
 import VerifyAccount from "@pages/VerifyAccount.vue";
 import ResetPassword from "@pages/ResetPassword.vue";
 import AdminAnalytics from "@pages/administrator/AdminAnalytics.vue";
-import AdminFeedbacksAndRatings from "@pages/administrator/AdminFeedbacksAndRatings.vue";
 import AdminParkMonitoring from "@pages/administrator/AdminParkMonitoring.vue";
 import AdminPendingParkingPlaces from "@pages/administrator/AdminPendingParkingPlaces.vue";
+import PendingParkingPlaceInfo from "@pages/administrator/PendingParkingPlaceInfo.vue";
 
 import AdminParkingPlaces from "@pages/administrator/AdminParkingPlaces.vue";
 
@@ -41,6 +41,25 @@ import ParkingPlaceInfo from "@pages/administrator/ParkingPlaceInfo.vue";
 
 // @ts-ignore
 import FeedbacksRatings from "../pages/parkOwner/FeedbacksRatings.vue";
+// @ts-ignore
+import VerifierLegal from "../pages/verifier/VerifierLegal.vue";
+// @ts-ignore
+import VerifierOnsite from "../pages/verifier/VerifierOnsite.vue";
+// @ts-ignore
+import VerifierInspection from "../pages/verifier/VerifierInspection.vue";
+// @ts-ignore
+import VerifierHistory from "../pages/verifier/VerifierHistory.vue";
+// @ts-ignore
+import SurveyPhysical from "../pages/verifier/SurveyPhysical.vue";
+// @ts-ignore
+import SurveyLegal from "../pages/verifier/SurveyLegal.vue";
+// @ts-ignore
+import SurveyGeneral from "../pages/verifier/SurveyGeneral.vue";
+// @ts-ignore
+import VerifierInspection1 from "../pages/verifier/VerifierInspection1.vue";
+// @ts-ignore
+import VerifierInspection2 from "../pages/verifier/VerifierInspection2.vue";
+
 
 import ManageParkingPlace from "@pages/parkOwner/ManageParkingPlace.vue";
 //@ts-ignore
@@ -56,7 +75,7 @@ const routes = [
         name: 'Home',
         component: () => Home
     },
-    
+
     {
 
         path: '/auth',
@@ -203,11 +222,7 @@ const routes = [
                 name: 'AdminAnalytics',
                 component: () => AdminAnalytics
             },
-            {
-                path: '/admin-feedbacks-and-ratings',
-                name: 'AdminFeedbacksAndRatings',
-                component: () => AdminFeedbacksAndRatings
-            },
+           
             {
                 path: '/admin-park-monitoring',
                 name: 'AdminParkMonitoring',
@@ -228,9 +243,73 @@ const routes = [
                 path: '/parking-place-info',
                 name: 'ParkingPlaceInfo',
                 component: () => ParkingPlaceInfo
+            },
+            {
+                path:'/pending-parking-place-info',
+                name:'PendingParkingPlaceInfo',
+                component: () => PendingParkingPlaceInfo
+
             }
 
         ]
+    },
+    {
+        path: '/verifier',
+        name: 'verifier',
+        children: [
+            {
+                path: 'legal',
+                name: 'VerifierLegal',
+                component: () => VerifierLegal
+            },
+            {
+                path: 'onsite',
+                name: 'VerifierOnsite',
+                component: () => VerifierOnsite
+            },
+            {
+                path: 'inspection',
+                name: 'VerifierInspection',
+                component: () => VerifierInspection
+
+            },
+            {
+                path: 'history',
+                name: 'VerifierHistory',
+                component: () => VerifierHistory
+
+            },
+            {
+                path: 'SurveyPhysical',
+                name: 'SurveyPhysical',
+                component: () => SurveyPhysical
+
+            },
+            {
+                path: 'SurveyLegal',
+                name: 'SurveyLegal',
+                component: () => SurveyLegal
+
+            },
+            {
+                path: 'SurveyGeneral',
+                name: 'SurveyGeneral',
+                component: () => SurveyGeneral
+
+            },
+            {
+                path: 'VerifierInspection1',
+                name: 'VerifierInspection1',
+                component: () => VerifierInspection1
+
+            },
+            {
+                path: 'VerifierInspection2',
+                name: 'VerifierInspection2',
+                component: () => VerifierInspection2
+
+            }
+            ]
     }
     ]
 

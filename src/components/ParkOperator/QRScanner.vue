@@ -31,16 +31,16 @@
                 <img src="../../assets/images/Success.gif" alt=""
                   class="object-cover transform  w-20 h-20">
                 <div class="text-2xl font-semibold text-[#77b43f]">Vehicle parked in</div>
-                <div class="text-2xl font-semibold text-[#77b43f]">slot #20</div>
+                <div class="text-2xl font-semibold text-[#77b43f]">slot #{{results.slotNumber}}</div>
               </div>
               <div class="mt-5 space-y-3">
                 <div>
                   <div class="font-semibold text-lg">Parking duration</div>
-                  <div class="ps-5"><span>8.00 A.M</span> to <span>2.00 P.M</span></div>
+                  <div class="ps-5"><span>{{results.reservationStartedAt}}</span> to <span>{{results.reservationEndedAt}}</span></div>
                 </div>
                 <div>
                   <div class="font-semibold text-lg">Vehicle type:</div>
-                  <div class="ps-5">Car</div>
+                  <div class="ps-5">{{results.vehicleType}}</div>
                 </div>
                 <div>
                   <div class="font-semibold text-lg">Reservation type:</div>
@@ -48,7 +48,7 @@
                 </div>
                 <div>
                   <div class="font-semibold text-lg">Reservation fee:</div>
-                  <div class="ps-5">Rs 1600.00</div>
+                  <div class="ps-5">Rs {{results.reservationAmount}}.00</div>
                 </div>
               </div>
             </div>
@@ -56,33 +56,33 @@
               <div class="space-y-3">
                 <div>
                   <div class="font-semibold text-lg">Reservation ID:</div>
-                  <div class="ps-5">RES-1234-1234</div>
+                  <div class="ps-5">{{results.reservationId}}</div>
                 </div>
                 <div>
                   <div class="font-semibold text-lg">Customer name:</div>
-                  <div class="ps-5">Mr. Danodya Supun Ariyasinghe</div>
+                  <div class="ps-5">{{results.name}}</div>
                 </div>
                 <div>
                   <div class="font-semibold text-lg">Reserved at:</div>
-                  <div class="ps-5">2023-07-31 15:22</div>
+                  <div class="ps-5">{{results.reservedAt}}</div>
                 </div>
               </div>
               <div class="mt-5 space-y-2">
                 <div>
                   <div class="font-semibold text-lg">Vehicle number:</div>
-                  <div class="ps-5">ABC - 1234</div>
+                  <div class="ps-5">{{results.vehicleNumber}}</div>
                 </div>
                 <div>
                   <div class="font-semibold text-lg">Vehicle model:</div>
-                  <div class="ps-5">Premio</div>
+                  <div class="ps-5">{{results.vehicleModel}}</div>
                 </div>
                 <div>
                   <div class="font-semibold text-lg">Reservation zone:</div>
-                  <div class="ps-5">Green Zone</div>
+                  <div class="ps-5">{{results.zoneName}}</div>
                 </div>
                 <div>
                   <div class="font-semibold text-lg">Reservation status:</div>
-                  <div class="ps-5">Active</div>
+                  <div class="ps-5">{{results.reservationStatus}}</div>
                 </div>
 
               </div>
@@ -90,7 +90,7 @@
           </div>
           <div class="w-full mt-3">
             <div class="font-semibold text-lg">Additional notes:</div>
-            <div class="ps-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut in iste! Aliquam, animi autem blanditiis, consectetur dolor eaque ipsam iusto labore.</div>
+            <div class="ps-5">{{results.additionalNote}}</div>
           </div>
 
           <template #footer>
@@ -112,6 +112,8 @@ canvas {
 import {QrcodeStream} from "vue-qrcode-reader";
 import {ref} from "vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
+import {reservationStore} from "@store/reservationStore.ts";
+import {slotStore} from "@store/slotStore.ts";
 
 const isShowingCamera = ref(false);
 const result = ref("");
@@ -122,6 +124,9 @@ const props = defineProps<{
 
 isShowingCamera.value = props.message;
 
+const reservation_store = reservationStore();
+const results = ref<any>([]);
+
 function onDecode(content: string) {
   console.log(content);
 }
@@ -130,7 +135,21 @@ async function onDetect(promise: any) {
   try {
     result.value = await promise;
     if(result.value) {
-      console.log(result.value);
+      reservation_store.getReservationById(result.value[0].rawValue)
+          .then((response: any) => {
+            results.value = response.data;
+
+            const slot_store = slotStore()
+
+            slot_store.updateSlotState(results.value.slotId, "Parked")
+                .then((response: any) => {
+                  console.log(response);
+                }).catch((error: any) => {
+              console.log(error);
+            });
+          }).catch((error: any) => {
+        console.log(error);
+      });
       showModal.value = true;
     }
   } catch (error: any) {

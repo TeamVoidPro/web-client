@@ -7,14 +7,20 @@ export const parkingOperatorStore = defineStore('parkingOperator', {
         user: {
             data: JSON.parse(localStorage.getItem('user') || '{}'),
             token: localStorage.getItem('token') || '',
-        }
+        },
+        parkingPlace: {},
     }),
+    getters: {
+        // getParkingPlace(): any {
+        //     return this.parkingPlace;
+        // }
+    },
     actions: {
         getParkingPlace() {
             const user = this.user.data.id;
-            console.log(user)
-            return authService('ParkingOperator/get-operator-parking?parkingOperatorId=EMP_1975_6231', 'get', this.user.token, {})
+            return authService(`ParkingOperator/get-operator-parking?parkingOperatorId=${user}`, 'get', this.user.token, {})
                 .then((res: any) => {
+                    this.parkingPlace = res.parking;
                     return res;
                 }).catch((error) => {
                     throw error;

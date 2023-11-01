@@ -1,0 +1,10 @@
+
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M1 3v18h22V3H1zm20 16H3V5h18v14zM9.41 16L12 13.41L14.59 16L16 14.59L13.41 12L16 9.41L14.59 8L12 10.59L9.41 8L8 9.41L10.59 12L8 14.59z"></path></svg>
+  </template>
+  
+  <script lang="ts">
+  export default {
+    name: 'IcSharpCancelPresentation'
+  }
+  </script>

@@ -109,10 +109,10 @@ const page= ref(1)
 </script>
 
 <template>
-  <ParkOwnerLayout>
-    <div class="flex flex-col w-full h-full">
-      <div class="flex ">
-        <div class="flex flex-col w-[900px] my-2 ">
+  <ParkOwnerLayout :park-selector="false">
+    <div class="flex flex-col w-full h-full px-4">
+      <div class="flex w-full">
+        <div class="flex flex-col w-3/5 my-2 ">
           <div class="flex flex-col bg-white rounded-2xl ml-4 mr-2 px-2 py-2 my-2 h-[200px]">
             <div class="flex justify-between">
               <div class="text-xl font-bold">My Balance</div>
@@ -189,10 +189,10 @@ const page= ref(1)
             </div>
           </div>
         </div>
-        <div class="flex flex-col bg-white rounded-2xl ml-4 mr-2 px-2 py-2 mt-4  mb-2 h-[416px] w-[450px]">
+        <div class="flex flex-col w-2/5 bg-white rounded-2xl ml-4 mr-2 px-2 py-2 mt-4  mb-2 h-[416px] ">
           <div class="flex justify-between">
             <div class="text-xl font-bold">Withdraw</div>
-            <button class="flex px-1 items-center">
+            <button class="flex px-1 items-center bg-white">
             <img src="../../assets/icons/settings.png">
             </button>
           </div>
@@ -220,7 +220,7 @@ const page= ref(1)
           </div>
         </div>
       </div>
-      <div class="flex flex-col bg-white rounded-2xl ml-4 mr-4 px-2 py-2 mt-4  mb-2 h-[424px] w-[1350px]">
+      <div class="flex flex-col bg-white rounded-2xl  p-4  mt-4  mb-2  w-full">
         <div class=" flex justify-between">
           <h1 class="text-xl font-bold">Transaction History</h1>
           <div class="flex gap-2">
@@ -234,7 +234,7 @@ const page= ref(1)
             </select>
           </div>
         </div>
-        <div class="mt-2">
+        <div class="mt-2 w-full">
           <n-table :bordered="true" :single-line="false" class="w-full">
             <thead>
             <tr class="text-center">

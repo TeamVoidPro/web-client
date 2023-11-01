@@ -3,10 +3,39 @@
   <ParkOwnerNavbar currentPage="home"/>
     <div class="flex flex-col bg-accent justify-center items-center h-[100%] px-10 py-2.5">
       <div class="flex bg-white justify-center items-center m-5 rounded-2xl relative h-[85vh] shadow shadow-blue-200">
-          <div class="w-1/3 flex flex-col justify-center items-center h-full m-5 gap-4">
-            <div  class="text-6xl font-bold text-center text-primary top-8">Park Ease</div>
-            <div class="text-xl px-4 font-semibold text-center text-ternary">Say Goodbye to Parking Woes</div>
-            <div class="text-xl px-4 font-semibold text-center text-ternary"> Discover the Future of Hassle-Free Parking</div>
+          <div class="w-1/3 flex flex-col justify-center items-center h-full m-5 gap-10">
+            <div class="flex flex-col gap-2 ">
+              <div  class="text-6xl font-bold text-center text-primary top-8">Park Ease</div>
+              <div class="text-xl px-4 font-semibold text-center text-ternary">Say Goodbye to Parking Woes</div>
+              <div class="text-xl px-4 font-semibold text-center text-ternary"> Discover the Future of Hassle-Free Parking</div>
+              <div class="flex justify-center items-center">
+                <button class="flex mt-5 bg-black text-white font-bold rounded-2xl px-5 py-2.5 ml-2.5 mr-2.5">
+                  <div class="flex gap-4">
+                    <img src="../assets/images/playstore.png">
+                      <div class="flex items-center justify-center flex-col">
+                        <div>
+                          GET IT ON
+                        </div>
+                        <div>
+                          GOOGLE PLAY
+                        </div>
+                      </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 ">
+              <div class="text-xl px-4 font-semibold text-center text-ternary">Want to Earn Money from your vacant space?</div>
+              <div class="text-xl px-4 font-semibold text-center text-ternary"> Join With Us & Make Profits</div>
+              <div class="flex justify-center items-center">
+                <button class="flex bg-blue-600 text-white font-bold rounded-2xl px-5 py-2.5 ml-2.5 mr-2.5">
+                  <div>
+                    Join Now
+                  </div>
+                </button>
+              </div>
+            </div>
+
           </div>
           <div class="w-2/3 p-6">
             <n-carousel class="w-full" autoplay>
@@ -31,11 +60,13 @@
       </div>
       <section id="about" class="h-[100vh] flex flex-col justify-center items-center">
         <div class="flex bg-white justify-center items-center m-5 rounded-2xl h-full shadow shadow-blue-200">
-          <div class="w-3/4 justify-center items-center px-5 py-1.5">
+          <div class="w-3/4 justify-center items-center gap-4 flex flex-col px-5 py-1.5">
             <div class="text-3xl font-bold text-center text-ternary">Parking made easy</div>
             <div class="text-3xl font-bold text-center text-ternary">Right at your fingertips!</div>
-            <div class="text-lg mt-1.5 mb-1.5">
-              orem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+            <div class="text-lg text-center mt-1.5 mb-1.5 w-[60%]">
+              "Experience the ultimate convenience with ParkEase – where parking becomes effortless and stress-free.
+              Our innovative solution puts the power to find, reserve, and manage parking spaces right at your fingertips.
+              Say goodbye to circling around for spots or worrying about availability. ParkEase, making parking a breeze, so you can focus on what truly matters."
             </div>
             <div class="flex justify-center items-center">
               <button class="flex bg-black text-white font-bold rounded-2xl px-5 py-2.5 ml-2.5 mr-2.5">
@@ -76,10 +107,27 @@
       </section>
       <section id="features" class="h-[100vh] flex flex-col justify-center items-center p-8 ">
         <div class="flex flex-col gap-10 bg-white justify-around items-center my-1 h-full  rounded-2xl shadow shadow-blue-200 px-2.5 py-2.5">
-          <div class="text-3xl font-bold text-center text-primary">Features</div>
-          <div class="flex w-2/3 ">
+          <div class="text-3xl mt-10 font-bold text-center text-primary">Features</div>
+          <div class="flex my-5 w-2/3 ">
             <div class="flex justify-center items-center w-[400px]">
-              <img src="../assets/images/owner_view.png" class="h-[200px]">
+              <img src="../assets/images/parking_spot_1.png" class="h-[200px]">
+            </div>
+            <div class="flex flex-col justify-center items-center">
+              <div class="text-3xl font-bold text-center text-primary">
+                Easily Find Parking
+              </div>
+              <div class="text-base text-center">
+                We provide you with the best parking spots in your area. You can easily find the parking spot that suits you the best.
+                All the parking spots are verified and are safe to park your vehicle.
+              </div>
+              <button class="flex mt-2 bg-primary px-4 py-3 rounded-xl">
+                <div class="text-sm font-bold text-center text-white">LEARN MORE</div>
+              </button>
+            </div>
+          </div>
+          <div class="flex my-5 flex-row-reverse w-2/3 ">
+            <div class="flex justify-center items-center w-[600px]">
+              <img src="../assets/images/parking_area.jpg" class="h-[200px]">
             </div>
             <div class="flex flex-col justify-center items-center">
               <div class="text-3xl font-bold text-center text-primary">BECOME AN OWNER AND START EARNING MONEY</div>
@@ -90,26 +138,17 @@
               </button>
             </div>
           </div>
-          <div class="flex flex-row-reverse w-2/3 ">
+          <div class="flex my-5 w-2/3 ">
             <div class="flex justify-center items-center w-[400px]">
-              <img src="../assets/images/owner_view.png" class="h-[200px]">
+              <img src="../assets/images/parking_spot_2.png" class="h-[200px]">
             </div>
             <div class="flex flex-col justify-center items-center">
-              <div class="text-3xl font-bold text-center text-primary">BECOME AN OWNER AND START EARNING MONEY</div>
-              <div class="text-base text-center">when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              <div class="text-3xl font-bold text-center text-primary">
+                Tap and Pay
               </div>
-              <button class="flex mt-2 bg-primary px-4 py-3 rounded-xl">
-                <div class="text-sm font-bold text-center text-white">LEARN MORE</div>
-              </button>
-            </div>
-          </div>
-          <div class="flex w-2/3 ">
-            <div class="flex justify-center items-center w-[400px]">
-              <img src="../assets/images/owner_view.png" class="h-[200px]">
-            </div>
-            <div class="flex flex-col justify-center items-center">
-              <div class="text-3xl font-bold text-center text-primary">BECOME AN OWNER AND START EARNING MONEY</div>
-              <div class="text-base text-center">when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              <div class="text-base text-center">
+                You can easily pay for your parking spot by tapping on the pay button. You can pay using your credit card, debit card or net banking.
+                No need to carry cash with you. Just tap and pay.
               </div>
               <button class="flex mt-2 bg-primary px-4 py-3 rounded-xl">
                 <div class="text-sm font-bold text-center text-white">LEARN MORE</div>

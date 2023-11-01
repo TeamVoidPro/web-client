@@ -6,7 +6,7 @@
         <div class="py-2 bg-white rounded-xl shadow flex flex-col items-center w-[20%] justify-center">
           <img src="../../assets/images/car-svgrepo-com.svg" alt=""
             class="w-12 h-12">
-          <div class="text-4xl font-bold"><span class="text-green-500">35</span>/60</div>
+          <div class="text-4xl font-bold"><span class="text-green-500">17</span>/20</div>
           <div class="mt-2 font-semibold text-lg">Free Slots</div>
           <div class="flex gap-3 items-center">
             <img src="../../assets/images/refresh-svgrepo-com.svg" alt="" class="w-5 h-5">
@@ -17,7 +17,7 @@
         <div class="py-2 px-3 bg-white rounded-xl shadow flex flex-col items-center w-[24%]">
           <img src="../../assets/images/booking.png" alt=""
             class="w-10 h-10">
-          <div class="text-4xl font-bold mt-2">23</div>
+          <div class="text-4xl font-bold mt-2">2</div>
           <div class="mt-2 font-semibold text-lg text-center">Upcoming Reservations</div>
           <div class="flex gap-3 items-center">
             <img src="../../assets/images/fast-forward-double-right-arrows-symbol.png" alt="" class="w-5 h-5">
@@ -27,7 +27,7 @@
 
         <div class="py-2 px-3 bg-white rounded-xl shadow flex flex-col items-center w-[24%]">
           <PeakIcon class="w-12 h-12"/>
-          <div class="text-xl font-semibold mt-2">10.00 A.M - 2.00 P.M</div>
+          <div class="text-xl font-semibold mt-2">08.00 A.M - 2.00 P.M</div>
           <div class="mt-2 font-semibold text-lg text-center">Peak Hours</div>
           <div class="flex gap-3 items-center mt-2">
             <img src="../../assets/images/fast-forward-double-right-arrows-symbol.png" alt="" class="w-5 h-5">
@@ -37,7 +37,7 @@
 
         <div class="py-2 px-3 bg-white rounded-xl shadow flex flex-col items-center w-[24%]">
           <ProfitIcon class="w-12 h-12"/>
-          <div class="text-2xl font-semibold mt-2">Rs. 9800.00</div>
+          <div class="text-2xl font-semibold mt-2">Rs. 800.00</div>
           <div class="mt-2 font-semibold text-lg text-center">Total Income</div>
           <div class="flex gap-3 items-center mt-2">
             <img src="../../assets/images/fast-forward-double-right-arrows-symbol.png" alt="" class="w-5 h-5">
@@ -104,8 +104,7 @@
               </div>
             </div>
             <div class="mt-4 px-10">
-              lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci alias aliquid amet
-              lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Overall, I had a positive experience parking at this location. The parking place is conveniently located near the shopping center I visited, and I felt my vehicle was safe and secure with visible security cameras.
             </div>
             <div class="w-full text-right">
               Today at 12:26 P.M
@@ -130,7 +129,7 @@
               </thead>
               <tbody>
               <tr>
-                <td>#12</td>
+                <td>#1</td>
                 <td>14</td>
                 <td>83%</td>
                 <td>30%</td>
@@ -138,35 +137,35 @@
                 <td>4.8</td>
               </tr>
               <tr>
-                <td>#12</td>
-                <td>14</td>
-                <td>83%</td>
-                <td>30%</td>
-                <td>4 800</td>
-                <td>4.8</td>
+                <td>#2</td>
+                <td>12</td>
+                <td>70%</td>
+                <td>25%</td>
+                <td>3 800</td>
+                <td>4.1</td>
+              </tr>
+              <tr>
+                <td>#20</td>
+                <td>13</td>
+                <td>80%</td>
+                <td>32%</td>
+                <td>4 600</td>
+                <td>4.7</td>
+              </tr>
+              <tr>
+                <td>#10</td>
+                <td>8</td>
+                <td>60%</td>
+                <td>15%</td>
+                <td>2 900</td>
+                <td>4.1</td>
               </tr>
               <tr>
                 <td>#12</td>
                 <td>14</td>
                 <td>83%</td>
                 <td>30%</td>
-                <td>4 800</td>
-                <td>4.8</td>
-              </tr>
-              <tr>
-                <td>#12</td>
-                <td>14</td>
-                <td>83%</td>
-                <td>30%</td>
-                <td>4 800</td>
-                <td>4.8</td>
-              </tr>
-              <tr>
-                <td>#12</td>
-                <td>14</td>
-                <td>83%</td>
-                <td>30%</td>
-                <td>4 800</td>
+                <td>4 850</td>
                 <td>4.8</td>
               </tr>
               </tbody>
@@ -222,7 +221,7 @@ import PeakIcon from "../../assets/icons/PeakIcon.vue";
 import ProfitIcon from "@assets/icons/ProfitIcon.vue";
 import ScanIcon from "@assets/icons/ScanIcon.vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
-import QRScanner from "@components/ParkOperator/QRScanner.vue";
+import QRScanner from "@components/ParkOperator/QRScanner.vue"
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,Filler,LineElement,PointElement,RadialLinearScale)
 
@@ -240,10 +239,10 @@ function closeScanner() {
 }
 
 const chartData1 = ref({
-  labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+  labels: [19,20,21,22,23,24,25,26,27,28,29,30,31,1,2],
   datasets: [
     {
-      data: [14.5,20,15,12,18,17.5,11.2,9.5,0,0,7.1,8,8.2,8.6,9],
+      data: [14.5,20,15,12,18,17.5,11.2,9.5,0,0,7.1,8,8.2,8.6,0.8],
       borderWidth: 4,
       backgroundColor: '#9248ce',
       pointRadius: 5,
@@ -311,10 +310,10 @@ const chartOptions1 = ref({
 })
 
 const chartData2 = ref({
-  labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+  labels: [19,20,21,22,23,24,25,26,27,28,29,30,31,1,2],
   datasets: [
     {
-      data: [20,14,13.2,10.5,11.2,9.5,7.1,8,0,0,14.5,20,15,12,18],
+      data: [20,14,13.2,10.5,11.2,9.5,7.1,8,0,0,14.5,20,15,12,6],
       barThickness: 10,
       backgroundColor: '#1965f1',
       borderRadius: 10,

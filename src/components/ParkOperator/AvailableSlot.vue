@@ -1,7 +1,7 @@
 <template>
   <div class="cursor-pointer">
     <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-green-300/30 border-2 border-green-600" @click="showModal = true">
-      <div class="text-2xl"><slot></slot></div>
+      <div class="text-2xl">{{props.slot.slotNumber}}</div>
     </div>
     <n-modal v-model:show="showModal">
       <n-card
@@ -21,28 +21,28 @@
             <div class="flex justify-around items-baseline">
               <div class="flex flex-col justify-center">
                 <div class="text-xl font-semibold">Slot Number</div>
-                <div class="text-center text-5xl mt-2">6</div>
+                <div class="text-center text-5xl mt-2">{{props.slot.slotNumber}}</div>
               </div>
               <div class="flex flex-col justify-center">
                 <div class="text-xl font-semibold">Slot Status</div>
-                <div class="text-center text-lg text-green-600 mt-2">Available</div>
+                <div class="text-center text-lg text-green-600 mt-2">{{props.slotDetails.slotStatus}}</div>
               </div>
             </div>
             <div class="space-y-5 mt-5">
               <div class="flex justify-between">
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Slot ID:</div>
-                  <div>SLOT_1234_5678</div>
+                  <div>{{props.slotDetails.slotId}}</div>
                 </div>
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Zone:</div>
-                  <div>Zone A</div>
+                  <div>{{props.slotDetails.zoneName}}</div>
                 </div>
               </div>
               <div class="flex justify-between">
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Slot Category:</div>
-                  <div>Car/Van</div>
+                  <div>{{props.slotDetails.slotCategory}}</div>
                 </div>
                 <div class="w-[45%] flex gap-2">
                   <div class="font-semibold">Dimensions:</div>
@@ -52,7 +52,7 @@
               <div>
                 <div class="font-semibold">Slot Description:</div>
                 <div class="text-justify px-5 mt-3">
-                  This is a parking slot that is specifically designed for electric vehicles. It typically has a charging station nearby.
+                  {{props.slotDetails.slotDescription}}
                 </div>
               </div>
             </div>
@@ -82,4 +82,9 @@ import {ref} from "vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
 
 const showModal = ref(false)
+
+const props = defineProps<{
+  slot: object;
+  slotDetails: object;
+}>();
 </script>

@@ -13,7 +13,12 @@ const currentPark = ref(
     }
 );
 
-
+const props = defineProps({
+  parkSelector: {
+    type: Boolean,
+    default: true
+  }
+})
 
 const parks = ref([
   {
@@ -87,7 +92,7 @@ onMounted(()=>{
           <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/>
         </svg>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" v-else class="notification-button">
-          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 15l-6-6l-6 6"/>
+          <path fill="none" st  roke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 15l-6-6l-6 6"/>
         </svg>
       </div>
 

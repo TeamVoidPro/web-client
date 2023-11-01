@@ -1,6 +1,6 @@
 <template>
   <AuthLayout>
-    <div class="h-[100vh] w-full bg-accent flex items-center">
+    <div class="h-[100vh] w-[60vw] bg-accent flex items-center">
       <div class="m-auto p-10 bg-white w-[100%] gap-5 rounded-2xl flex justify-around shadow shadow-blue-200">
         <div class="w-[35em]">
           <div class="flex flex-col h-full justify-center">

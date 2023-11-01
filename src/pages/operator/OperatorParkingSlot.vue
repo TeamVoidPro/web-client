@@ -2,67 +2,9 @@
   <OperatorLayout>
     <div class="flex justify-between">
       <div class="w-[57%] space-y-4">
-        <ParkingZone />
-        <div>
-          <div class="text-xl font-semibold mb-5">Zone B</div>
-          <table class="border-collapse w-full">
-            <tr>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-green-300/30 border-2 border-green-600">
-                  <div class="text-2xl">10</div>
-                </div>
-              </td>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">9</div>
-                </div>
-              </td>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">8</div>
-                </div>
-              </td>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-green-300/30 border-2 border-green-600">
-                  <div class="text-2xl">7</div>
-                </div>
-              </td>
-              <td class=" p-2 border-b-4 border-x-4 border-blue-950">
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-yellow-300/30 border-2 border-yellow-600">
-                  <div class="text-2xl">6</div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">1</div>
-                </div>
-              </td>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-green-300/30 border-2 border-green-600">
-                  <div class="text-2xl">2</div>
-                </div>
-              </td>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-yellow-300/30 border-2 border-yellow-600">
-                  <div class="text-2xl">3</div>
-                </div>
-              </td>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">4</div>
-                </div>
-              </td>
-              <td class=" p-2 border-t-4 border-x-4 border-blue-950" >
-                <div class="w-full h-40 flex items-center justify-center p-1 rounded bg-red-300/30 border-2 border-red-600">
-                  <div class="text-2xl">5</div>
-                </div>
-              </td>
-            </tr>
-          </table>
+        <div v-for="zone in zoneList">
+          <ParkingZone :zone="zone" />
         </div>
-
       </div>
       <div class="w-[39%]">
         <div>
@@ -173,38 +115,43 @@
               <div class="flex w-full justify-between">
                 <div class="w-[49%] space-y-2">
                   <label for="">Name</label>
-                  <n-input placeholder="Enter name" />
+                  <n-input v-model:value="formValues.name" placeholder="Enter name" />
                 </div>
                 <div class="w-[49%] space-y-2 ">
                   <label for="">Contact </label>
-                  <n-input placeholder="Enter contact number" />
+                  <n-input v-model:value="formValues.contact" placeholder="Enter contact number" />
                 </div>
               </div>
               <div class="flex w-full justify-between">
                 <div class="w-[49%] space-y-2 ">
                   <label for="">Vehicle Number</label>
-                  <n-input placeholder="Enter vehicle number" />
+                  <n-input v-model:value="formValues.vehicleNumber" placeholder="Enter vehicle number" />
                 </div>
                 <div class="w-[49%] space-y-2 ">
                   <label for="">Vehicle Type</label>
-                  <n-input placeholder="Select vehicle type" />
+                  <n-select
+                      v-model:value="formValues.vehicleType"
+                      filterable
+                      placeholder="Please select vehicle type"
+                      :options="options"
+                  />
                 </div>
               </div>
               <div class="flex w-full justify-between">
                 <div class="w-[49%] space-y-2 ">
                   <label for="">Reservation start at</label>
-                  <n-time-picker />
+                  <n-time-picker v-model:value="formValues.startingTime" @confirm="confirmTime" value-format="H~m~s"/>
                 </div>
                 <div class="w-[49%] space-y-2">
                   <label for="">Reservation end at</label>
-                  <n-time-picker />
+                  <n-time-picker v-model:value="formValues.endingTime" @confirm="confirmTime"/>
                 </div>
               </div>
               <div class="flex w-full justify-between">
                 <div class="w-[49%] space-y-2">
                   <label for="">Zone</label>
                   <div class="flex flex-wrap justify-around mt-3">
-                    <n-radio-group v-model:value="value2" name="radioGroup">
+                    <n-radio-group v-model:value="formValues.zone" name="radioGroup">
                       <n-space>
                         <n-radio
                             v-for="zone in zones"
@@ -219,7 +166,7 @@
                 <div class="w-[49%] space-y-2">
                   <label for="">Payment Method</label>
                   <div class="flex flex-wrap justify-around mt-3">
-                    <n-radio-group v-model:value="value1" name="radioGroup">
+                    <n-radio-group v-model:value="formValues.paymentMethod" name="radioGroup">
                       <n-space>
                         <n-radio
                             v-for="paymentMethod in paymentMethods"
@@ -237,33 +184,25 @@
 
             <div class="w-[28%] ps-[2%] border-l-2">
               <div class="text-lg font-semibold">Available Slots</div>
-              <div class="mt-2">
-                <div class="text-md mt-1">Zone A</div>
+              <div v-if="zonesList2.length === 0">Please select a reservation period.</div>
+              <div class="mt-2" v-for="zone in zonesList2">
+                <div class="text-md mt-1">{{zone}}</div>
                 <table>
-                  <tr>
-                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">10</div></td>
-                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">7</div></td>
-                  </tr>
-                </table>
-              </div>
-              <div class="mt-2">
-                <div class="text-md mt-1">Zone B</div>
-                <table>
-                  <tr>
-                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">10</div></td>
-                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">7</div></td>
-                    <td class="w-10 text-center"><div class="p-2 rounded-lg bg-green-300/30 border-2 border-green-600">2</div></td>
+                  <tr class="flex flex-wrap">
+                    <template v-for="slot in freeSlots">
+                      <td v-if="slot.zoneName === zone" class="w-10 text-center" ><div @click="setSlotId(slot.slotId); clicked=slot.slotId" :class="clicked === slot.slotId ? 'p-2 rounded-lg bg-green-600/50 border-2 border-green-700' : 'p-2 rounded-lg bg-green-300/30 border-2 border-green-600'">{{slot.slotNumber}}</div></td>
+                    </template>
                   </tr>
                 </table>
               </div>
               <div class="my-5 text-lg font-semibold">Total Payment</div>
               <div class="w-full">
-                <div class="text-2xl text-center">Rs 470.00</div>
+                <div class="text-2xl text-center">Rs. {{formValues.totalPayment}}</div>
               </div>
             </div>
           </div>
           <div class="w-full flex justify-center">
-            <button class="mt-10 px-10 py-2 text-lg font-semibold text-white rounded-lg">Make Reservation</button>
+            <button class="mt-10 px-10 py-2 text-lg font-semibold text-white rounded-lg" @click="makeReservation()">Make Reservation</button>
           </div>
           <template #footer>
 
@@ -277,12 +216,121 @@
 <script lang="ts" setup>
 import OperatorLayout from "../../layouts/OperatorLayout.vue";
 import ParkingZone from "@components/ParkOperator/ParkingZone.vue";
-import {ref} from "vue";
 import ReservationIcon from "@assets/icons/ReservationIcon.vue";
 import CloseIcon from "@assets/icons/CloseIcon.vue";
+import {parkingOperatorStore} from "../../store/parkingOperatorStore.ts";
+import {zonesStore} from "../../store/zonesStore.ts";
+import {onMounted, ref} from "vue";
+import {slotStore} from "../../store/slotStore.ts";
+import {reservationStore} from "@store/reservationStore.ts";
+import {useMessage} from "naive-ui";
+
 const showModal = ref(false);
-const value1 = ref(null);
-const value2 = ref(null);
+const zoneList = ref(null);
+const clicked = ref("");
+const reservation_store = reservationStore();
+const message = useMessage();
+
+onMounted(() => {
+  const operatorStore = parkingOperatorStore();
+  const zoneStore = zonesStore();
+
+  const parkingPlace =  ref(null);
+
+  operatorStore.getParkingPlace().then((res:any) => {
+    parkingPlace.value = res.parking;
+
+    const id = parkingPlace.value.parkingPlaceId;
+
+    zoneStore.getZones(id).then((res:any) => {
+      zoneList.value = res.data;
+    });
+  });
+});
+
+const options = Array();
+
+const formValues = ref({
+  name: "",
+  contact: "",
+  vehicleNumber: "",
+  vehicleType: "",
+  startingTime: null,
+  endingTime: null,
+  zone: "",
+  paymentMethod: "",
+  slotId: "",
+  parkingPlaceId: "",
+  operatorId: "",
+  totalPayment : 0
+});
+
+function setSlotId(id : any) {
+  formValues.value.slotId = id;
+
+  reservation_store.calculateReservationCost(formValues.value.slotId,formValues.value.startingTime,formValues.value.endingTime)
+      .then((res : any) => {
+        formValues.value.totalPayment = res.totalCost
+      }).catch((err : any) => {
+        throw err
+  })
+}
+
+onMounted(() => {
+  reservation_store.getVehicleTypes().then((res:any) => {
+    const categories = res.categories;
+    categories.forEach((category:any) => {
+      options.push({
+        label: category,
+        value: category
+      })
+    })
+    console.log(options)
+  });
+})
+
+function makeReservation()
+{
+  const slot_store = slotStore();
+
+  formValues.value.parkingPlaceId = slot_store.user.data.parkingPlaceId
+  formValues.value.operatorId = slot_store.user.data.id
+
+
+  reservation_store.makeReservation(formValues.value)
+      .then((res:any) => {
+        // console.log(res.message)
+        message.create(res.message);
+        window.location.reload();
+      }).catch((err : any) => {
+        throw err
+      });
+
+}
+
+const zonesList2 = ref(Array());
+const freeSlots = ref(Array());
+
+function confirmTime()
+{
+  const startingTime = formValues.value.startingTime;
+  const endingTime = formValues.value.endingTime;
+  const vehicleType = formValues.value.vehicleType;
+
+  const slot_store = slotStore();
+
+  if(startingTime !== null && endingTime !== null && vehicleType !== ""){
+    slot_store.getFreeSlots(startingTime, endingTime, vehicleType).then((res:any) => {
+      // console.log(res)
+      zonesList2.value = res.zonesList
+      freeSlots.value = res.slots;
+
+      console.log(freeSlots.value)
+    });
+  }else{
+    console.log("Please fill all the fields");
+  }
+}
 
 const paymentMethods = [
   {
