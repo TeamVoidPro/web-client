@@ -131,6 +131,15 @@ export const useParkingOwnerRegistrationStore = defineStore('parkingOwnerRegistr
         },
         login(){
         },
+        getDriverDetails(driverId:string){
+            return axiosClient.get(`driver/get-driver/${driverId}`)
+                .then((res:any) => {
+                    return res.data;
+                })
+                .catch((e:any) => {
+                throw e;
+                })
+        }
 
 
     }

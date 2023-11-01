@@ -9,17 +9,42 @@ const parkingOwnerRegistrationStore= useParkingOwnerRegistrationStore();
 const placeStore =parkingPlaceStore();
 
 
-const reviews = ref(Object())
+const reviews = ref({})
+let driver=ref({})
 
 onMounted(() => {
   placeStore.getReviewData()
       .then((res : any) => {
         reviews.value = res.parkingPlaceRatings
-        console.log(reviews.value)
+        const tmpRviews = res.parkingPlaceRatings
+        for (const review of tmpRviews) {
+          const driverID = review.driverId
+          console.log(driverID)
+          parkingOwnerRegistrationStore.getDriverDetails(driverID)
+              .then((res:any)=>{
+                driver.value=res.driver
+                console.log(driver.value)
+              }).catch((err:any)=>{
+            throw err
+          })
+        }
       }).catch((err : any) => {
         throw err
       })
 
+
+})
+
+//watcher to get the current parking place id
+
+watch(() => placeStore.currentParkingPlaceId, (newValue, oldValue) => {
+  placeStore.getReviewData()
+      .then((res : any) => {
+        reviews.value = res.parkingPlaceRatings
+        console.log(reviews.value)
+      }).catch((err : any) => {
+    throw err
+  })
 })
 </script>
 
@@ -36,14 +61,14 @@ onMounted(() => {
         <div>
           <div>
             <div class="text-primary  text-xl mb-1">
-              {{review.driverId}}
+              {{review.driver.firstName}} {{review.driver.lastName}}
             </div>
           </div>
           <div class="flex gap-1 mb-1" >
             <img src="../../assets/icons/star.svg" class="h-3 w-3"  v-for="i in Math.floor(review.rating)" :key="i">
           </div>
-          <div class="text-primary text-sm">
-            {{review.ratingDate}}
+          <div class="text-primary text-sm font-bold">
+            {{new Date(review.ratingDate).toDateString()}}
           </div>
           <div class="text-primary text-sm">
             <n-ellipsis expand-trigger="click" line-clamp="2" :tooltip="false">

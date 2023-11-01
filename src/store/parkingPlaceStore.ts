@@ -1,4 +1,4 @@
-    import { defineStore } from 'pinia'
+import { defineStore } from 'pinia'
 import axiosClient from "../plugins/axios";
 import { AxiosResponse } from 'axios';
 

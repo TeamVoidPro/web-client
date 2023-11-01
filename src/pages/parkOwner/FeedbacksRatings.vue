@@ -56,7 +56,7 @@ const placeStore =parkingPlaceStore();
                 <img src="../../assets/icons/star.svg">
                 <img src="../../assets/icons/star.svg">
               </div>
-               Based on {{(placeStore.reviewData.parkingPlaceRatings).length}} reviews
+<!--               Based on {{(placeStore.reviewData.parkingPlaceRatings)}} reviews-->
               <div>
           </div>
         </div>
